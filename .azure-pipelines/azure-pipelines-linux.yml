@@ -10,14 +10,30 @@ jobs:
   strategy:
     maxParallel: 8
     matrix:
-      linux_python3.6:
-        CONFIG: linux_python3.6
+      linux_cuda_compiler_version10.0python3.6:
+        CONFIG: linux_cuda_compiler_version10.0python3.6
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
-      linux_python3.7:
-        CONFIG: linux_python3.7
+      linux_cuda_compiler_version10.0python3.7:
+        CONFIG: linux_cuda_compiler_version10.0python3.7
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
+      linux_cuda_compiler_version10.1python3.6:
+        CONFIG: linux_cuda_compiler_version10.1python3.6
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+      linux_cuda_compiler_version10.1python3.7:
+        CONFIG: linux_cuda_compiler_version10.1python3.7
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+      linux_cuda_compiler_version9.2python3.6:
+        CONFIG: linux_cuda_compiler_version9.2python3.6
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
+      linux_cuda_compiler_version9.2python3.7:
+        CONFIG: linux_cuda_compiler_version9.2python3.7
+        UPLOAD_PACKAGES: True
+        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
   steps:
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
