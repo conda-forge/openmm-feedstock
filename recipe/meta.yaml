@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.4.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 package:
   name: {{ name }}
@@ -15,6 +15,7 @@ build:
   skip: True  # [py2k or win]
   missing_dso_whitelist:
   - "*/libcuda.*"  # [linux]
+  - "*/libOpenCL.*"  # [unix]
 
 requirements:
   build:
@@ -35,21 +36,16 @@ requirements:
     - cython
     # needed for Python wrappers
     - doxygen 1.8.14
-    # OpenCL ICD
-    - ocl-icd  # [linux]
-    - khronos-opencl-icd-loader  # [osx or win]
 
   run:
     - python
     - fftw
     - numpy
-    # OpenCL ICD
+test:
+  requires:
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
-
-test:
-  requires:
     - pocl  # [unix]
   imports:
     - simtk

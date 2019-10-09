@@ -32,10 +32,6 @@ CMAKE_FLAGS+=" -DFFTW_INCLUDES=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DFFTW_LIBRARY=${PREFIX}/lib/libfftw3f${SHLIB_EXT}"
 CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT}"
 
-# OpenCL ICD
-CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
-CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
-
 # Build in subdirectory and install.
 mkdir build
 cd build
