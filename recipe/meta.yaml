@@ -12,7 +12,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: True  # [py2k or win]
+  skip: True  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
   - "*/libcuda.*"  # [linux]
 
