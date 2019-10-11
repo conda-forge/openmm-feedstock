@@ -47,6 +47,7 @@ requirements:
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
+    - ocl-icd-system  # [linux]
 
 test:
   requires:
