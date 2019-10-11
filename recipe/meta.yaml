@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.4.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 package:
   name: {{ name }}
@@ -47,6 +47,7 @@ requirements:
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
+    - ocl-icd-system  # [linux]
 
 test:
   requires:
