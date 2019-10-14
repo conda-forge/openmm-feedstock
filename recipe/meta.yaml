@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.4.0" %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 package:
   name: {{ name }}
@@ -12,7 +12,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: True  # [py2k or win]
+  skip: True  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
   - "*/libcuda.*"  # [linux]
 
