@@ -5,7 +5,7 @@ CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TY
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
     # JRG: Had to add -ldl to prevent linking errors (dlopen, etc)
-    MINIMAL_CFLAGS+=" -g -O3 -ldl"
+    MINIMAL_CFLAGS+=" -O3 -ldl"
     CFLAGS+=" $MINIMAL_CFLAGS"
     CXXFLAGS+=" $MINIMAL_CFLAGS"
     LDFLAGS+=" $LDPATHFLAGS"
