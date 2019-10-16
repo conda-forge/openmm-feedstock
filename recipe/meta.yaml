@@ -38,7 +38,7 @@ requirements:
     - doxygen 1.8.14
     # OpenCL ICD
     - ocl-icd  # [linux]
-    - ocl-icd-system # [linux]
+    - ocl-icd-system  # [linux]
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
 
