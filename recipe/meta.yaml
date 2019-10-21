@@ -77,7 +77,11 @@ about:
   home: http://openmm.org
   license: MIT
   license_family: MIT
-  license_file: docs-source/licenses/Licenses.txt
+  license_file:
+    - docs-source/licenses/Licenses.txt
+    - docs-source/licenses/LGPL.txt
+    - docs-source/licenses/GPL.txt
+
   summary: 'A high performance toolkit for molecular simulation.'
 
   description: |
