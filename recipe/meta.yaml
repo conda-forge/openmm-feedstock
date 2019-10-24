@@ -75,8 +75,8 @@ test:
 
 about:
   home: http://openmm.org
-  license: MIT
-  license_family: MIT
+  license: LGPL-3.0-or-later
+  license_family: LGPL
   license_file:
     - docs-source/licenses/Licenses.txt
     - docs-source/licenses/LGPL.txt
@@ -89,7 +89,8 @@ about:
     from your own code. It provides a combination of extreme flexibility
     (through custom forces and integrators), openness, and high performance
     (especially on recent GPUs) that make it truly unique among simulation
-    codes.
+    codes. OpenMM is MIT licensed with some LGPL portions (CUDA and OpenCL
+    platforms).
   doc_url: http://docs.openmm.org
   dev_url: https://github.com/openmm/openmm
 
