@@ -1,14 +1,15 @@
 {% set name = "openmm" %}
 {% set version = "7.4.0" %}
-{% set build = 5 %}
+{% set commit = "7a02c59b7f94c26c7996c2a0c4ef98d5fa4af7cd" %}
+{% set build = 7 %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: cb7ddd923d6f402cf2723b3c14509915abad328505e8ce401ac3131706dabeff
+  url: https://github.com/openmm/{{ name }}/archive/{{ commit }}.tar.gz
+  sha256: e2a2cf821a271c0107b3c813aec27700b1caf9f796c17eb41450c07f378de30e
 
 build:
   number: {{ build }}
