@@ -16,7 +16,7 @@ build:
   skip: True  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
   - "*/libcuda.*"  # [linux]
-  - "*/libOpenCL.*"  # [linux]
+  - "*/libOpenCL.*"  # [unix]
 
 requirements:
   build:
@@ -37,11 +37,6 @@ requirements:
     - cython
     # needed for Python wrappers
     - doxygen 1.8.14
-    # OpenCL ICD
-    - ocl-icd  # [linux]
-    - ocl-icd-system  # [linux]
-    - khronos-opencl-icd-loader  # [osx or win]
-    - ocl_icd_wrapper_apple  # [osx]
 
   run:
     - python
