@@ -69,14 +69,20 @@ test:
     #   Without installing pocl, we will see Reference and CPU -> two platforms
     #   Installing ocl-icd should have no effect
     #   Only after installing pocl we will see the OpenCL platform
-    # MacOS:
-    #   The system OpenCL installation should be visible without installing anything else, but it won't
-    #   run a simulation because OpenMM does not support it.
     - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'Num platforms ({n}) != 2'"  # [linux]
-    - conda install -y ocl-icd && python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'Num platforms ({n}) != 2'"  # [linux]
+    - conda install -y ocl-icd  # [linux]
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'Num platforms ({n}) != 2'"  # [linux]
     - conda install -y pocl  # [linux]
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Num platforms ({n}) != 3'"
-    - cd ${CONDA_PREFIX}/share/openmm/examples && python benchmark.py --test=rf --seconds=10 --platform=OpenCL  # [linux]
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Num platforms ({n}) != 3'"  # [linux]
+    # MacOS:
+    #   System OpenCL will be visible but OpenMM does not support it. Without khronos-opencl-icd-loader, we will see three platforms.
+    #   Installing khronos-opencl-icd-loader + pocl should not cause problems.
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Num platforms ({n}) != 3'"  # [osx]
+    - conda install -y khronos-opencl-icd-loader pocl  # [osx]
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Num platforms ({n}) != 3'"  # [osx]
+    # Both should be able to run this now:
+    - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())" # [unix]
+    - cd ${CONDA_PREFIX}/share/openmm/examples && python benchmark.py --test=rf --seconds=10 --platform=OpenCL  # [unix]
 
 about:
   home: http://openmm.org
