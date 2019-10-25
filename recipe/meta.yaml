@@ -75,7 +75,7 @@ test:
     - conda install -y ocl-icd && python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'# platforms ({n}) != 2'"  # [linux]
     - conda install -y pocl  # [linux]
     - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"
-    - cd ${CONDA_PREFIX}/share/examples/openmm && python benchmark.py --test=rf --seconds=10 --platform=OpenCL; cd -
+    - cd ${CONDA_PREFIX}/share/openmm/examples && python benchmark.py --test=rf --seconds=10 --platform=OpenCL
 
 about:
   home: http://openmm.org
