@@ -81,7 +81,7 @@ test:
     - conda install -y khronos-opencl-icd-loader pocl  # [osx]
     - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Num platforms ({n}) != 3'"  # [osx]
     # Both should be able to run this now:
-    - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())" # [unix]
+    - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"  # [unix]
     - cd ${CONDA_PREFIX}/share/openmm/examples && python benchmark.py --test=rf --seconds=10 --platform=OpenCL  # [unix]
 
 about:
