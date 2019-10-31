@@ -3,7 +3,7 @@ About openmm
 
 Home: http://openmm.org
 
-Package license: MIT
+Package license: LGPL-3.0-or-later
 
 Feedstock license: BSD 3-Clause
 
@@ -14,7 +14,8 @@ stand-alone application for running simulations, or as a library you call
 from your own code. It provides a combination of extreme flexibility
 (through custom forces and integrators), openness, and high performance
 (especially on recent GPUs) that make it truly unique among simulation
-codes.
+codes. OpenMM is MIT licensed with some LGPL portions (CUDA and OpenCL
+platforms).
 
 
 Current build status
