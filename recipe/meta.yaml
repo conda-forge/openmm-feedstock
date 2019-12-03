@@ -47,12 +47,12 @@ requirements:
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
-    # TODO: Require ocl-icd-system once it's available for ppc64le
+    # TODO: Change linux64 to linux ocl-icd-system once it's available for ppc64le/aarch64
     - ocl-icd-system  # [linux64]
 
 test:
   requires:
-    - pocl  # [unix]
+    - pocl  # [linux64 or osx]
   imports:
     - simtk
     - simtk.openmm
@@ -68,7 +68,7 @@ test:
     - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
     # We should see all four platforms in Linux, but CUDA is not recognized without a GPU
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"  # [linux64 or osx]
     # Debug silent errors in plugin loading
     - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"
     # Debug hardcoded library path
