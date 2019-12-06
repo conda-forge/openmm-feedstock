@@ -22,6 +22,9 @@ if [[ "$target_platform" == linux* ]]; then
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
     fi
+    if [[ "$target_platform" == linux-ppc64le ]]; then
+        CMAKE_FLAGS+=" -DNO_WARN_X86_INTRINSICS"
+    fi
 
 elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
