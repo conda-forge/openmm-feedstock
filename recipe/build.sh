@@ -27,7 +27,8 @@ if [[ "$target_platform" == linux* ]]; then
         CXXFLAGS+=" -DNO_WARN_X86_INTRINSICS"
     fi
     if [[ "$target_platform" == linux-aarch64le ]]; then
-        CXXFLAGS+=" -mfpu=neon"
+        CFLAGS+=" -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2"
+        CXXFLAGS+=" -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2"
     fi
 
 
