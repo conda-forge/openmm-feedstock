@@ -23,7 +23,8 @@ if [[ "$target_platform" == linux* ]]; then
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
     fi
     if [[ "$target_platform" == linux-ppc64le ]]; then
-        CMAKE_FLAGS+=" -DNO_WARN_X86_INTRINSICS=1"
+        CFLAGS+=" -DNO_WARN_X86_INTRINSICS"
+        CXXFLAGS+=" -DNO_WARN_X86_INTRINSICS"
     fi
     if [[ "$target_platform" == linux-aarch64le ]]; then
         CXXFLAGS+=" -mfpu=neon"
