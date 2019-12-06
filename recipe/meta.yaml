@@ -47,12 +47,11 @@ requirements:
     - khronos-opencl-icd-loader  # [osx or win]
     - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
-    # TODO: Change linux64 to linux ocl-icd-system once it's available for ppc64le/aarch64
-    - ocl-icd-system  # [linux64]
+    - ocl-icd-system  # [linux]
 
 test:
   requires:
-    - pocl  # [linux64 or osx]
+    - pocl  # [unix]
   imports:
     - simtk
     - simtk.openmm
