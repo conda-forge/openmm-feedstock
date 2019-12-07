@@ -22,13 +22,14 @@ if [[ "$target_platform" == linux* ]]; then
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
     fi
+    # Arch detection does not work on CI for some reason; force it.
     if [[ "$target_platform" == linux-ppc64le ]]; then
-        CFLAGS+=" -DNO_WARN_X86_INTRINSICS"
-        CXXFLAGS+=" -DNO_WARN_X86_INTRINSICS"
+        CFLAGS+=" -D__ppc__ -D__ppc64__"
+        CXXFLAGS+=" -D__ppc__ -D__ppc64__"
     fi
-    if [[ "$target_platform" == linux-aarch64le ]]; then
-        CFLAGS+=" -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2"
-        CXXFLAGS+=" -mno-mmx -mno-sse -mno-sse2 -mno-sse3 -mno-ssse3 -mno-sse4.1 -mno-sse4.2"
+    if [[ "$target_platform" == linux-aarch64 ]]; then
+        CFLAGS+=" -D__TARGET_ARCH_ARM=7"
+        CXXFLAGS+=" -D__TARGET_ARCH_ARM=7"
     fi
 
 
