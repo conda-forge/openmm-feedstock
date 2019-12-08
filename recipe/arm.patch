@@ -1,0 +1,10 @@
+diff --git a/libraries/vecmath/src/vecmath.cpp b/libraries/vecmath/src/vecmath.cpp
+index cfb725e9..f15d3d6a 100644
+--- a/libraries/vecmath/src/vecmath.cpp
++++ b/libraries/vecmath/src/vecmath.cpp
+@@ -1,4 +1,4 @@
+-#if defined(__ANDROID__)
++#if defined(__ARM__)
+     #include "neon_mathfun.h"
+ #else
+     #if !defined(__PNACL__)
