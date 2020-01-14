@@ -1,0 +1,32 @@
+From 33c6131e24bdf3e8538ec80772324995f7c0a498 Mon Sep 17 00:00:00 2001
+From: Jaime RGP <jaime.rogue@gmail.com>
+Date: Tue, 14 Jan 2020 12:41:59 +0100
+Subject: [PATCH] Raise exception if large differences are observed so
+ simtk.testInstallation can be used in CI testing reliably
+
+---
+ wrappers/python/simtk/testInstallation.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/wrappers/python/simtk/testInstallation.py b/wrappers/python/simtk/testInstallation.py
+index fec98e1a2..193095b31 100644
+--- a/wrappers/python/simtk/testInstallation.py
++++ b/wrappers/python/simtk/testInstallation.py
+@@ -91,6 +91,8 @@ def run_tests():
+     if errorsOk:
+         print()
+         print('All differences are within tolerance.')
++    else:
++        raise Exception("Large differences observed. See messages above.")
+ 
+ 
+ def main():
+@@ -105,7 +107,7 @@ def main():
+         run_tests()
+     except Exception as err:
+         print('Problem with OpenMM installation '
+-              'encountered. OpenMM will not work until the problem '
++              'encountered. OpenMM will not work correctly until the problem '
+               'has been fixed.\n\n',
+               file=sys.stderr)
+         print('Error message: %s' % str(err), file=sys.stderr)

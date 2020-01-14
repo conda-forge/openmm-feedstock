@@ -10,7 +10,8 @@ source:
   url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
   sha256: e8102b68133e6dcf7fcf29bc76a11ea54f30af71d8a7705aec0aee957ebe3a6d
   patches:
-    - arm.patch
+    - arm.patch  # [aarch64]
+    - testInstallation.patch
 
 build:
   number: {{ build }}
