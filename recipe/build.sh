@@ -29,8 +29,8 @@ if [[ "$target_platform" == linux* ]]; then
     fi
     # Arch detection does not work on CI for some reason; force it.
     if [[ "$target_platform" == linux-ppc64le ]]; then
-        CFLAGS+=" -D__ppc__ -D__ppc64__ -DNO_WARN_X86_INTRINSICS"
-        CXXFLAGS+=" -D__ppc__ -D__ppc64__ -DNO_WARN_X86_INTRINSICS"
+        CFLAGS+=" -D__ppc__ -D__ppc64__"
+        CXXFLAGS+=" -D__ppc__ -D__ppc64__"
     fi
     if [[ "$target_platform" == linux-aarch64 ]]; then
         CFLAGS+=" -D__TARGET_ARCH_ARM=7"
