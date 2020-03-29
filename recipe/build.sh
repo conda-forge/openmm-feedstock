@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Patch platforms/opencl/src/cl.hpp with newer version
-cp platforms/opencl/src/cl.hpp platforms/opencl/src/cl.hpp.bak
-curl -sLo platforms/opencl/src/cl.hpp "https://raw.githubusercontent.com/KhronosGroup/OpenCL-CLHPP/master/include/CL/cl.hpp"
-# /patch
+# # Patch platforms/opencl/src/cl.hpp with newer version
+# cp platforms/opencl/src/cl.hpp platforms/opencl/src/cl.hpp.bak
+# curl -sLo platforms/opencl/src/cl.hpp "https://raw.githubusercontent.com/KhronosGroup/OpenCL-CLHPP/master/include/CL/cl.hpp"
+# # /patch
 
 CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 

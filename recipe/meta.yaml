@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: e8102b68133e6dcf7fcf29bc76a11ea54f30af71d8a7705aec0aee957ebe3a6d
-  patches:
-    - arm.patch  # [aarch64]
-    - testInstallation.patch
+  url: https://github.com/openmm/{{ name }}/archive/2e79e5cb5359e4169ec1473bd34e792803cf66e5.tar.gz
+  sha256: 43ebbc291539a0b2b3678ad3591b2f5ddc82568661ff98b7333da1b89e1479f0
+  # patches:
+  #   - arm.patch  # [aarch64]
+  #   - testInstallation.patch
 
 build:
   number: {{ build }}
