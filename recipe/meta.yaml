@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "7.4.1" %}
+{% set version = "7.4.2" %}
 {% set build = 0 %}
 
 package:
@@ -8,13 +8,13 @@ package:
 
 source:
   url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: e8102b68133e6dcf7fcf29bc76a11ea54f30af71d8a7705aec0aee957ebe3a6d
+  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
 
 build:
   number: {{ build }}
-  skip: True  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
+  skip: true  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
-  - "*/libcuda.*"  # [linux]
+    - '*/libcuda.*'  # [linux]
 
 requirements:
   build:
@@ -66,8 +66,10 @@ test:
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
-    # We should see all four platforms in Linux, but CUDA is not recognized without a GPU
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"
+    # Linux sees all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux]
+    # MacOS only sees 3 because CUDA is not available there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx]
     # Debug silent errors in plugin loading
     - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"
     # Debug hardcoded library path
@@ -81,7 +83,7 @@ about:
     - docs-source/licenses/Licenses.txt
     - docs-source/licenses/LGPL.txt
     - docs-source/licenses/GPL.txt
-  summary: 'A high performance toolkit for molecular simulation.'
+  summary: A high performance toolkit for molecular simulation.
 
   description: |
     OpenMM is a toolkit for molecular simulation. It can be used either as a
