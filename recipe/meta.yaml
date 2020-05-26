@@ -14,7 +14,7 @@ build:
   number: {{ build }}
   skip: true  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
-    - '*/libcuda.*' # [linux]
+    - '*/libcuda.*'  # [linux]
 
 requirements:
   build:
@@ -66,8 +66,10 @@ test:
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
-    # We should see all four platforms in Linux, but CUDA is not recognized without a GPU
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"
+    # Linux sees all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'# platforms ({n}) != 4'"  # [linux]
+    # MacOS only sees 3 because CUDA is not available there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'# platforms ({n}) != 3'"  # [osx]
     # Debug silent errors in plugin loading
     - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"
     # Debug hardcoded library path
