@@ -52,7 +52,8 @@ requirements:
 
 test:
   requires:
-    - pocl  # [linux64 or osx]
+    # Simulate an OpenCL platform although this is not officially supported
+    - pocl
   imports:
     - simtk
     - simtk.openmm
@@ -61,16 +62,16 @@ test:
     # Existence tests Unix
     - test -f $PREFIX/lib/libOpenMM$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [linux64 or ppc64le or osx]
+    - test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux64]
     # Existence tests Windows
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
-    # Linux sees all 4 platforms, but CUDA is not usable because there's no GPU there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux]
-    # MacOS only sees 3 because CUDA is not available there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx]
+    # Linux64 sees all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64]
+    # MacOS / ARM / PPC only see 3 because CUDA is not available there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx or aarch64 or ppc64le]
     # Debug silent errors in plugin loading
     - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"
     # Debug hardcoded library path
