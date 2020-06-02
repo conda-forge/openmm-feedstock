@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "7.4.2" %}
+{% set version = "7.5.0" %}
 {% set build = 0 %}
 
 package:
@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
+  url: https://github.com/openmm/{{ name }}/archive/945067fe1bfdb45e832575fd24a6aa5a9b77dce3.tar.gz
+  sha256: 357fdd6bed077d27a05aa8d9a8e7bf4bdbc57bf73a3e11bbea6eb9c0e8766307
 
 build:
   number: {{ build }}
