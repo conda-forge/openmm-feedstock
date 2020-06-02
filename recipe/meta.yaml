@@ -1,23 +1,20 @@
 {% set name = "openmm" %}
-{% set version = "7.4.1" %}
-{% set build = 1 %}
+{% set version = "7.4.2" %}
+{% set build = 0 %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/2e79e5cb5359e4169ec1473bd34e792803cf66e5.tar.gz
-  sha256: 43ebbc291539a0b2b3678ad3591b2f5ddc82568661ff98b7333da1b89e1479f0
-  # patches:
-  #   - arm.patch  # [aarch64]
-  #   - testInstallation.patch
+  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
 
 build:
   number: {{ build }}
-  skip: True  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
+  skip: true  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
-  - "*/libcuda.*"  # [linux64]
+    - '*/libcuda.*'  # [linux]
 
 requirements:
   build:
@@ -70,8 +67,10 @@ test:
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
-    # We should see all four platforms in Linux, but CUDA is not recognized without a GPU
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'Number of platforms ({n}) != 3'"  # [linux64 or osx]
+    # Linux sees all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux]
+    # MacOS only sees 3 because CUDA is not available there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx]
     # Debug silent errors in plugin loading
     - python -c "import simtk.openmm as mm; print(mm.Platform.getPluginLoadFailures())"
     # Debug hardcoded library path
@@ -85,7 +84,7 @@ about:
     - docs-source/licenses/Licenses.txt
     - docs-source/licenses/LGPL.txt
     - docs-source/licenses/GPL.txt
-  summary: 'A high performance toolkit for molecular simulation.'
+  summary: A high performance toolkit for molecular simulation.
 
   description: |
     OpenMM is a toolkit for molecular simulation. It can be used either as a
