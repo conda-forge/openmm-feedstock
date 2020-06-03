@@ -1,22 +1,16 @@
 #!/bin/bash
 
-# # Patch platforms/opencl/src/cl.hpp with newer version
-# cp platforms/opencl/src/cl.hpp platforms/opencl/src/cl.hpp.bak
-# curl -sLo platforms/opencl/src/cl.hpp "https://raw.githubusercontent.com/KhronosGroup/OpenCL-CLHPP/master/include/CL/cl.hpp"
-# # /patch
+set -euxo pipefail
 
-CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
 
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
     # JRG: Had to add -ldl to prevent linking errors (dlopen, etc)
-    MINIMAL_CFLAGS+=" -O3 -ldl"
+    MINIMAL_CFLAGS="-O3 -ldl"
     CFLAGS+=" $MINIMAL_CFLAGS"
     CXXFLAGS+=" $MINIMAL_CFLAGS"
-    LDFLAGS+=" $LDPATHFLAGS"
-
-    # Use GCC
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
 
     if [[ "$target_platform" == linux-64 ]]; then
         # CUDA_HOME is defined by nvcc metapackage
@@ -26,21 +20,19 @@ if [[ "$target_platform" == linux* ]]; then
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
-    fi
     # Arch detection does not work on CI for some reason; force it.
-    if [[ "$target_platform" == linux-ppc64le ]]; then
+    elif [[ "$target_platform" == linux-ppc64le ]]; then
         CFLAGS+=" -D__ppc__ -D__ppc64__"
         CXXFLAGS+=" -D__ppc__ -D__ppc64__"
-    fi
-    if [[ "$target_platform" == linux-aarch64 ]]; then
+        # clang-10 does not support power8-fusion opts in c++?
+        CXXFLAGS=${CXXFLAGS//-mpower8-fusion}
+    elif [[ "$target_platform" == linux-aarch64 ]]; then
         CFLAGS+=" -D__TARGET_ARCH_ARM=7"
         CXXFLAGS+=" -D__TARGET_ARCH_ARM=7"
     fi
 
-
 elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
 fi
 
@@ -54,15 +46,15 @@ CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
 
 # Build in subdirectory and install.
-mkdir build
+mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
 # Put examples into an appropriate subdirectory.
-mkdir $PREFIX/share/openmm/
-mv $PREFIX/examples $PREFIX/share/openmm/
+mkdir ${PREFIX}/share/openmm/
+mv ${PREFIX}/examples ${PREFIX}/share/openmm/
 
 # Fix some overlinking warnings/errors
 for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
