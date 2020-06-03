@@ -16,7 +16,7 @@ if [[ "$target_platform" == linux* ]]; then
     LDFLAGS+=" $LDPATHFLAGS"
 
     # Use GCC
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
+    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
 
     if [[ "$target_platform" == linux-64 ]]; then
         # CUDA_HOME is defined by nvcc metapackage
