@@ -7,6 +7,12 @@
 
 CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
+
+if [[ "$target_platform" == linux-ppc64le ]]; then
+    export CC=clang
+    export CXX=clang++
+fi
+
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
     # JRG: Had to add -ldl to prevent linking errors (dlopen, etc)
