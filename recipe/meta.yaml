@@ -21,6 +21,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64]
+    - clangxx  # [linux]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [not win]
