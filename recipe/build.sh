@@ -11,6 +11,8 @@ CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TY
 if [[ "$target_platform" == linux-ppc64le ]]; then
     export CC=clang
     export CXX=clang++
+    export CFLAGS="$(echo $CFLAGS | sed s/-mpower8-fusion -mpower8-vector//g)"
+    export CXXFLAGS="$(echo $CXXFLAGS | sed s/-mpower8-fusion -mpower8-vector//g)"
 fi
 
 if [[ "$target_platform" == linux* ]]; then
