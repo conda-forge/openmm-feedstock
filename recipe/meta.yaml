@@ -12,9 +12,12 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [py2k or win or (linux64 and cuda_compiler_version == "None")]
+  string: py{{ PY_VER.replace(".", "") }}h{{ PKG_HASH }}_{{ opencl_impl }}_{{ build }}
+  skip: true  # [win or cuda_compiler_version != '10.2' or (not py37)]
   missing_dso_whitelist:
     - '*/libcuda.*'  # [linux]
+  script_env:
+    - opencl_impl
 
 requirements:
   build:
@@ -35,23 +38,23 @@ requirements:
     - cython
     # needed for Python wrappers
     - doxygen 1.8.14
-    # OpenCL ICD
-    - ocl-icd  # [linux]
-    - khronos-opencl-icd-loader  # [osx or win]
+    # OpenCL ICD loader
+    - ocl-icd  # [linux and (opencl_impl == "icdloader")]
+    - khronos-opencl-icd-loader  # [(osx or win) and (opencl_impl == "icdloader")]
 
   run:
     - python
     - fftw
     - numpy
-    # OpenCL ICD
-    - khronos-opencl-icd-loader  # [osx or win]
-    - ocl_icd_wrapper_apple  # [osx]
-    - ocl-icd  # [linux]
-    - ocl-icd-system  # [linux]
+    # OpenCL ICD loader
+    - khronos-opencl-icd-loader  # [(osx or win) and (opencl_impl == "icdloader")]
+    - ocl_icd_wrapper_apple  # [(osx) and (opencl_impl == "icdloader")]
+    - ocl-icd  # [(linux) and (opencl_impl == "icdloader")]
+    - ocl-icd-system  # [(linux) and (opencl_impl == "icdloader")]
 
 test:
   requires:
-    - pocl  # [unix]
+    - pocl  # [unix and (opencl_impl == "icdloader")]
   imports:
     - simtk
     - simtk.openmm

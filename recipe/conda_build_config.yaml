@@ -1,2 +1,6 @@
-channel_targets:
-- conda-forge testing
+opencl_impl:
+  - icdloader
+  - icdsystem
+# cuda_impl:
+#   - cudatoolkit
+#   - systemcuda
