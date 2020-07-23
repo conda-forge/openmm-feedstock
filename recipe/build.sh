@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euxo pipefail
+
 # # Patch platforms/opencl/src/cl.hpp with newer version
 # cp platforms/opencl/src/cl.hpp platforms/opencl/src/cl.hpp.bak
 # curl -sLo platforms/opencl/src/cl.hpp "https://raw.githubusercontent.com/KhronosGroup/OpenCL-CLHPP/master/include/CL/cl.hpp"
@@ -7,21 +9,12 @@
 
 CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
-
-if [[ "$target_platform" == linux-ppc64le ]]; then
-    export CC=clang
-    export CXX=clang++
-    export CFLAGS="$(echo $CFLAGS | sed s/-mpower8-fusion -mpower8-vector//g)"
-    export CXXFLAGS="$(echo $CXXFLAGS | sed s/-mpower8-fusion -mpower8-vector//g)"
-fi
-
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
     # JRG: Had to add -ldl to prevent linking errors (dlopen, etc)
     MINIMAL_CFLAGS+=" -O3 -ldl"
     CFLAGS+=" $MINIMAL_CFLAGS"
     CXXFLAGS+=" $MINIMAL_CFLAGS"
-    LDFLAGS+=" $LDPATHFLAGS"
 
     # Use GCC
     CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
@@ -34,13 +27,11 @@ if [[ "$target_platform" == linux* ]]; then
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
-    fi
     # Arch detection does not work on CI for some reason; force it.
-    if [[ "$target_platform" == linux-ppc64le ]]; then
+    elif [[ "$target_platform" == linux-ppc64le ]]; then
         CFLAGS+=" -D__ppc__ -D__ppc64__"
         CXXFLAGS+=" -D__ppc__ -D__ppc64__"
-    fi
-    if [[ "$target_platform" == linux-aarch64 ]]; then
+    elif [[ "$target_platform" == linux-aarch64 ]]; then
         CFLAGS+=" -D__TARGET_ARCH_ARM=7"
         CXXFLAGS+=" -D__TARGET_ARCH_ARM=7"
     fi
@@ -62,7 +53,7 @@ CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
 
 # Build in subdirectory and install.
-mkdir build
+mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT

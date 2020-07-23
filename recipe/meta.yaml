@@ -7,8 +7,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/945067fe1bfdb45e832575fd24a6aa5a9b77dce3.tar.gz
-  sha256: 357fdd6bed077d27a05aa8d9a8e7bf4bdbc57bf73a3e11bbea6eb9c0e8766307
+  url: https://github.com/openmm/{{ name }}/archive/015bef316dc9403c24236ef1b5e054b0ede6d921.tar.gz
+  sha256: 3aeffb8dbcc7e67a7b3698505458bde5c925e890a4ce668b30e084e2cd196230
 
 build:
   number: {{ build }}
@@ -21,7 +21,6 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64]
-    - clangxx  # [linux]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [not win]
