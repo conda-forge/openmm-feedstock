@@ -7,8 +7,10 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
+  # temporary patch for py39
+  url: https://github.com/peastman/openmm/archive/py39.tar.gz
+  # url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
+  # sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
 
 build:
   number: {{ build }}
