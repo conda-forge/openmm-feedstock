@@ -7,10 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  # temporary patch for py39
-  url: https://github.com/peastman/openmm/archive/py39.tar.gz
-  # url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  # sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
+  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
+  # Remove when OpenMM 7.5 is released; this only fixes a building error on Py39
+  patches:
+  - py39-xml.patch
 
 build:
   number: {{ build }}
