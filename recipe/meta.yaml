@@ -40,21 +40,20 @@ requirements:
     - doxygen 1.8.14
     # OpenCL ICD
     - ocl-icd  # [linux]
-    - khronos-opencl-icd-loader  # [osx or win]
+    - khronos-opencl-icd-loader  # [win]
 
   run:
     - python
     - fftw
     - numpy
     # OpenCL ICD
-    - khronos-opencl-icd-loader  # [osx or win]
-    - ocl_icd_wrapper_apple  # [osx]
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
+    - khronos-opencl-icd-loader  # [win]
 
 test:
   requires:
-    - pocl  # [unix]
+    - pocl  # [linux]
   imports:
     - simtk
     - simtk.openmm
