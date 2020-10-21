@@ -21,10 +21,18 @@ if [[ "$target_platform" == linux* ]]; then
     # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
     CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
 
+    # OpenCL ICD
+    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
+    CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
+
 elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
     CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
+    # # OpenCL, here just for completeness -- CMake should find it automatically
+    # OPENCL_HOME="/System/Library/Frameworks/OpenCL.framework/OpenCL"
+    # CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
+    # CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
 fi
 
 # Set location for FFTW3 on both linux and mac
@@ -32,12 +40,8 @@ CMAKE_FLAGS+=" -DFFTW_INCLUDES=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DFFTW_LIBRARY=${PREFIX}/lib/libfftw3f${SHLIB_EXT}"
 CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT}"
 
-# OpenCL ICD
-CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
-CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
-
 # Build in subdirectory and install.
-mkdir build
+mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT
