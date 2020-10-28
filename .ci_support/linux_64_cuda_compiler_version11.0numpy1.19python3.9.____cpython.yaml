@@ -5,7 +5,7 @@ c_compiler_version:
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge/label/test,conda-forge,defaults
+- conda-forge,defaults
 channel_targets:
 - conda-forge testing
 cuda_compiler:
