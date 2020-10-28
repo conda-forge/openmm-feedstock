@@ -8,6 +8,8 @@ channel_sources:
 - conda-forge/label/test,conda-forge,defaults
 channel_targets:
 - conda-forge testing
+cuda_compiler:
+- nvcc
 cuda_compiler_version:
 - '10.2'
 cxx_compiler:
