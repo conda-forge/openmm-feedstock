@@ -1,17 +1,15 @@
 {% set name = "openmm" %}
-{% set version = "7.4.2" %}
-{% set build = 4 %}
+{% set version = "7.5.0" %}
+{% set build = 0 %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
-  # Remove when OpenMM 7.5 is released; this only fixes a building error on Py39
-  patches:
-  - py39-xml.patch
+  # pre-rc
+  url: https://github.com/openmm/{{ name }}/archive/2c36e9b34d046f09be4887ff60e7fdac02cf3cdb.tar.gz
+  sha256: 193a501d10ca713443e44e0d8972c5d3f30ee0ed116d59679d1cbdabd6b96b28
 
 build:
   number: {{ build }}
