@@ -13,16 +13,16 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(linux64 and cuda_compiler_version == "None")]
+  skip: true  # [(cuda_compiler_version == "None") and (ppc64le or linux64)]
   missing_dso_whitelist:
-    - '*/libcuda.*'  # [linux]
+    - '*/libcuda.*'  # [linux64 and ppc64le]
     - "*/libOpenCL.*"  # [unix]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux]
+    - {{ compiler('cuda') }}  # [linux64 and ppc64le]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -64,8 +64,8 @@ test:
     - test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMPME$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux]
-    - test -f $PREFIX/lib/plugins/libOpenMMCudaCompiler$SHLIB_EXT  # [linux]
+    - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux64 or ppc64le]
+    - test -f $PREFIX/lib/plugins/libOpenMMCudaCompiler$SHLIB_EXT  # [linux64 or ppc64le]
     # Existence tests Windows
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
@@ -83,9 +83,9 @@ test:
     # Check all platforms
     - python -m simtk.testInstallation
     # Linux/Windows see all 4 platforms, but CUDA is not usable because there's no GPU there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux or win]
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64 or ppc64le or win]
     # MacOS only sees 3 because CUDA is not available there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx]
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx or aarch64]
 
     # Run a small MD
     - cd ${CONDA_PREFIX}/share/openmm/examples  # [unix]
