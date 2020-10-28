@@ -39,7 +39,7 @@ requirements:
     - numpy
     - cython
     # needed for Python wrappers
-    - doxygen
+    - doxygen 1.8.14
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win]
