@@ -15,7 +15,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [win or (linux64 and cuda_compiler_version == "None")]
+  skip: true  # [(linux64 and cuda_compiler_version == "None")]
   missing_dso_whitelist:
     - '*/libcuda.*'  # [linux]
     - "*/libOpenCL.*"  # [unix]
