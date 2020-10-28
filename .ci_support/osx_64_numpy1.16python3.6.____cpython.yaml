@@ -5,7 +5,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 channel_sources:
-- conda-forge,defaults
+- conda-forge/label/test,conda-forge,defaults
 channel_targets:
 - conda-forge testing
 cuda_compiler_version:
