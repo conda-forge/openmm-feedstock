@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.4.2" %}
-{% set build = 3 %}
+{% set build = 4 %}
 
 package:
   name: {{ name }}
