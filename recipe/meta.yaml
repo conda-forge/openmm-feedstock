@@ -13,7 +13,7 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [(cuda_compiler_version == "None") and (ppc64le or linux64)]
+  skip: true  # [((cuda_compiler_version == "None") and (linux64 or win)) or ((cuda_compiler_version != "10.2") and (ppc64le))]
   missing_dso_whitelist:
     - '*/libcuda.*'  # [linux64 and ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -22,7 +22,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc64le]
+    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
