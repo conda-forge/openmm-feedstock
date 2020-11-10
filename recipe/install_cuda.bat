@@ -77,6 +77,9 @@ goto cuda_common
 :: The actual installation logic
 :cuda_common
 
+::We expect this CUDA_PATH
+set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
+
 echo Downloading CUDA version %CUDA_VERSION% installer from %CUDA_INSTALLER_URL%
 echo Expected MD5: %CUDA_INSTALLER_CHECKSUM%
 
@@ -134,33 +137,36 @@ if not "%CUDA_PATCH_URL%"=="" (
     del cuda_patch.exe
 )
 
-:: At this point CUDA_PATH exists, but we still need the drivers
-set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
+:: This should exist by now!
+if not exist "%CUDA_PATH%\bin\nvcc.exe" (
+    echo CUDA toolkit installation failed!
+    exit /b 1
+)
 
-:: Get drivers -- we don't want to install them, just a couple of DLLs
+:: Get drivers -- we don't want to install the full thing, just a couple of DLLs
 curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
     echo Problem downloading driver installer...
     exit /b 1
 )
 :: Extract and copy some DLLs (as per https://github.com/otabuzzman/cudacons)
-7z x cuda_drivers.exe -ocuda_drivers
+7z e .\cuda_drivers.exe Display.Driver\nvcuda64.dl_ Display.Driver\nvfatbinaryloader64.dl_
 if errorlevel 1 (
     echo Problem extracting CUDA drivers...
     exit /b 1
 )
 del cuda_drivers.exe
-copy /Y cuda_drivers\Display.Driver\nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll"
+
+move /Y nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll"
 if errorlevel 1 (
     echo Could not install nvcuda.dll
     exit /b 1
 )
-copy /Y cuda_drivers\Display.Driver\nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll"
+move /Y nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll"
 if errorlevel 1 (
     echo Could not install nvfatbinaryloader.dll
     exit /b 1
 )
-rmdir /q /s cuda_drivers
 
 
 if "%CI%" == "azure" (
