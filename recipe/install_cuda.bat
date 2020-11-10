@@ -77,18 +77,18 @@ goto cuda_common
 :: The actual installation logic
 :cuda_common
 
-echo Downloading CUDA version %CUDA_VERSION% installer from %CUDA_NETWORK_INSTALLER_URL%
-echo Expected MD5: %CUDA_NETWORK_INSTALLER_CHECKSUM%
+echo Downloading CUDA version %CUDA_VERSION% installer from %CUDA_INSTALLER_URL%
+echo Expected MD5: %CUDA_INSTALLER_CHECKSUM%
 
 :: Download installer
-curl -k -L %CUDA_NETWORK_INSTALLER_URL% --output cuda_installer.exe
+curl -k -L %CUDA_INSTALLER_URL% --output cuda_installer.exe
 if errorlevel 1 (
     echo Problem downloading installer...
     exit /b 1
 )
 
 :: Check md5
-openssl md5 cuda_installer.exe | findstr %CUDA_NETWORK_INSTALLER_CHECKSUM%
+openssl md5 cuda_installer.exe | findstr %CUDA_INSTALLER_CHECKSUM%
 if errorlevel 1 (
     echo Checksum does not match!
     exit /b 1
@@ -139,6 +139,7 @@ curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
     echo Problem downloading driver installer...
     exit /b 1
+)
 :: Extract and copy some DLLs (as per https://github.com/otabuzzman/cudacons)
 7z x cuda_drivers.exe -ocuda_drivers
 if errorlevel 1 (
