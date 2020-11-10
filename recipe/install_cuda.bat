@@ -134,6 +134,9 @@ if not "%CUDA_PATCH_URL%"=="" (
     del cuda_patch.exe
 )
 
+:: At this point CUDA_PATH exists, but we still need the drivers
+set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
+
 :: Get drivers -- we don't want to install them, just a couple of DLLs
 curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
@@ -159,8 +162,6 @@ if errorlevel 1 (
 )
 rmdir /q /s cuda_drivers
 
-:: Add to PATH
-set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
 
 if "%CI%" == "azure" (
     echo "Exporting and adding $CUDA_PATH ('%CUDA_PATH%') to $PATH"
