@@ -130,7 +130,7 @@ if not "%CUDA_PATCH_URL%"=="" (
 )
 
 :: Update drivers
-curl -k -L %CUDA_NETWORK_INSTALLER_URL% --output cuda_drivers.exe
+curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
     echo Problem downloading driver installer...
     exit /b 1
@@ -142,7 +142,7 @@ if errorlevel 1 (
 )
 del cuda_drivers.exe
 
-if not exist C:\Windows\system32\nvcuda.dll (
+if not exist C:\Windows\System32\nvcuda.dll (
     echo Can't locate nvcuda.dll!
     exit /b 1
 )
