@@ -1,12 +1,11 @@
 set "CUDA_VERSION=%1"
 
 :: Get a recent driver -- currently linked one is from 2020.09.30
-:: Update when necessary!
+:: Update when necessary, especially after new releases.
 set "CUDA_DRIVER_URL=https://us.download.nvidia.com/tesla/452.39/452.39-data-center-tesla-desktop-win10-64bit-international.exe"
 
-:: :: If a faster installation is needed, this could work:
-:: Define a default subset of components to be installed and switch to network installers
-:: Full list of components in
+:: We define a default subset of components to be installed from the network installer
+:: for faster installation times. Full list of components in
 :: https://docs.nvidia.com/cuda/archive/%CUDA_VERSION%/cuda-installation-guide-microsoft-windows/index.html
 set "CUDA_COMPONENTS=nvcc_%CUDA_VERSION%"
 
@@ -145,12 +144,12 @@ if errorlevel 1 (
     exit /b 1
 )
 del cuda_drivers.exe
-copy cuda_drivers\Display.Driver\nvcuda64.dl_ C:\Windows\system32\nvcuda.dll
+xcopy cuda_drivers\Display.Driver\nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll" /Y
 if errorlevel 1 (
     echo Could not install nvcuda.dll
     exit /b 1
 )
-copy cuda_drivers\Display.Driver\nvfatbinaryloader64.dl_ C:\Windows\system32\nvfatbinaryloader.dll
+xcopy cuda_drivers\Display.Driver\nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll" /Y
 if errorlevel 1 (
     echo Could not install nvfatbinaryloader.dll
     exit /b 1
