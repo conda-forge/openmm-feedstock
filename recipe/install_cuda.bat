@@ -129,23 +129,21 @@ if not "%CUDA_PATCH_URL%"=="" (
     del cuda_path.exe
 )
 
-:: Update drivers
+:: Get drivers -- we don't want to install them, just a couple of DLLs
 curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
     echo Problem downloading driver installer...
     exit /b 1
-)
-start /wait cuda_drivers.exe -s -noreboot
+:: Extract and copy some DLLs (as per https://github.com/otabuzzman/cudacons)
+7z x cuda_drivers.exe -ocuda_drivers
 if errorlevel 1 (
-    echo Problem installing drivers...
+    echo Problem extracting CUDA drivers...
     exit /b 1
 )
 del cuda_drivers.exe
-
-if not exist C:\Windows\System32\nvcuda.dll (
-    echo Can't locate nvcuda.dll!
-    exit /b 1
-)
+copy ocuda_drivers\nvcuda64.dl_ C:\Windows\system32\nvcuda.dll || exit /b 1
+copy ocuda_drivers\nvfatbinaryloader64.dl_ C:\Windows\system32\nvfatbinaryloader.dll || exit /b 1
+rmdir /q /s ocuda_drivers
 
 :: Add to PATH
 set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
