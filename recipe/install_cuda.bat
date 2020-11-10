@@ -90,12 +90,23 @@ if errorlevel 1 (
 )
 
 :: Run installer
-cuda_installer.exe -s %CUDA_COMPONENTS%
+7z x cuda_installer.exe -o cuda_toolkit
 if errorlevel 1 (
-    echo Problem running installer...
+    echo Problem extracting CUDA toolkit installer...
     exit /b 1
 )
 del cuda_installer.exe
+cd cuda_toolkit
+mkdir cuda_tookit_install_logs
+cuda_installer.exe -s %CUDA_COMPONENTS% -loglevel:6 -log:"cuda_tookit_install_logs"
+if errorlevel 1 (
+    echo Problem installing CUDA toolkit...
+    mkdir "%CONDA_BLD_PATH%\logs"
+    xcopy cuda_tookit_install_logs "%CONDA_BLD_PATH%\logs" /y
+    exit /b 1
+)
+cd ..
+rmdir /q /s cuda_toolkit
 
 :: If patches are needed, download and apply
 if not "%CUDA_PATCH_URL%"=="" (
@@ -119,12 +130,22 @@ if not "%CUDA_PATCH_URL%"=="" (
 )
 
 :: Update drivers
-curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
+curl -k -L %CUDA_NETWORK_INSTALLER_URL% --output cuda_drivers.exe
 if errorlevel 1 (
     echo Problem downloading driver installer...
     exit /b 1
 )
-cuda_drivers.exe -s
+start /wait cuda_drivers.exe -s -noreboot
+if errorlevel 1 (
+    echo Problem installing drivers...
+    exit /b 1
+)
+del cuda_drivers.exe
+
+if not exist C:\Windows\system32\nvcuda.dll (
+    echo Can't locate nvcuda.dll!
+    exit /b 1
+)
 
 :: Add to PATH
 set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
