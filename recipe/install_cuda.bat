@@ -90,7 +90,7 @@ if errorlevel 1 (
 )
 
 :: Run installer
-7z x cuda_installer.exe -o cuda_toolkit
+7z x cuda_installer.exe -ocuda_toolkit
 if errorlevel 1 (
     echo Problem extracting CUDA toolkit installer...
     exit /b 1
