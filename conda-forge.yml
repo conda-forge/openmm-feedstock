@@ -2,3 +2,5 @@ conda_forge_output_validation: true
 provider:
   linux_ppc64le: default
   linux_aarch64: default
+azure:
+  store_build_artifacts: true
