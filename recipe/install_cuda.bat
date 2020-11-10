@@ -147,12 +147,12 @@ if errorlevel 1 (
     exit /b 1
 )
 del cuda_drivers.exe
-xcopy cuda_drivers\Display.Driver\nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll" /Y
+copy /Y cuda_drivers\Display.Driver\nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll"
 if errorlevel 1 (
     echo Could not install nvcuda.dll
     exit /b 1
 )
-xcopy cuda_drivers\Display.Driver\nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll" /Y
+copy /Y cuda_drivers\Display.Driver\nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll"
 if errorlevel 1 (
     echo Could not install nvfatbinaryloader.dll
     exit /b 1
