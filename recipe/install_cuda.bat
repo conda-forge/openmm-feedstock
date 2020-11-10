@@ -96,7 +96,7 @@ if errorlevel 1 (
     exit /b 1
 )
 :: Run installer
-call cuda_installer.exe -s %CUDA_COMPONENTS%
+start /wait cuda_installer.exe -s %CUDA_COMPONENTS%
 if errorlevel 1 (
     echo Problem installing CUDA toolkit...
     exit /b 1
@@ -116,7 +116,7 @@ if not "%CUDA_PATCH_URL%"=="" (
         echo Checksum does not match!
         exit /b 1
     )
-    call cuda_patch.exe -s
+    start /wait cuda_patch.exe -s
     if errorlevel 1 (
         echo Problem running patch installer...
         exit /b 1

@@ -1,7 +1,7 @@
 mkdir build
 cd build
 
-set "CUDA_TOOLKIT_ROOT_DIR=%BUILD_PREFIX:\=/%"
+set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
 cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCMAKE_BUILD_TYPE=Release ^
