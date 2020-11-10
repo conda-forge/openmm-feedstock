@@ -98,7 +98,7 @@ if errorlevel 1 (
 del cuda_installer.exe
 cd cuda_toolkit
 mkdir cuda_tookit_install_logs
-cuda_installer.exe -s %CUDA_COMPONENTS% -loglevel:6 -log:"cuda_tookit_install_logs"
+setup.exe -s %CUDA_COMPONENTS% -loglevel:6 -log:"cuda_tookit_install_logs"
 if errorlevel 1 (
     echo Problem installing CUDA toolkit...
     mkdir "%CONDA_BLD_PATH%\logs"
