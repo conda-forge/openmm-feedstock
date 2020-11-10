@@ -83,9 +83,11 @@ test:
 
     # Check all platforms
     - python -m simtk.testInstallation
-    # Linux/Windows see all 4 platforms, but CUDA is not usable because there's no GPU there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64 or ppc64le or win]
-    # MacOS only sees 3 because CUDA is not available there
+    # Linux64 / PPC see all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64 or ppc64le]
+    # Windows will only see 2 because the driver nvcuda.dll is missing and that throws a 126 error
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'n_platforms ({n}) != 2'"  # [win]
+    # MacOS / ARM only see 3 because CUDA is not available there
     - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx or aarch64]
 
     # Run a small MD
