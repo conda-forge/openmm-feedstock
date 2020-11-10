@@ -89,32 +89,19 @@ if errorlevel 1 (
     echo Problem downloading installer...
     exit /b 1
 )
-
 :: Check md5
 openssl md5 cuda_installer.exe | findstr %CUDA_INSTALLER_CHECKSUM%
 if errorlevel 1 (
     echo Checksum does not match!
     exit /b 1
 )
-
 :: Run installer
-7z x cuda_installer.exe -ocuda_toolkit
+call cuda_installer.exe -s %CUDA_COMPONENTS%
 if errorlevel 1 (
-    echo Problem extracting CUDA toolkit installer...
+    echo Problem installing CUDA toolkit...
     exit /b 1
 )
 del cuda_installer.exe
-cd cuda_toolkit
-mkdir cuda_tookit_install_logs
-setup.exe -s %CUDA_COMPONENTS% -loglevel:6 -log:"cuda_tookit_install_logs"
-if errorlevel 1 (
-    echo Problem installing CUDA toolkit...
-    mkdir "%CONDA_BLD_PATH%\logs"
-    xcopy cuda_tookit_install_logs "%CONDA_BLD_PATH%\logs" /y
-    exit /b 1
-)
-cd ..
-rmdir /q /s cuda_toolkit
 
 :: If patches are needed, download and apply
 if not "%CUDA_PATCH_URL%"=="" (
@@ -129,7 +116,7 @@ if not "%CUDA_PATCH_URL%"=="" (
         echo Checksum does not match!
         exit /b 1
     )
-    cuda_patch.exe -s
+    call cuda_patch.exe -s
     if errorlevel 1 (
         echo Problem running patch installer...
         exit /b 1
