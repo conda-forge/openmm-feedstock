@@ -137,21 +137,15 @@ if errorlevel 1 (
     exit /b 1
 )
 :: Extract and copy some DLLs (as per https://github.com/otabuzzman/cudacons)
-7z e .\cuda_drivers.exe Display.Driver\nvcuda64.dl_ Display.Driver\nvfatbinaryloader64.dl_
+7z e .\cuda_drivers.exe Display.Driver\nvcuda64.dl_
 if errorlevel 1 (
     echo Problem extracting CUDA drivers...
     exit /b 1
 )
 del cuda_drivers.exe
-
 move /Y nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll"
 if errorlevel 1 (
     echo Could not install nvcuda.dll
-    exit /b 1
-)
-move /Y nvfatbinaryloader64.dl_ "%CUDA_PATH%\bin\nvfatbinaryloader.dll"
-if errorlevel 1 (
-    echo Could not install nvfatbinaryloader.dll
     exit /b 1
 )
 
