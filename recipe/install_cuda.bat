@@ -9,7 +9,7 @@ set "CUDA_DRIVER_URL=https://us.download.nvidia.com/tesla/452.39/452.39-data-cen
 :: We define a default subset of components to be installed from the network installer
 :: for faster installation times. Full list of components in
 :: https://docs.nvidia.com/cuda/archive/%CUDA_VERSION%/cuda-installation-guide-microsoft-windows/index.html
-set "CUDA_COMPONENTS=nvcc_%CUDA_VERSION%"
+set "CUDA_COMPONENTS=nvcc_%CUDA_VER% cuobjdump_%CUDA_VER% nvprune_%CUDA_VER% cupti_%CUDA_VER% memcheck_%CUDA_VER% nvdisasm_%CUDA_VER% nvprof_%CUDA_VER% cublas_%CUDA_VER% cublas_dev_%CUDA_VER% cudart_%CUDA_VER% cufft_%CUDA_VER% cufft_dev_%CUDA_VER% curand_%CUDA_VER% curand_dev_%CUDA_VER% cusolver_%CUDA_VER% cusolver_dev_%CUDA_VER% cusparse_%CUDA_VER% cusparse_dev_%CUDA_VER% nvgraph_%CUDA_VER% nvgraph_dev_%CUDA_VER% npp_%CUDA_VER% npp_dev_%CUDA_VER% nvrtc_%CUDA_VER% nvrtc_dev_%CUDA_VER% nvml_dev_%CUDA_VER%"
 
 if "%CUDA_VERSION%" == "9.2" goto cuda92
 if "%CUDA_VERSION%" == "10.0" goto cuda100
