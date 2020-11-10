@@ -115,7 +115,8 @@ jobs:
     - script: |
         set "CI=azure"
         call activate base
-        .\recipe\run_conda_forge_build_setup
+        :: Overriding global run_conda_forge_build_setup_win with local copy.
+        recipe\run_conda_forge_build_setup_win
       displayName: conda-forge build setup
 
 
@@ -136,6 +137,19 @@ jobs:
       env:
         PYTHONUNBUFFERED: 1
       condition: not(contains(variables['CONFIG'], 'vs2008'))
+    - script: |
+        set full_artifact_name=conda_artifacts_$(build.BuildID)_$(CONFIG)
+        set artifact_name=%full_artifact_name:~0,80%
+        echo ##vso[task.setVariable variable=ARTIFACT_NAME]%artifact_name%
+        if exist $(CONDA_BLD_PATH)\\ (
+          echo ##vso[task.setVariable variable=CONDA_BLD_DIR_EXISTS]true
+        )
+      displayName: Check for conda build artifacts
+      condition: succeededOrFailed()
+
+    - publish: $(CONDA_BLD_PATH)\\
+      artifact: $(ARTIFACT_NAME)
+      condition: eq(variables.CONDA_BLD_DIR_EXISTS, 'true')
     - script: |
         set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
         call activate base
