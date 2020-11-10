@@ -141,9 +141,9 @@ if errorlevel 1 (
     exit /b 1
 )
 del cuda_drivers.exe
-copy ocuda_drivers\nvcuda64.dl_ C:\Windows\system32\nvcuda.dll || exit /b 1
-copy ocuda_drivers\nvfatbinaryloader64.dl_ C:\Windows\system32\nvfatbinaryloader.dll || exit /b 1
-rmdir /q /s ocuda_drivers
+copy cuda_drivers\nvcuda64.dl_ C:\Windows\system32\nvcuda.dll || exit /b 1
+copy cuda_drivers\nvfatbinaryloader64.dl_ C:\Windows\system32\nvfatbinaryloader.dll || exit /b 1
+rmdir /q /s cuda_drivers
 
 :: Add to PATH
 set "CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v%CUDA_VERSION%"
