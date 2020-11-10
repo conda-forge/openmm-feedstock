@@ -15,8 +15,9 @@ build:
   number: {{ build }}
   skip: true  # [((cuda_compiler_version == "None") and (linux64 or win)) or ((cuda_compiler_version != "10.2") and (ppc64le))]
   missing_dso_whitelist:
-    - '*/libcuda.*'  # [linux64 and ppc64le]
+    - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
+    - "*/nvcuda.dll"   # [win]
 
 requirements:
   build:
