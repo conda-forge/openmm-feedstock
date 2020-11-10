@@ -1,3 +1,5 @@
+@echo ON
+
 set "CUDA_VERSION=%1"
 
 :: Get a recent driver -- currently linked one is from 2020.09.30
