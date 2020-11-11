@@ -11,51 +11,51 @@ jobs:
       win_64_cuda_compiler_version10.0numpy1.16python3.6.____cpython:
         CONFIG: win_64_cuda_compiler_version10.0numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython
-      #   UPLOAD_PACKAGES: 'True'
-      # win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython:
-      #   CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython
-      #   UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -97,7 +97,7 @@ jobs:
 
     - task: CondaEnvironment@1
       inputs:
-        packageSpecs: 'python=3.6 conda-build conda "conda-forge-ci-setup=3" pip 7zip' # Optional
+        packageSpecs: 'python=3.6 conda-build conda "conda-forge-ci-setup=3" pip' # Optional
         installOptions: "-c conda-forge"
         updateConda: true
       displayName: Install conda-build and activate environment
@@ -118,7 +118,7 @@ jobs:
         :: Overriding global run_conda_forge_build_setup_win with local copy.
         recipe\run_conda_forge_build_setup_win
       displayName: conda-forge build setup
-
+    
 
     # Special cased version setting some more things!
     - script: |

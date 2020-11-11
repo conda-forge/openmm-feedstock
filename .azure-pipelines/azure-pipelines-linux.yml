@@ -11,83 +11,83 @@ jobs:
       linux_64_cuda_compiler_version10.0numpy1.16python3.6.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.0numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.0
       linux_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.0numpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.0
       linux_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.0numpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.0
       linux_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.0
       linux_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.1numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.1
       linux_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.1numpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.1
       linux_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.1numpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.1
       linux_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.1
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.1
       linux_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.2numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.2
       linux_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.2numpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.2
       linux_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.2numpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.2
       linux_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython:
         CONFIG: linux_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:10.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:10.2
       linux_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython:
         CONFIG: linux_64_cuda_compiler_version11.0numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:11.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:11.0
       linux_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython:
         CONFIG: linux_64_cuda_compiler_version11.0numpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:11.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:11.0
       linux_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython:
         CONFIG: linux_64_cuda_compiler_version11.0numpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:11.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:11.0
       linux_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython:
         CONFIG: linux_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:11.0
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:11.0
       linux_64_cuda_compiler_version9.2numpy1.16python3.6.____cpython:
         CONFIG: linux_64_cuda_compiler_version9.2numpy1.16python3.6.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:9.2
       linux_64_cuda_compiler_version9.2numpy1.16python3.7.____cpython:
         CONFIG: linux_64_cuda_compiler_version9.2numpy1.16python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:9.2
       linux_64_cuda_compiler_version9.2numpy1.16python3.8.____cpython:
         CONFIG: linux_64_cuda_compiler_version9.2numpy1.16python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:9.2
       linux_64_cuda_compiler_version9.2numpy1.19python3.9.____cpython:
         CONFIG: linux_64_cuda_compiler_version9.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: condaforge/linux-anvil-cuda:9.2
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cuda:9.2
   timeoutInMinutes: 360
 
   steps:
