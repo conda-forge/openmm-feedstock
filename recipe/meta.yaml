@@ -1,30 +1,29 @@
 {% set name = "openmm" %}
-{% set version = "7.4.2" %}
-{% set build = 3 %}
+{% set version = "7.5.0" %}
+{% set build = 0 %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/openmm/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: 2e121ad5cfcc4840861032bb1b11d4d0aea2d3ca3c59baaed73b8b0b4fd069cc
-  # Remove when OpenMM 7.5 is released; this only fixes a building error on Py39
-  patches:
-  - py39-xml.patch
+  # pre-rc
+  url: https://github.com/openmm/{{ name }}/archive/2c36e9b34d046f09be4887ff60e7fdac02cf3cdb.tar.gz
+  sha256: 193a501d10ca713443e44e0d8972c5d3f30ee0ed116d59679d1cbdabd6b96b28
 
 build:
   number: {{ build }}
-  skip: true  # [win or (linux64 and cuda_compiler_version == "None")]
+  skip: true  # [((cuda_compiler_version == "None") and (linux64 or win)) or ((cuda_compiler_version != "10.2") and (ppc64le))]
   missing_dso_whitelist:
-    - '*/libcuda.*'  # [linux]
+    - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
+    - "*/nvcuda.dll"   # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux]
+    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -66,8 +65,8 @@ test:
     - test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMPME$SHLIB_EXT  # [unix]
     - test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux]
-    - test -f $PREFIX/lib/plugins/libOpenMMCudaCompiler$SHLIB_EXT  # [linux]
+    - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux64 or ppc64le]
+    - test -f $PREFIX/lib/plugins/libOpenMMCudaCompiler$SHLIB_EXT  # [linux64 or ppc64le]
     # Existence tests Windows
     - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
     - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
@@ -78,16 +77,18 @@ test:
 
     ## Do they work properly?
     # Debug silent errors in plugin loading
-    - python -c "import simtk.openmm as mm; print(*mm.pluginLoadedLibNames, *mm.Platform.getPluginLoadFailures(), sep='\n')"
+    - python -c "import simtk.openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
     # Check that hardcoded library path was correctly replaced by conda-build
     - python -c "import os, simtk.openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'"
 
     # Check all platforms
     - python -m simtk.testInstallation
-    # Linux/Windows see all 4 platforms, but CUDA is not usable because there's no GPU there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux or win]
-    # MacOS only sees 3 because CUDA is not available there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx]
+    # Linux64 / PPC see all 4 platforms, but CUDA is not usable because there's no GPU there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64 or ppc64le]
+    # Windows will only see 2 because the driver nvcuda.dll is missing and that throws a 126 error
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'n_platforms ({n}) != 2'"  # [win]
+    # MacOS / ARM only see 3 because CUDA is not available there
+    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx or aarch64]
 
     # Run a small MD
     - cd ${CONDA_PREFIX}/share/openmm/examples  # [unix]
