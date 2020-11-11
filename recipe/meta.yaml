@@ -77,7 +77,7 @@ test:
 
     ## Do they work properly?
     # Debug silent errors in plugin loading
-    - python -c "import simtk.openmm as mm; print(*mm.pluginLoadedLibNames, *mm.Platform.getPluginLoadFailures(), sep='\n')"
+    - python -c "import simtk.openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
     # Check that hardcoded library path was correctly replaced by conda-build
     - python -c "import os, simtk.openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'"
 
