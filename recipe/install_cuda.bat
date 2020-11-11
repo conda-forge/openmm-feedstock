@@ -1,13 +1,11 @@
-@echo ON
-
 set "CUDA_VERSION=%1"
 
 :: Get a recent driver -- currently linked one is from 2020.09.30
 :: Update when necessary, especially after new releases.
 set "CUDA_DRIVER_URL=https://us.download.nvidia.com/tesla/452.39/452.39-data-center-tesla-desktop-win10-64bit-international.exe"
 
-:: We define a default subset of components to be installed from the network installer
-:: for faster installation times. Full list of components is available at
+:: We define a default subset of components to be installed for faster installation times
+:: and reduced storage usage (CI is limited to 10GB). Full list of components is available at
 :: https://docs.nvidia.com/cuda/archive/%CUDA_VERSION%/cuda-installation-guide-microsoft-windows/index.html
 set "VAR=nvcc_%CUDA_VERSION% cuobjdump_%CUDA_VERSION% nvprune_%CUDA_VERSION% cupti_%CUDA_VERSION%"
 set "VAR=%VAR% memcheck_%CUDA_VERSION% nvdisasm_%CUDA_VERSION% nvprof_%CUDA_VERSION% cublas_%CUDA_VERSION%"
@@ -90,7 +88,7 @@ echo Downloading CUDA version %CUDA_VERSION% installer from %CUDA_INSTALLER_URL%
 echo Expected MD5: %CUDA_INSTALLER_CHECKSUM%
 
 :: Download installer
-curl -k -L %CUDA_INSTALLER_URL% --output cuda_installer.exe
+curl --retry 3 -k -L %CUDA_INSTALLER_URL% --output cuda_installer.exe
 if errorlevel 1 (
     echo Problem downloading installer...
     exit /b 1
@@ -112,7 +110,7 @@ del cuda_installer.exe
 :: If patches are needed, download and apply
 if not "%CUDA_PATCH_URL%"=="" (
     echo This version requires an additional patch
-    curl -k -L %CUDA_PATCH_URL% --output cuda_patch.exe
+    curl --retry 3 -k -L %CUDA_PATCH_URL% --output cuda_patch.exe
     if errorlevel 1 (
         echo Problem downloading patch installer...
         exit /b 1
@@ -136,25 +134,15 @@ if not exist "%CUDA_PATH%\bin\nvcc.exe" (
     exit /b 1
 )
 
-:: Get drivers -- we don't want to install the full thing, just a couple of DLLs
-curl -k -L %CUDA_DRIVER_URL% --output cuda_drivers.exe
-if errorlevel 1 (
-    echo Problem downloading driver installer...
-    exit /b 1
-)
-:: Extract and copy some DLLs (as per https://github.com/otabuzzman/cudacons)
-7z e .\cuda_drivers.exe Display.Driver\nvcuda64.dl_
-if errorlevel 1 (
-    echo Problem extracting CUDA drivers...
-    exit /b 1
-)
-del cuda_drivers.exe
-copy nvcuda64.dl_ "C:\Windows\system32\nvcuda.dll" /Y
-move /Y nvcuda64.dl_ "%CUDA_PATH%\bin\nvcuda.dll"
-if errorlevel 1 (
-    echo Could not install nvcuda.dll
-    exit /b 1
-)
+:: Notes about nvcuda.dll
+:: ----------------------
+:: We should also provide the drivers (nvcuda.dll), but the installer will not
+:: proceed without a physical Nvidia card attached (not the case in the CI).
+:: Expanding `<installer.exe>\Display.Driver\nvcuda.64.dl_` to `C:\Windows\System32`
+:: does not work anymore (.dl_ files are not PE-COFF according to Dependencies.exe).
+:: Forcing this results in a DLL error 193. Basically, there's no way to provide
+:: ncvuda.dll in a GPU-less machine without breaking the EULA (aka zipping nvcuda.dll
+:: from a working installation).
 
 
 if "%CI%" == "azure" (
