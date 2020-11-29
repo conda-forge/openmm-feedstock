@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 package:
   name: {{ name }}
@@ -13,7 +13,8 @@ source:
 
 build:
   number: {{ build }}
-  skip: true  # [((cuda_compiler_version == "None") and (linux64 or win)) or ((cuda_compiler_version != "10.2") and (ppc64le))]
+  string: "py{{ PY_VER }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
+  skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -41,7 +42,7 @@ requirements:
     - doxygen 1.8.14
     # OpenCL ICD
     - ocl-icd  # [linux]
-    - khronos-opencl-icd-loader  # [win]
+    - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
 
   run:
     - python
@@ -50,7 +51,12 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
-    - khronos-opencl-icd-loader  # [win]
+    - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
+    - ocl_icd_wrapper_apple      # [osx and opencl_impl == 'khronos']
+
+  run_constrained:
+    - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
+    - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
 
 test:
   requires:

@@ -32,10 +32,13 @@ elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
     CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
-    # # OpenCL, here just for completeness -- CMake should find it automatically
-    # OPENCL_HOME="/System/Library/Frameworks/OpenCL.framework/OpenCL"
-    # CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
-    # CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
+    if [[ "$opencl_impl" == khronos ]]; then
+        OPENCL_HOME="${PREFIX}"
+    else
+        OPENCL_HOME="/System/Library/Frameworks/OpenCL.framework/OpenCL"
+    fi
+    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
+    CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
 fi
 
 # Set location for FFTW3 on both linux and mac
@@ -51,7 +54,7 @@ make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
 # Put examples into an appropriate subdirectory.
-mkdir $PREFIX/share/openmm/
+mkdir -p $PREFIX/share/openmm/
 mv $PREFIX/examples $PREFIX/share/openmm/
 
 # Fix some overlinking warnings/errors
