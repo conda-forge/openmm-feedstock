@@ -8,12 +8,12 @@ package:
 
 source:
   # pre-rc
-  url: https://github.com/openmm/{{ name }}/archive/2c36e9b34d046f09be4887ff60e7fdac02cf3cdb.tar.gz
-  sha256: 193a501d10ca713443e44e0d8972c5d3f30ee0ed116d59679d1cbdabd6b96b28
+  url: https://github.com/openmm/{{ name }}/archive/b49b82efb5a253a7c891ca084b3370e181de2ea3.tar.gz
+  sha256: 5bd813eecbcc819c7406a78bfb074020e975a0cc52b4f4734cd1eae92a1bd086
 
 build:
   number: {{ build }}
-  string: "py{{ PY_VER }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
+  string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
   track_features:  # make khronos low priority
     - openmm_opencl_khronos  # [osx and (opencl_impl == 'khronos')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
