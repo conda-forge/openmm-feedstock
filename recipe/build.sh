@@ -33,12 +33,15 @@ elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
     if [[ "$opencl_impl" == khronos ]]; then
-        OPENCL_HOME="${PREFIX}"
-        CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
-        CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
-    else
-        OPENCL_HOME="/System/Library/Frameworks/OpenCL.framework/OpenCL"
+        CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
+        CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
     fi
+    # When using opencl_impl == apple, CMake will auto-locate it, so no need to provide the flags
+    # On Conda Forge, this will result in:
+    #   /Applications/Xcode_12.app/Contents/Developer/Platforms/MacOSX.platform/Developer/...
+    #   ...SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenCL.framework
+    # On local builds, it might be:
+    #   /System/Library/Frameworks/OpenCL.framework/OpenCL
 fi
 
 # Set location for FFTW3 on both linux and mac
