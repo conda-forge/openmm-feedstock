@@ -34,11 +34,11 @@ elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
     if [[ "$opencl_impl" == khronos ]]; then
         OPENCL_HOME="${PREFIX}"
+        CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
+        CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
     else
         OPENCL_HOME="/System/Library/Frameworks/OpenCL.framework/OpenCL"
     fi
-    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${OPENCL_HOME}/include"
-    CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${OPENCL_HOME}/lib/libOpenCL${SHLIB_EXT}"
 fi
 
 # Set location for FFTW3 on both linux and mac
