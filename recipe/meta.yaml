@@ -26,8 +26,8 @@ build:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
-  script: build.sh {{ revision }}  # [unix]
-  script: bld.bat {{ revision }}  # [win]
+  script: build_openmm.sh {{ revision }}   # [unix]
+  script: build_openmm.bat {{ revision }}  # [win]
 
 requirements:
   build:
