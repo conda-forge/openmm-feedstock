@@ -108,7 +108,7 @@ test:
     - python benchmark.py --test=rf --seconds=10 --platform=CPU
 
     # Check version metadata looks ok
-    - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert v == '{{ version }}', v + '!={{ version }}'"
+    - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert v in ('{{ version }}', '{{ version }}.0'), v + '!={{ version }}'"
     - python -c "from simtk.openmm.version import git_revision; r = git_revision; r == '{{ revision }}', r + '!={{ revision }}'"
 
 about:
