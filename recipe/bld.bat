@@ -1,3 +1,5 @@
+set "GIT_REV=%1"
+
 mkdir build
 cd build
 
@@ -25,6 +27,9 @@ jom -j %NUMBER_OF_PROCESSORS% PythonInstall || goto :error
 :: Better location for examples
 mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
+
+:: Patch git_revision in simtk.openmm.version
+sed -i "s/git_revision = '[a-z0-9]+'/git_revision = '%GIT_REV%'/" "%SP_DIR%/simtk/openmm/version.py"
 
 goto :EOF
 

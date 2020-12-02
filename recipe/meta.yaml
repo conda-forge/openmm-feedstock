@@ -1,6 +1,11 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
-{% set build = 2 %}
+# Make sure version and revision match according to the GitHub release!
+# We need the revision because this is not available when we download
+# the source from an github /archive tarball and CMake expects it
+{% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
+
+{% set build = 3 %}
 
 package:
   name: {{ name }}
@@ -8,7 +13,7 @@ package:
 
 source:
   # pre-rc
-  url: https://github.com/openmm/{{ name }}/archive/b49b82efb5a253a7c891ca084b3370e181de2ea3.tar.gz
+  url: https://github.com/openmm/{{ name }}/archive/{{ revision }}.tar.gz
   sha256: 5bd813eecbcc819c7406a78bfb074020e975a0cc52b4f4734cd1eae92a1bd086
 
 build:
@@ -21,6 +26,8 @@ build:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
+  script: build.sh {{ revision }}  # [unix]
+  script: bld.bat {{ revision }}  # [win]
 
 requirements:
   build:
@@ -31,6 +38,8 @@ requirements:
     - cmake
     - make  # [unix]
     - jom  # [win]
+    - sed  # [unix]
+    - m2-sed  # [win]
 
   host:
     - python
@@ -103,6 +112,10 @@ test:
     - cd %LIBRARY_PREFIX%/share/openmm/examples  # [win]
     - python benchmark.py --test=rf --seconds=10 --platform=Reference
     - python benchmark.py --test=rf --seconds=10 --platform=CPU
+
+    # Check version metadata looks ok
+    - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert v == '{{ version }}', v + '!={{ version }}'"
+    - python -c "from simtk.openmm.version import git_revision; r = git_revision; r == '{{ revision }}', r + '!={{ revision }}'"
 
 about:
   home: http://openmm.org
