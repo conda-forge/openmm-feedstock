@@ -1,6 +1,9 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
-{% set build = 2 %}
+# Make sure version and revision match according to the GitHub release!
+{% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
+
+{% set build = 3 %}
 
 package:
   name: {{ name }}
@@ -8,8 +11,8 @@ package:
 
 source:
   # pre-rc
-  url: https://github.com/openmm/{{ name }}/archive/b49b82efb5a253a7c891ca084b3370e181de2ea3.tar.gz
-  sha256: 5bd813eecbcc819c7406a78bfb074020e975a0cc52b4f4734cd1eae92a1bd086
+  git_url: https://github.com/openmm/{{ name }}.git
+  git_rev: {{ revision }}
 
 build:
   number: {{ build }}
@@ -103,6 +106,10 @@ test:
     - cd %LIBRARY_PREFIX%/share/openmm/examples  # [win]
     - python benchmark.py --test=rf --seconds=10 --platform=Reference
     - python benchmark.py --test=rf --seconds=10 --platform=CPU
+
+    # Check version metadata looks ok
+    - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert '{{ version }}' in (v, v+'.0'), v + '!={{ version }}'"
+    - python -c "from simtk.openmm.version import git_revision; r = git_revision; r == '{{ revision }}', r + '!={{ revision }}'"
 
 about:
   home: http://openmm.org

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=$PREFIX -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
@@ -57,8 +57,8 @@ make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
 # Put examples into an appropriate subdirectory.
-mkdir -p $PREFIX/share/openmm/
-mv $PREFIX/examples $PREFIX/share/openmm/
+mkdir -p ${PREFIX}/share/openmm/
+mv ${PREFIX}/examples ${PREFIX}/share/openmm/
 
 # Fix some overlinking warnings/errors
 for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
