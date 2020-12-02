@@ -1,7 +1,5 @@
 #!/bin/bash
 
-GIT_REV=$1
-
 CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
 if [[ "$target_platform" == linux* ]]; then
@@ -61,9 +59,6 @@ make -j$CPU_COUNT install PythonInstall
 # Put examples into an appropriate subdirectory.
 mkdir -p ${PREFIX}/share/openmm/
 mv ${PREFIX}/examples ${PREFIX}/share/openmm/
-
-# Patch git_revision in simtk.openmm.version
-sed -i "s/git_revision = '[a-z0-9]+'/git_revision = \"${GIT_REV}\"/" ${SP_DIR}/simtk/openmm/version.py
 
 # Fix some overlinking warnings/errors
 for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
