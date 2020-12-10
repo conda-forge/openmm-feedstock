@@ -1,5 +1,3 @@
-channel_targets:
-- conda-forge test
 opencl_impl:  # [osx]
 - apple  # [osx]
 - khronos  # [osx]
