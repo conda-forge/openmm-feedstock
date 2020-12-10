@@ -11,7 +11,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge test
+- conda-forge main
 cuda_compiler_version:
 - None
 cxx_compiler:
