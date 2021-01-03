@@ -52,7 +52,7 @@ CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT
 # Build in subdirectory and install.
 mkdir -p build
 cd build
-cmake ${CMAKE_FLAGS} ${SRC_DIR}
+cmake ${CMAKE_ARGS} ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
