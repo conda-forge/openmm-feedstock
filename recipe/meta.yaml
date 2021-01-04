@@ -3,7 +3,7 @@
 # Make sure version and revision match according to the GitHub release!
 {% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
 
-{% set build = 4 %}
+{% set build = 5 %}
 
 package:
   name: {{ name }}
@@ -48,7 +48,8 @@ requirements:
     - numpy
     - cython
     # needed for Python wrappers
-    - doxygen 1.8.14
+    - doxygen 1.8.14  # [not osx]
+    - doxygen  # [osx]
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
