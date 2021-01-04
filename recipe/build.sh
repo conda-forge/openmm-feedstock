@@ -10,27 +10,23 @@ if [[ "$target_platform" == linux* ]]; then
     CXXFLAGS+=" $MINIMAL_CFLAGS"
     LDFLAGS+=" $LDPATHFLAGS"
 
-    # Use GCC
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
-
     # CUDA is enabled in these platforms
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
         # # CUDA_HOME is defined by nvcc metapackage
-        # CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
+        CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
         # # From: https://github.com/floydhub/dl-docker/issues/59
-        # CMAKE_FLAGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
+        CMAKE_FLAGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
     fi
 
     # OpenCL ICD
-    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
+    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
     CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
 
 elif [[ "$target_platform" == osx* ]]; then
     CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
     CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
     if [[ "$opencl_impl" == khronos ]]; then
         CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
@@ -52,7 +48,7 @@ CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT
 # Build in subdirectory and install.
 mkdir -p build
 cd build
-cmake ${CMAKE_ARGS} ${CMAKE_FLAGS} ${SRC_DIR}
+cmake ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
