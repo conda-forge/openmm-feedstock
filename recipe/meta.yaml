@@ -38,6 +38,9 @@ requirements:
     - cmake
     - make  # [unix]
     - jom  # [win]
+    # needed for Python wrappers
+    - doxygen 1.8.14  # [not osx]
+    - doxygen  # [osx]
 
   host:
     - python
@@ -47,9 +50,6 @@ requirements:
     - lxml
     - numpy
     - cython
-    # needed for Python wrappers
-    - doxygen 1.8.14  # [not osx]
-    - doxygen  # [osx]
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
