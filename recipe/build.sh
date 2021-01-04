@@ -19,8 +19,8 @@ if [[ "$target_platform" == linux* ]]; then
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
-        # remove some CMAKE_ARGS bits that interfere with CUDA detection
-        CMAKE_ARGS="$(echo "$CMAKE_ARGS" | sed -E -e "s/-DCMAKE_FIND_ROOT_PATH\S*//g")"
+        # shadow some CMAKE_ARGS bits that interfere with CUDA detection
+        CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
     fi
 
     # OpenCL ICD
