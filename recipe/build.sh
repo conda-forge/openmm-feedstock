@@ -37,6 +37,10 @@ elif [[ "$target_platform" == osx* ]]; then
     #   ...SDKs/MacOSX10.9.sdk/System/Library/Frameworks/OpenCL.framework
     # On local builds, it might be:
     #   /System/Library/Frameworks/OpenCL.framework/OpenCL
+    if [[ "$target_platform" == osx-arm64 ]]; then
+        CFLAGS+=" -mfloat-abi=hard"
+        CXXFLAGS+=" -mfloat-abi=hard"
+    fi
 fi
 
 # Set location for FFTW3 on both linux and mac
