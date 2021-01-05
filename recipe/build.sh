@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
@@ -8,7 +8,6 @@ if [[ "$target_platform" == linux* ]]; then
     MINIMAL_CFLAGS+=" -O3 -ldl"
     CFLAGS+=" $MINIMAL_CFLAGS"
     CXXFLAGS+=" $MINIMAL_CFLAGS"
-    LDFLAGS+=" $LDPATHFLAGS"
 
     # CUDA is enabled in these platforms
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
@@ -28,8 +27,6 @@ if [[ "$target_platform" == linux* ]]; then
     CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
 
 elif [[ "$target_platform" == osx* ]]; then
-    CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
-    CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
     if [[ "$opencl_impl" == khronos ]]; then
         CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
         CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
@@ -46,11 +43,12 @@ fi
 CMAKE_FLAGS+=" -DFFTW_INCLUDES=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DFFTW_LIBRARY=${PREFIX}/lib/libfftw3f${SHLIB_EXT}"
 CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT}"
+CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 
 # Build in subdirectory and install.
 mkdir -p build
 cd build
-cmake ${CMAKE_ARGS} ${CMAKE_FLAGS} ${SRC_DIR}
+cmake ${CMAKE_FLAGS} ${SRC_DIR}
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
