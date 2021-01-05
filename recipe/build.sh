@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
 
 if [[ "$target_platform" == linux* ]]; then
@@ -13,8 +15,6 @@ if [[ "$target_platform" == linux* ]]; then
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
         # # CUDA_HOME is defined by nvcc metapackage
         CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
-        # # From: https://github.com/floydhub/dl-docker/issues/59
-        CMAKE_FLAGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
@@ -43,6 +43,7 @@ fi
 CMAKE_FLAGS+=" -DFFTW_INCLUDES=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DFFTW_LIBRARY=${PREFIX}/lib/libfftw3f${SHLIB_EXT}"
 CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT}"
+# Disambiguate swig location
 CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 
 # Build in subdirectory and install.
