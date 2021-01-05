@@ -38,8 +38,8 @@ elif [[ "$target_platform" == osx* ]]; then
     # On local builds, it might be:
     #   /System/Library/Frameworks/OpenCL.framework/OpenCL
     if [[ "$target_platform" == osx-arm64 ]]; then
-        CFLAGS+=" -mfloat-abi=hard"
-        CXXFLAGS+=" -mfloat-abi=hard"
+        CMAKE_FLAGS+=" -DCMAKE_C_FLAGS=-mfloat-abi=hard"
+        CMAKE_FLAGS+=" -DCMAKE_CXX_FLAGS=-mfloat-abi=hard"
     fi
 fi
 
