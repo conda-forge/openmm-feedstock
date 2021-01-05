@@ -40,8 +40,7 @@ requirements:
     - make  # [unix]
     - jom  # [win]
     # needed for Python wrappers
-    - doxygen 1.8.14  # [not osx]
-    - doxygen  # [osx]
+    - doxygen
 
   host:
     - python
