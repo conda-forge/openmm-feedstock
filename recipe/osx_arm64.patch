@@ -1,0 +1,73 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 35ad28a40..0760d6428 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -110,7 +110,7 @@ IF(APPLE)
+         SET (CMAKE_OSX_DEPLOYMENT_TARGET "10.7" CACHE STRING "The minimum version of OS X to support" FORCE)
+     ENDIF (NOT CMAKE_OSX_DEPLOYMENT_TARGET)
+     IF (NOT CMAKE_OSX_ARCHITECTURES)
+-        SET (CMAKE_OSX_ARCHITECTURES "x86_64" CACHE STRING "The processor architectures to build for" FORCE)
++        SET (CMAKE_OSX_ARCHITECTURES "${CMAKE_SYSTEM_PROCESSOR}" CACHE STRING "The processor architectures to build for" FORCE)
+     ENDIF (NOT CMAKE_OSX_ARCHITECTURES)
+     IF (NOT CMAKE_OSX_SYSROOT)
+         EXECUTE_PROCESS(COMMAND "xcrun" "--show-sdk-path" OUTPUT_VARIABLE XCRUN_OSX_SYSROOT RESULT_VARIABLE XCRUN_OSX_SYSROOT_STATUS OUTPUT_STRIP_TRAILING_WHITESPACE)
+@@ -123,7 +123,10 @@ IF(APPLE)
+ 
+     # Improve the linking behavior of Mac libraries
+     SET (CMAKE_INSTALL_NAME_DIR "@rpath")
+-    SET(EXTRA_COMPILE_FLAGS "-msse2 -stdlib=libc++")
++    IF (X86)
++      SET(EXTRA_COMPILE_FLAGS "-msse2")
++    ENDIF()
++    SET(EXTRA_COMPILE_FLAGS "${EXTRA_COMPILE_FLAGS} -stdlib=libc++")
+ ELSEIF(MSVC)
+     SET(EXTRA_COMPILE_FLAGS)
+     # Use warning level 2, not whatever warning level CMake picked.
+diff --git a/openmmapi/include/openmm/internal/vectorize_neon.h b/openmmapi/include/openmm/internal/vectorize_neon.h
+index 3c8495a15..c6f01a08d 100644
+--- a/openmmapi/include/openmm/internal/vectorize_neon.h
++++ b/openmmapi/include/openmm/internal/vectorize_neon.h
+@@ -34,7 +34,7 @@
+ 
+ #ifdef __ANDROID__
+ #include <cpu-features.h>
+-#else
++#elif !defined(__APPLE__)
+ #include <sys/auxv.h>
+ #include <asm/hwcap.h>
+ #endif
+@@ -53,7 +53,9 @@ float32x4_t log_ps(float32x4_t);
+  * Determine whether ivec4 and fvec4 are supported on this processor.
+  */
+ static bool isVec4Supported() {
+-#ifdef __ANDROID__
++#ifdef __APPLE__
++    return true;
++#elif defined(__ANDROID__)
+     uint64_t features = android_getCpuFeatures();
+     return (features & ANDROID_CPU_ARM_FEATURE_NEON) != 0;
+ #elif defined(__ARM__)
+diff --git a/wrappers/python/setup.py b/wrappers/python/setup.py
+index 30b80fc49..f60f8fa31 100644
+--- a/wrappers/python/setup.py
++++ b/wrappers/python/setup.py
+@@ -192,13 +192,17 @@ def buildKeywordDictionary(major_version_num=MAJOR_VERSION_NUM,
+         if platform.system() == 'Darwin':
+             extra_compile_args += ['-stdlib=libc++', '-mmacosx-version-min=10.7']
+             extra_link_args += ['-stdlib=libc++', '-mmacosx-version-min=10.7', '-Wl', '-rpath', openmm_lib_path]
++            if 'MACOSX_DEPLOYMENT_TARGET' not in os.environ and platform.processor() != 'arm':
++                extra_compile_args += ['-mmacosx-version-min=10.7']
++                extra_link_args += ['-mmacosx-version-min=10.7']
+             # Hard-code CC and CXX to clang, since gcc/g++ will *not* work with
+             # Anaconda, despite the fact that distutils will try to use them.
+             # System Python, homebrew, and MacPorts on Macs will always use
+             # clang, so this hack should always work and fix issues with users
+             # that have GCC installed from MacPorts or homebrew *and* Anaconda
+-            os.environ['CC'] = 'clang'
+-            os.environ['CXX'] = 'clang++'
++            if 'CC' not in os.environ:
++                os.environ['CC'] = 'clang'
++                os.environ['CXX'] = 'clang++'
+ 
+     library_dirs=[openmm_lib_path]
+     include_dirs=openmm_include_path.split(';')
