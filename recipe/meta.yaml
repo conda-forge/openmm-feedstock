@@ -13,6 +13,8 @@ source:
   # pre-rc
   git_url: https://github.com/openmm/{{ name }}.git
   git_rev: {{ version }}
+  patches:  # [arm64]
+    - osx_arm64.patch  # [arm64]
 
 build:
   number: {{ build }}
@@ -24,8 +26,6 @@ build:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
-  patches:  # [arm64]
-    - osx_arm64.patch  # [arm64]
 
 requirements:
   build:
