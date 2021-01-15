@@ -73,10 +73,23 @@ requirements:
 test:
   requires:
     - pocl  # [linux]
+    - cmake
+    - pytest
+    - pytest-xdist
   imports:
     - simtk
     - simtk.openmm
+{% if with_test_suite %}
+  source_files:
+    - devtools/run-ctest.py
+    - build/python/tests
+{% endif %}
   commands:
+{% if with_test_suite %}
+    ## This is the full test suite we run in CI
+    - python devtools/run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 300
+    - python -m pytest -v -n {{ CPU_COUNT }} build/python/tests
+{% endif %}
     ## Are the key libraries built?
     # Existence tests Unix
     - test -f $PREFIX/lib/libOpenMM$SHLIB_EXT  # [unix]
@@ -117,6 +130,7 @@ test:
     # Check version metadata looks ok
     - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert '{{ version }}' in (v, v+'.0'), v + '!={{ version }}'"
     - python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '{{ revision }}', r + '!={{ revision }}'"
+
 
 about:
   home: http://openmm.org
