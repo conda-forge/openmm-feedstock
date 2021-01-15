@@ -3,6 +3,13 @@ cd build
 
 set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
+if "%with_test_suite%"=="yes" then (
+    CMAKE_FLAGS="-DBUILD_TESTING=ON -DOPENMM_BUILD_CUDA_TESTS=OFF -DOPENMM_BUILD_OPENCL_TESTS=OFF"
+)
+else (
+    CMAKE_FLAGS="-DBUILD_TESTING=OFF"
+)
+
 cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
@@ -10,7 +17,7 @@ cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCUDA_TOOLKIT_ROOT_DIR="%CUDA_TOOLKIT_ROOT_DIR%" ^
     -DOPENCL_INCLUDE_DIR="%LIBRARY_INC%" ^
     -DOPENCL_LIBRARY="%LIBRARY_LIB%\opencl.lib" ^
-    -DBUILD_TESTING=OFF ^
+    %CMAKE_FLAGS% ^
     || goto :error
 
 jom -j %NUMBER_OF_PROCESSORS% || goto :error
