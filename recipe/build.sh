@@ -2,7 +2,14 @@
 
 set -ex
 
-CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+
+CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE=Release"
+if [[ "$with_test_suite" == yes ]]; then
+    CMAKE_FLAGS+=" -DBUILD_TESTING=ON -DOPENMM_BUILD_OPENCL_TESTS=OFF"
+else
+    CMAKE_FLAGS+=" -DBUILD_TESTING=OFF"
+fi
+
 
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
