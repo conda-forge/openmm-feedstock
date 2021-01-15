@@ -88,7 +88,7 @@ test:
 {% if with_test_suite %}
     ## This is the full test suite we run in CI
     - python devtools/run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 300
-    - python -m pytest -v -n {{ CPU_COUNT }} build/python/tests
+    - cd build/python/tests && python -m pytest -v -n {{ CPU_COUNT }} 
 {% endif %}
     ## Are the key libraries built?
     # Existence tests Unix
