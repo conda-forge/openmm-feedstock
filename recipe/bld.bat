@@ -3,7 +3,7 @@ cd build
 
 set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
-if "%with_test_suite%"=="yes" then (
+if "%with_test_suite%"=="true" then (
     CMAKE_FLAGS="-DBUILD_TESTING=ON -DOPENMM_BUILD_CUDA_TESTS=OFF -DOPENMM_BUILD_OPENCL_TESTS=OFF"
 )
 else (

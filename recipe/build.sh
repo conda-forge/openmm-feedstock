@@ -4,7 +4,7 @@ set -ex
 
 
 CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE=Release"
-if [[ "$with_test_suite" == yes ]]; then
+if [[ "$with_test_suite" == "true" ]]; then
     CMAKE_FLAGS+=" -DBUILD_TESTING=ON -DOPENMM_BUILD_OPENCL_TESTS=OFF"
 else
     CMAKE_FLAGS+=" -DBUILD_TESTING=OFF"
@@ -95,3 +95,6 @@ warnings.warn("""$msg""")
 EOF
 
 fi
+
+
+if
