@@ -3,7 +3,7 @@ cd build
 
 set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
-if "%with_test_suite%"=="true" then (
+if "%with_test_suite%"=="true" (
     CMAKE_FLAGS="-DBUILD_TESTING=ON -DOPENMM_BUILD_CUDA_TESTS=OFF -DOPENMM_BUILD_OPENCL_TESTS=OFF"
 )
 else (
@@ -32,6 +32,12 @@ jom -j %NUMBER_OF_PROCESSORS% PythonInstall || goto :error
 :: Better location for examples
 mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
+
+if "%with_test_suite%"=="true" (
+    :: patch prefix in Makefiles now that we have it handy
+    find . -name Makefile -exec sed -E -e "s|%SRC_DIR%|@SRC_DIR@|" -e "s|%PREFIX%|@PREFIX@|g" {} \;
+)
+
 
 goto :EOF
 

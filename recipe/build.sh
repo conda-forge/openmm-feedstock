@@ -95,3 +95,9 @@ warnings.warn("""$msg""")
 EOF
 
 fi
+
+if [[ "$with_test_suite" == "true" ]]; then
+    # mv build ${PREFIX}/share/openmm;
+    # patch prefix in Makefiles now that we have it handy
+    find . -name Makefile -exec sed -E -e "s|$SRC_DIR|@SRC_DIR@|" -e "s|$PREFIX|@PREFIX@|g" {} \;
+fi
