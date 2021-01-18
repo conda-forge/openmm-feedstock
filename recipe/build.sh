@@ -99,5 +99,6 @@ fi
 if [[ "$with_test_suite" == "true" ]]; then
     cd ..
     mkdir -p ${PREFIX}/share/openmm/tests
+    cp devtools/run-ctest.py ${PREFIX}/share/openmm/tests
     mv build ${PREFIX}/share/openmm/tests
 fi

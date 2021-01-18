@@ -73,19 +73,14 @@ requirements:
 test:
   requires:
     - pocl  # [linux]
+{% if with_test_suite %}
     - cmake
     - pytest
     - pytest-xdist
-    - m2-sed  # [win]
-    - m2-findutils  # [win]
+{% endif %}
   imports:
     - simtk
     - simtk.openmm
-{% if with_test_suite %}
-  source_files:
-    - devtools/run-ctest.py
-    - build
-{% endif %}
   commands:
 {% if with_test_suite %}
     ## This is the full test suite we run in CI

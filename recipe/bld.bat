@@ -36,6 +36,7 @@ move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
 if "%with_test_suite%"=="true" (
     cd ..
     mkdir %LIBRARY_PREFIX%\share\openmm\tests
+    copy devtools\run-ctest.py %LIBRARY_PREFIX%\share\openmm\tests
     mv build %LIBRARY_PREFIX%\share\openmm\tests
 )
 
