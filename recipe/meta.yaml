@@ -89,9 +89,8 @@ test:
   commands:
 {% if with_test_suite %}
     ## This is the full test suite we run in CI
-    - cd build
-    - find . \( -name Makefile -o -name '*.cmake' \) -exec sed -i.bak -e "s|@PREFIX@|$PREFIX|g" -e "s|@SRC_DIR@|$SRC_DIR|g" {} \;  # [unix]
-    - find . ^( -name Makefile -o -name '*.cmake' ^) -exec sed -i.bak -e "s|@PREFIX@|%PREFIX%|g"  -e "s|@SRC_DIR@|%SRC_DIR%|g" {} \;  # [win]
+    - cd $CONDA_PREFIX/share/openmm/tests/build  # [unix]
+    - cd %LIBRARY_PREFIX%\share\openmm\tests\build  # [win]
     - python ../devtools/run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 900
     - cd python/tests && python -m pytest -v -n {{ CPU_COUNT }}
 {% endif %}

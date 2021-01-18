@@ -34,8 +34,9 @@ mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
 
 if "%with_test_suite%"=="true" (
-    :: patch prefix in Makefiles now that we have it handy
-    find . ^( -name Makefile -o -name '*.cmake' ^) -exec sed -i.bak -E -e "s|%SRC_DIR%|@SRC_DIR@|" -e "s|%PREFIX%|@PREFIX@|g" -e "s|%BUILD_PREFIX%|@PREFIX@|g" {} \;
+    cd ..
+    mkdir %LIBRARY_PREFIX%\share\openmm\tests
+    mv build %LIBRARY_PREFIX%\share\openmm\tests
 )
 
 
