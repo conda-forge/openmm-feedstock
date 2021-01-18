@@ -97,6 +97,7 @@ EOF
 fi
 
 if [[ "$with_test_suite" == "true" ]]; then
+    find . \( -name Makefile -o -name '*.cmake' \) -exec sed -i.bak -E -e "s|$SRC_DIR|@SRC_DIR@|" -e "s|$PREFIX|@PREFIX@|g" -e "s|$BUILD_PREFIX|@PREFIX@|g" {} \;
     cd ..
     mkdir -p ${PREFIX}/share/openmm/tests
     cp devtools/run-ctest.py ${PREFIX}/share/openmm/tests
