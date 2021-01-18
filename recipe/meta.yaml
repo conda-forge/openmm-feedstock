@@ -86,7 +86,7 @@ test:
     ## This is the full test suite we run in CI
     - cd $CONDA_PREFIX/share/openmm/tests/build  # [unix]
     - cd %LIBRARY_PREFIX%\share\openmm\tests\build  # [win]
-    - python ../devtools/run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 900
+    - python ../run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 900
     - cd python/tests && python -m pytest -v -n {{ CPU_COUNT }}
 {% endif %}
     ## Are the key libraries built?
