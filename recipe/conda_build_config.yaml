@@ -1,3 +1,5 @@
 opencl_impl:  # [osx]
 - apple  # [osx]
 - khronos  # [osx]
+with_test_suite:
+- true

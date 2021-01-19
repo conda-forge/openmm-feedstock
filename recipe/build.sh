@@ -4,8 +4,8 @@ set -ex
 
 
 CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE=Release"
-if [[ "$with_test_suite" == yes ]]; then
-    CMAKE_FLAGS+=" -DBUILD_TESTING=ON -DOPENMM_BUILD_OPENCL_TESTS=OFF"
+if [[ "$with_test_suite" == "true" ]]; then
+    CMAKE_FLAGS+=" -DBUILD_TESTING=ON -DOPENMM_BUILD_OPENCL_TESTS=ON"
 else
     CMAKE_FLAGS+=" -DBUILD_TESTING=OFF"
 fi
@@ -94,4 +94,16 @@ import warnings
 warnings.warn("""$msg""")
 EOF
 
+fi
+
+if [[ "$with_test_suite" == "true" ]]; then
+    find . \( -name Makefile -o -name '*.cmake' \) -exec sed -i.bak -E -e "s|$SRC_DIR|@SRC_DIR@|" -e "s|$PREFIX|@PREFIX@|g" -e "s|$BUILD_PREFIX|@PREFIX@|g" {} \;
+    if [[ "$target_platform" == osx* ]]; then
+        export PYTHONPATH="$(dirname $(conda info --json | jq -r .conda_location))"
+        find . -name 'Test*' -perm +0111 -type f -exec \
+            python -c "from conda_build.post import mk_relative_osx as mk; import pathlib as p; mk(\"{}\", \"$PREFIX\", \"$BUILD_PREFIX\", list(p.Path(\"$PREFIX\").rglob(\"*.dylib\")))" \;
+    fi
+    cd ..
+    mkdir -p ${PREFIX}/share/openmm/tests
+    mv build ${PREFIX}/share/openmm/tests
 fi
