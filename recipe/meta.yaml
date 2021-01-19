@@ -2,7 +2,6 @@
 {% set version = "7.5.0" %}
 # Make sure version and revision match according to the GitHub release!
 {% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
-{% set with_test_suite = true %}
 
 {% set build = 5 %}
 
@@ -42,6 +41,9 @@ requirements:
     - cmake
     - make  # [unix]
     - jom  # [win]
+    - conda-build  # [osx]
+    - m2-findutils  # [win]
+    - m2-coreutils  # [win]
     # needed for Python wrappers
     - doxygen
 
@@ -87,8 +89,56 @@ test:
 {% endif %}
   commands:
 {% if with_test_suite %}
-    ## This is the full test suite we run in CI
-    - python devtools/run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 300
+## This is the full test suite we run in CI
+{% if target_platform.startswith(('linux', 'macos')) %}
+    - |
+      pushd .
+      cd $PREFIX/share/openmm/tests
+      set +ex
+      summary=""; exitcode=0; count=0;
+      for f in Test*; do
+          if [[ $f == *Cuda* || $f == *OpenCL* ]]; then continue; fi
+          ((count+=1))
+          echo -e "\n#$count: $f"
+          ./${f}
+          thisexitcode=$?
+          summary+="\n${f}: "
+          if [[ $thisexitcode == 0 ]]; then summary+="OK"; else summary+="FAILED"; fi
+          ((exitcode+=$thisexitcode))
+      done
+      echo "-------"
+      echo "Summary"
+      echo "-------"
+      echo -e "${summary}"
+      if [[ $exitcode != 0 ]]; then exit $exitcode; fi
+      popd
+      set -ex
+{% else %}
+    - |
+      cd %LIBRARY_PREFIX%\share\openmm\tests
+      SETLOCAL EnableDelayedExpansion
+      set count=0
+      set exitcode=0
+      set summary=
+      FOR %F IN ( Test* ) do (
+        set /a count=!count!+1
+        echo;
+        echo #!count!: %%~F
+        .\%%~F
+        set thisexitcode=!errorlevel!
+        set summary=!summary!#!count!: %%~F:
+        if "!thisexitcode!" == "0" ( set "summary=!summary! OK\n!" ) else ( set "summary=!summary! FAILED\n!" )
+        set /a exitcode=!exitcode!+!thisexitcode!
+      )
+      echo;
+      echo --------------------
+      echo Summary of run tests
+      echo --------------------
+      echo;
+      echo !summary!
+      if "!exitcode!" == "0" ( echo Success ) else ( exit !exitcode! )
+      ENDLOCAL
+{% endif %}
     - python -m pytest -v -n {{ CPU_COUNT }} build/python/tests
 {% endif %}
     ## Are the key libraries built?

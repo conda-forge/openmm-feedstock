@@ -97,13 +97,10 @@ EOF
 fi
 
 if [[ "$with_test_suite" == "true" ]]; then
-    find . \( -name Makefile -o -name '*.cmake' \) -exec sed -i.bak -E -e "s|$SRC_DIR|@SRC_DIR@|" -e "s|$PREFIX|@PREFIX@|g" -e "s|$BUILD_PREFIX|@PREFIX@|g" {} \;
     if [[ "$target_platform" == osx* ]]; then
-        export PYTHONPATH="$(dirname $(conda info --json | jq -r .conda_location))"
-        find . -name 'Test*' -perm +0111 -type f -exec \
-            python -c "from conda_build.post import mk_relative_osx as mk; import pathlib as p; mk(\"{}\", \"$PREFIX\", \"$BUILD_PREFIX\", list(p.Path(\"$PREFIX\").rglob(\"*.dylib\")))" \;
+        find . -name "Test*" -perm +0111 -type f -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \;
     fi
-    cd ..
     mkdir -p ${PREFIX}/share/openmm/tests
-    mv build ${PREFIX}/share/openmm/tests
+    find . -name "Test*" -perm +0111 -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
+
 fi
