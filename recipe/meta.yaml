@@ -77,6 +77,8 @@ test:
     - cmake
     - pytest
     - pytest-xdist
+    - m2-sed  # [win]
+    - m2-findutils  # [win]
 {% endif %}
   imports:
     - simtk
