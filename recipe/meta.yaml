@@ -90,7 +90,7 @@ test:
   commands:
 {% if with_test_suite %}
 ## This is the full test suite we run in CI
-{% if target_platform.startswith(('linux', 'macos')) %}
+{% if target_platform.startswith(('linux', 'osx')) %}
     - |
       pushd .
       cd $PREFIX/share/openmm/tests

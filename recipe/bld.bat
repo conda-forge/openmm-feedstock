@@ -35,7 +35,7 @@ move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
 
 if "%with_test_suite%"=="true" (
     mkdir %LIBRARY_PREFIX%\share\openmm\tests || goto :error
-    find . -name "Test*" -type f -exec cp "{}" %PREFIX%\share\openmm\tests\ ; || goto :error
+    find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
 )
 
 
