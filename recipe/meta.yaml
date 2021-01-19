@@ -90,7 +90,7 @@ test:
     - cd %LIBRARY_PREFIX%\share\openmm\tests\build  # [win]
     - find . \( -name Makefile -o -name '*.cmake' \) -exec sed -i.bak -e "s|@PREFIX@|$PREFIX|g" -e "s|@SRC_DIR@|$CONDA_PREFIX/share/openmm/tests|g" {} \;  # [unix]
     - find . ^( -name Makefile -o -name '*.cmake' ^) -exec sed -i.bak -e "s|@PREFIX@|%PREFIX%|g"  -e "s|@SRC_DIR@|%LIBRARY_PREFIX%\share\openmm\tests|g" {} \;  # [win]
-    - python ../run-ctest.py --parallel {{ CPU_COUNT }} --timeout 600 --job-duration 900
+    - ctest --output-on-failure --parallel {{ CPU_COUNT }} --exclude-regex "(Cuda|OpenCL)"
     - cd python/tests && python -m pytest -v -n {{ CPU_COUNT }}
 {% endif %}
     ## Are the key libraries built?
