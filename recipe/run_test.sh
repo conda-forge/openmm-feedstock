@@ -53,13 +53,17 @@ if [[ $with_test_suite == "true" ]]; then
     # C++ tests
     summary=""; exitcode=0; count=0;
     for f in Test*; do
-        if [[ -n ${CI-} && ( $f == *Cuda* || $f == *OpenCL* ) ]]; then
-            continue;
-        fi
+        if [[ -n ${CI-} && ( $f == *Cuda* || $f == *OpenCL* ) ]]; then continue; fi
         ((count+=1))
         echo -e "\n#$count: $f"
-        ./${f}
-        thisexitcode=$?
+        # Retry three times so stochastic tests have a chance
+        attempts=0
+        while true; do
+            ./${f}
+            thisexitcode=$?
+            ((attempts+=1))
+            if [[ $thisexitcode == 0 || $attempts == 3 ]]; then break; fi
+        done
         if [[ $thisexitcode != 0 ]]; then summary+="\n#$count ${f}: FAILED"; fi
         ((exitcode+=$thisexitcode))
     done
