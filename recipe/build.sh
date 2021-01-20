@@ -73,6 +73,9 @@ for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
     ln -s $lib ${PREFIX}/lib/$(basename $lib) || true
 done
 
+# Now we can get rid of .git to slim down the build artifacts
+rm -rf ${SRC_DIR}/.git
+
 if [[ "$target_platform" == osx-arm64 ]]; then
 
 msg="
