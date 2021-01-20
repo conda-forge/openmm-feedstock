@@ -69,17 +69,19 @@ if "%with_test_suite%"=="true" (
             .\!testexe!
             set thisexitcode=!errorlevel!
             set summary=!summary!
-            if not "!thisexitcode!"=="0" ( set "summary=!summary!#!count! !testexe!: FAILED\n!" )
+            if not "!thisexitcode!"=="0" ( set "summary=!summary!#!count! !testexe!\n!" )
             set /a exitcode=!exitcode!+!thisexitcode!
         )
     )
-    echo;
-    echo --------------------
-    echo Summary of run tests
-    echo --------------------
-    echo;
-    echo !summary!
-    if not "!exitcode!"=="0" goto :error
+    if not "!exitcode!"=="0" (
+        echo;
+        echo ------------
+        echo Failed tests
+        echo ------------
+        echo;
+        echo !summary!
+        exit /b !exitcode!
+    )
 
     :: Python unit tests
     cd python

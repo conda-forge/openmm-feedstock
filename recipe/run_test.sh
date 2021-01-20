@@ -64,14 +64,16 @@ if [[ $with_test_suite == "true" ]]; then
             ((attempts+=1))
             if [[ $thisexitcode == 0 || $attempts == 3 ]]; then break; fi
         done
-        if [[ $thisexitcode != 0 ]]; then summary+="\n#$count ${f}: FAILED"; fi
+        if [[ $thisexitcode != 0 ]]; then summary+="\n#$count ${f}"; fi
         ((exitcode+=$thisexitcode))
     done
-    echo "-------"
-    echo "Summary"
-    echo "-------"
-    echo -e "${summary}"
-    if [[ $exitcode != 0 ]]; then exit $exitcode; fi
+    if [[ $exitcode != 0 ]]; then
+        echo "------------"
+        echo "Failed tests"
+        echo "------------"
+        echo -e "${summary}"
+        exit $exitcode
+    fi
 
     # Python tests
     set -ex

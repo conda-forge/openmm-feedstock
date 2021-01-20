@@ -32,7 +32,7 @@ if "%with_test_suite%"=="true" (
     mkdir %LIBRARY_PREFIX%\share\openmm\tests\ || goto :error
     find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
     robocopy python\tests\ %LIBRARY_PREFIX%\share\openmm\tests\python
-    if %errorlevel% GTR 1 goto :error
+    if %errorlevel% GTR 1 ( exit /b %errorlevel% )
 )
 
 
