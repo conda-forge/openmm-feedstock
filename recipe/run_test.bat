@@ -30,7 +30,7 @@ python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); asse
 cd %LIBRARY_PREFIX%/share/openmm/examples
 python benchmark.py --test=rf --seconds=10 --platform=Reference || goto :error
 python benchmark.py --test=rf --seconds=10 --platform=CPU || goto :error
-if not defined CI (
+if not "%CI%"=="" (
     python benchmark.py --test=rf --seconds=10 --platform=CUDA  || goto :error
     python benchmark.py --test=rf --seconds=10 --platform=OpenCL  || goto :error
 
@@ -58,7 +58,7 @@ if "%with_test_suite%"=="true" (
     set summary=
     FOR %%F IN ( Test* ) do (
         set testexe=%%~F
-        if defined CI (
+        if not "%CI%"=="" (
             if not "x!testexe:Cuda=!"=="x!testexe!"   ( set skiptest=yes )
             if not "x!testexe:OpenCL=!"=="x!testexe!" ( set skiptest=yes )
         )
