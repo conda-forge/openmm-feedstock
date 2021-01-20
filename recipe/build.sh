@@ -94,9 +94,15 @@ fi
 
 if [[ "$with_test_suite" == "true" ]]; then
     mkdir -p ${PREFIX}/share/openmm/tests/
+    # BSD find vs GNU find: -executable is only available in GNU find
+    # +0111 is somehow equivalent in BSD, but that's not compatible in GNU
+    # so we use different commands for each...
     if [[ "$target_platform" == osx* ]]; then
-        find . -name "Test*" -perm +0111 -type f -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \;
+        find . -name "Test*" -perm +0111 -type f \
+            -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \; \
+            -exec cp "{}" $PREFIX/share/openmm/tests/ \;
+    else
+        find . -name "Test*" -executable -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
     fi
-    find . -name "Test*" -perm +0111 -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
     cp -r python/tests $PREFIX/share/openmm/tests/python
 fi
