@@ -1,8 +1,5 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
-# Make sure version and revision match according to the GitHub release!
-{% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
-
 {% set build = 5 %}
 
 package:
@@ -77,6 +74,7 @@ requirements:
 
 test:
   requires:
+    - git
     - pocl  # [linux]
 {% if with_test_suite == 'true' %}
     - pytest
