@@ -102,5 +102,6 @@ if [[ "$with_test_suite" == "true" ]]; then
         find . -name "Test*" -perm +0111 -type f -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \;
     fi
     find . -name "Test*" -perm +0111 -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
-    cp -r python/tests/ $PREFIX/share/openmm/tests/python
+    cp -r python/tests $PREFIX/share/openmm/tests/python
+    ls -alhr $PREFIX/share/openmm/tests
 fi

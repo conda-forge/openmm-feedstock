@@ -86,7 +86,6 @@ test:
 ## This is the full test suite we run in CI
 {% if target_platform.startswith(('linux', 'osx')) %}
     - |
-      pushd .
       cd $PREFIX/share/openmm/tests
       set +ex
       summary=""; exitcode=0; count=0;
@@ -104,7 +103,6 @@ test:
       echo "-------"
       echo -e "${summary}"
       if [[ $exitcode != 0 ]]; then exit $exitcode; fi
-      popd
       set -ex
 {% else %}
     - |
