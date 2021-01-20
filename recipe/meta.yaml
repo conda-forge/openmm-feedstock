@@ -117,8 +117,8 @@ test:
       FOR %%F IN ( Test* ) do (
         set testexe=%%~F
         if defined CI (
-          if not "x%testexe:Cuda=%"=="x%testexe%" set skiptest=yes
-          if not "x%testexe:OpenCL=%"=="x%testexe%" set skiptest=yes
+          if not "x!testexe:Cuda=!"=="x!testexe!"   ( set skiptest=yes )
+          if not "x!testexe:OpenCL=!"=="x!testexe!" ( set skiptest=yes )
         )
         if not defined skiptest (
           set /a count=!count!+1
