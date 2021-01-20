@@ -19,10 +19,10 @@ python -m simtk.testInstallation
 
 :: On CI, Windows will only see 2 platforms because the driver nvcuda.dll is missing and that throws a 126 error
 :: We expect that people running this locally will have Nvidia properly installed, so they should all platforms (4)
-if defined CI (
-    set n_platforms=2
-) else (
+if "%CI%"=="" (
     set n_platforms=4
+) else (
+    set n_platforms=2
 )
 python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
 
@@ -30,7 +30,7 @@ python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); asse
 cd %LIBRARY_PREFIX%/share/openmm/examples
 python benchmark.py --test=rf --seconds=10 --platform=Reference || goto :error
 python benchmark.py --test=rf --seconds=10 --platform=CPU || goto :error
-if not "%CI%"=="" (
+if "%CI%"=="" (
     python benchmark.py --test=rf --seconds=10 --platform=CUDA  || goto :error
     python benchmark.py --test=rf --seconds=10 --platform=OpenCL  || goto :error
 
