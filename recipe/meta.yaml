@@ -41,11 +41,13 @@ requirements:
     - cmake
     - make  # [unix]
     - jom  # [win]
+    # needed for Python wrappers
+    - doxygen
+{% if with_test_suite %}
     - conda-build  # [osx]
     - m2-findutils  # [win]
     - m2-coreutils  # [win]
-    # needed for Python wrappers
-    - doxygen
+{% endif %}
 
   host:
     - python
@@ -76,8 +78,10 @@ requirements:
 test:
   requires:
     - pocl  # [linux]
+{% if with_test_suite %}
     - pytest
     - pytest-xdist
+{% endif %}
   imports:
     - simtk
     - simtk.openmm
