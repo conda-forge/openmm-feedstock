@@ -97,10 +97,10 @@ EOF
 fi
 
 if [[ "$with_test_suite" == "true" ]]; then
+    mkdir -p ${PREFIX}/share/openmm/tests/
     if [[ "$target_platform" == osx* ]]; then
         find . -name "Test*" -perm +0111 -type f -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \;
     fi
-    mkdir -p ${PREFIX}/share/openmm/tests
     find . -name "Test*" -perm +0111 -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
-
+    cp -r python/tests/ $PREFIX/share/openmm/tests/python
 fi

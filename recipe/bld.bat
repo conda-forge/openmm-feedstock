@@ -34,8 +34,9 @@ mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
 
 if "%with_test_suite%"=="true" (
-    mkdir %LIBRARY_PREFIX%\share\openmm\tests || goto :error
+    mkdir %LIBRARY_PREFIX%\share\openmm\tests\ || goto :error
     find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
+    robocopy python\tests\ %LIBRARY_PREFIX%\share\openmm\tests\python || goto :error
 )
 
 

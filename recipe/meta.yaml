@@ -76,17 +76,11 @@ requirements:
 test:
   requires:
     - pocl  # [linux]
-    - cmake
     - pytest
     - pytest-xdist
   imports:
     - simtk
     - simtk.openmm
-{% if with_test_suite %}
-  source_files:
-    - devtools/run-ctest.py
-    - build/python/tests
-{% endif %}
   commands:
 {% if with_test_suite %}
 ## This is the full test suite we run in CI
@@ -97,13 +91,12 @@ test:
       set +ex
       summary=""; exitcode=0; count=0;
       for f in Test*; do
-          if [[ $f == *Cuda* || $f == *OpenCL* ]]; then continue; fi
+          if [[ -n ${CI-} && ( $f == *Cuda* || $f == *OpenCL* ) ]]; then continue; fi
           ((count+=1))
           echo -e "\n#$count: $f"
           ./${f}
           thisexitcode=$?
-          summary+="\n${f}: "
-          if [[ $thisexitcode == 0 ]]; then summary+="OK"; else summary+="FAILED"; fi
+          if [[ $thisexitcode != 0 ]]; then summary+="\n#$count ${f}: FAILED"; fi
           ((exitcode+=$thisexitcode))
       done
       echo "-------"
@@ -117,18 +110,28 @@ test:
     - |
       cd %LIBRARY_PREFIX%\share\openmm\tests
       SETLOCAL EnableDelayedExpansion
+      (set \n=^
+      %=This hack is required to store newlines=%
+      )
       set count=0
       set exitcode=0
       set summary=
-      FOR %F IN ( Test* ) do (
-        set /a count=!count!+1
-        echo;
-        echo #!count!: %%~F
-        .\%%~F
-        set thisexitcode=!errorlevel!
-        set summary=!summary!#!count!: %%~F:
-        if "!thisexitcode!" == "0" ( set "summary=!summary! OK\n!" ) else ( set "summary=!summary! FAILED\n!" )
-        set /a exitcode=!exitcode!+!thisexitcode!
+      FOR %%F IN ( Test* ) do (
+        set testexe=%%~F
+        if defined CI (
+          if not "x%testexe:Cuda=%"=="x%testexe%" set skiptest=yes
+          if not "x%testexe:OpenCL=%"=="x%testexe%" set skiptest=yes
+        )
+        if not defined skiptest (
+          set /a count=!count!+1
+          echo;
+          echo #!count!: %testexe%
+          .\%testexe%
+          set thisexitcode=!errorlevel!
+          set summary=!summary!
+          if not "!thisexitcode!"=="0" ( set "summary=!summary!#!count! %testexe%: FAILED\n!" )
+          set /a exitcode=!exitcode!+!thisexitcode!
+        )
       )
       echo;
       echo --------------------
@@ -136,10 +139,12 @@ test:
       echo --------------------
       echo;
       echo !summary!
-      if "!exitcode!" == "0" ( echo Success ) else ( exit !exitcode! )
+      if not "!exitcode!"=="0" ( exit !exitcode! )
       ENDLOCAL
 {% endif %}
-    - python -m pytest -v -n {{ CPU_COUNT }} build/python/tests
+    - |
+      cd python
+      python -m pytest -v -n {{ CPU_COUNT }}
 {% endif %}
     ## Are the key libraries built?
     # Existence tests Unix
