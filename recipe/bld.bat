@@ -24,11 +24,6 @@ jom -j %NUMBER_OF_PROCESSORS% || goto :error
 jom -j %NUMBER_OF_PROCESSORS% install || goto :error
 jom -j %NUMBER_OF_PROCESSORS% PythonInstall || goto :error
 
-:: Workaround overlinking warnings
-@REM copy %SP_DIR%\simtk\openmm\_openmm* %LIBRARY_BIN% || goto :error
-@REM copy %LIBRARY_LIB%\OpenMM* %LIBRARY_BIN% || goto :error
-@REM copy %LIBRARY_LIB%\plugins\OpenMM* %LIBRARY_BIN% || goto :error
-
 :: Better location for examples
 mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
@@ -38,8 +33,6 @@ if "%with_test_suite%"=="true" (
     find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
     robocopy python\tests\ %LIBRARY_PREFIX%\share\openmm\tests\python
     if %errorlevel% GTR 1 goto :error
-    dir %LIBRARY_PREFIX%\share\openmm\tests
-    dir %LIBRARY_PREFIX%\share\openmm\tests\python
 )
 
 

@@ -103,5 +103,4 @@ if [[ "$with_test_suite" == "true" ]]; then
     fi
     find . -name "Test*" -perm +0111 -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
     cp -r python/tests $PREFIX/share/openmm/tests/python
-    ls -alhr $PREFIX/share/openmm/tests
 fi
