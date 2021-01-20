@@ -32,10 +32,13 @@ python:
 - 3.6.* *_cpython
 target_platform:
 - linux-64
+with_test_suite:
+- 'false'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - cuda_compiler_version
+- - cdt_name
+  - cuda_compiler_version
   - docker_image
 - - numpy
   - python

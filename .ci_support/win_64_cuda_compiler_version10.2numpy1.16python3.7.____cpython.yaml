@@ -24,6 +24,8 @@ python:
 - 3.7.* *_cpython
 target_platform:
 - win-64
+with_test_suite:
+- 'false'
 zip_keys:
 - - numpy
   - python
