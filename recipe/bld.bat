@@ -28,9 +28,6 @@ jom -j %NUMBER_OF_PROCESSORS% PythonInstall || goto :error
 mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
 
-:: Now we can get rid of .git to slim down the build artifacts
-rmdir /S /Q %SRC_DIR%/.git
-
 if "%with_test_suite%"=="true" (
     mkdir %LIBRARY_PREFIX%\share\openmm\tests\ || goto :error
     find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
