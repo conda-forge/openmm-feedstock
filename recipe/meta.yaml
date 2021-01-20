@@ -43,7 +43,7 @@ requirements:
     - jom  # [win]
     # needed for Python wrappers
     - doxygen
-{% if with_test_suite %}
+{% if with_test_suite == 'true' %}
     - conda-build  # [osx]
     - m2-findutils  # [win]
     - m2-coreutils  # [win]
@@ -78,7 +78,7 @@ requirements:
 test:
   requires:
     - pocl  # [linux]
-{% if with_test_suite %}
+{% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
 {% endif %}
@@ -86,7 +86,7 @@ test:
     - simtk
     - simtk.openmm
   commands:
-{% if with_test_suite %}
+{% if with_test_suite == 'true' %}
 ## This is the full test suite we run in CI
 {% if target_platform.startswith(('linux', 'osx')) %}
     - |
