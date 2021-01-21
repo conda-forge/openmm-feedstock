@@ -33,7 +33,7 @@ python:
 target_platform:
 - linux-64
 with_test_suite:
-- 'true'
+- 'false'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
