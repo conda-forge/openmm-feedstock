@@ -53,7 +53,7 @@ python -c "from simtk.openmm.version import git_revision; r = git_revision; asse
 :: Run the full test suite, if requested
 if "%with_test_suite%"=="true" (
     SETLOCAL EnableDelayedExpansion
-
+    @echo off
     cd %LIBRARY_PREFIX%\share\openmm\tests
 
     :: Start with C++ tests
@@ -66,7 +66,7 @@ if "%with_test_suite%"=="true" (
             if not "x!testexe:Cuda=!"=="x!testexe!"   ( set skiptest=yes )
             if not "x!testexe:OpenCL=!"=="x!testexe!" ( set skiptest=yes )
         )
-        if not defined skiptest (
+        if not "!skiptest!"=="yes" (
             set /a count=!count!+1
             echo;
             echo #!count!: !testexe!
@@ -86,7 +86,7 @@ if "%with_test_suite%"=="true" (
         echo !summary!
         exit /b !exitcode!
     )
-
+    @echo on
     :: Python unit tests
     cd python
     python -m pytest -v -n %CPU_COUNT% || goto :error
