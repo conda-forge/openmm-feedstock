@@ -37,7 +37,6 @@ python benchmark.py --test=rf --seconds=10 --platform=CPU || goto :error
 if "%CI%"=="" (
     python benchmark.py --test=rf --seconds=10 --platform=CUDA  || goto :error
     python benchmark.py --test=rf --seconds=10 --platform=OpenCL  || goto :error
-
 )
 
 :: Check version metadata looks ok
