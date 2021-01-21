@@ -57,25 +57,22 @@ if "%with_test_suite%"=="true" (
     cd %LIBRARY_PREFIX%\share\openmm\tests
 
     :: Start with C++ tests
+    if not "%CI%"=="" (
+        del /Q /F TestCuda* TestOpenCL*
+    )
     set count=0
     set exitcode=0
     set summary=
     FOR %%F IN ( Test* ) do (
         set testexe=%%~F
-        if not "%CI%"=="" (
-            if not "x!testexe:Cuda=!"=="x!testexe!"   ( set skiptest=yes )
-            if not "x!testexe:OpenCL=!"=="x!testexe!" ( set skiptest=yes )
-        )
-        if not "!skiptest!"=="yes" (
-            set /a count=!count!+1
-            echo;
-            echo #!count!: !testexe!
-            .\!testexe!
-            set thisexitcode=!errorlevel!
-            set summary=!summary!
-            if not "!thisexitcode!"=="0" ( set "summary=!summary!#!count! !testexe!\n!" )
-            set /a exitcode=!exitcode!+!thisexitcode!
-        )
+        set /a count=!count!+1
+        echo;
+        echo #!count!: !testexe!
+        .\!testexe!
+        set thisexitcode=!errorlevel!
+        set summary=!summary!
+        if not "!thisexitcode!"=="0" ( set "summary=!summary!#!count! !testexe!\n!" )
+        set /a exitcode=!exitcode!+!thisexitcode!
     )
     if not "!exitcode!"=="0" (
         echo;
