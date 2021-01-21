@@ -2,6 +2,5 @@ opencl_impl:  # [osx]
 - apple  # [osx]
 - khronos  # [osx]
 with_test_suite:
-- true
-# - true  # [arm64]
-# - false # [not arm64]
+- true   # [arm64]
+- false  # [not arm64]
