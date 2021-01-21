@@ -1,5 +1,9 @@
 @echo on
 
+:: Are we running on CI? CONFIG is defined for the whole Azure pipeline
+:: and we are bringing it in through `script_env` in meta.yaml
+if not "%CONFIG%"=="" set CI=True
+
 :: Existence tests
 if not exist %LIBRARY_LIB%/OpenMM.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1
