@@ -28,8 +28,8 @@ build:
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
   script:
-    - env with_test_suite={{ with_test_suite }} ./build_openmm.sh      # [unix]
-    - set with_test_suite={{ with_test_suite }} && .\build_openmm.bat  # [win]
+    - env with_test_suite={{ with_test_suite }}    {{ RECIPE_DIR }}/build_openmm.sh      # [unix]
+    - set with_test_suite={{ with_test_suite }} && {{ RECIPE_DIR }}\build_openmm.bat  # [win]
 
 requirements:
   build:
