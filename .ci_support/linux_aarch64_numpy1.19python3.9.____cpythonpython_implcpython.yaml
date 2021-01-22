@@ -1,15 +1,25 @@
+BUILD:
+- aarch64-conda_cos7-linux-gnu
 c_compiler:
-- vs2017
+- gcc
+c_compiler_version:
+- '7'
+cdt_arch:
+- aarch64
+cdt_name:
+- cos7
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
-cuda_compiler:
-- nvcc
 cuda_compiler_version:
-- '10.0'
+- None
 cxx_compiler:
-- vs2017
+- gxx
+cxx_compiler_version:
+- '7'
+docker_image:
+- quay.io/condaforge/linux-anvil-aarch64
 fftw:
 - '3'
 numpy:
@@ -25,8 +35,10 @@ python:
 python_impl:
 - cpython
 target_platform:
-- win-64
+- linux-aarch64
 zip_keys:
-- - numpy
-  - python
+- - c_compiler_version
+  - cxx_compiler_version
+- - python
+  - numpy
   - python_impl
