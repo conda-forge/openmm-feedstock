@@ -1,9 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
-# Make sure version and revision match according to the GitHub release!
-{% set revision = "b49b82efb5a253a7c891ca084b3370e181de2ea3" %}
-
-{% set build = 4 %}
+{% set build = 5 %}
 
 package:
   name: {{ name }}
@@ -13,6 +10,8 @@ source:
   # pre-rc
   git_url: https://github.com/openmm/{{ name }}.git
   git_rev: {{ version }}
+  patches:  # [arm64]
+    - osx_arm64.patch  # [arm64]
 
 build:
   number: {{ build }}
@@ -20,6 +19,8 @@ build:
   track_features:  # make khronos low priority
     - openmm_opencl_khronos  # [osx and (opencl_impl == 'khronos')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  script_env:
+    - CONFIG
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -27,6 +28,11 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython                                 # [build_platform != target_platform]
+    - numpy                                  # [build_platform != target_platform]
+    - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
@@ -34,6 +40,13 @@ requirements:
     - cmake
     - make  # [unix]
     - jom  # [win]
+    # needed for Python wrappers
+    - doxygen
+{% if with_test_suite == 'true' %}
+    - conda-build  # [osx]
+    - m2-findutils  # [win]
+    - m2-coreutils  # [win]
+{% endif %}
 
   host:
     - python
@@ -43,8 +56,6 @@ requirements:
     - lxml
     - numpy
     - cython
-    # needed for Python wrappers
-    - doxygen 1.8.14
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
@@ -65,51 +76,15 @@ requirements:
 
 test:
   requires:
+    - git
     - pocl  # [linux]
+{% if with_test_suite == 'true' %}
+    - pytest
+    - pytest-xdist
+{% endif %}
   imports:
     - simtk
     - simtk.openmm
-  commands:
-    ## Are the key libraries built?
-    # Existence tests Unix
-    - test -f $PREFIX/lib/libOpenMM$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMPME$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [unix]
-    - test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT  # [linux64 or ppc64le]
-    - test -f $PREFIX/lib/plugins/libOpenMMCudaCompiler$SHLIB_EXT  # [linux64 or ppc64le]
-    # Existence tests Windows
-    - if not exist %LIBRARY_LIB%/OpenMM.lib exit 1  # [win]
-    - if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1  # [win]
-    - if not exist %LIBRARY_LIB%/plugins/OpenMMPME.lib exit 1  # [win]
-    - if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1  # [win]
-    - if not exist %LIBRARY_LIB%/plugins/OpenMMCUDA.lib exit 1  # [win]
-    - if not exist %LIBRARY_LIB%/plugins/OpenMMCudaCompiler.lib exit 1  # [win]
-
-    ## Do they work properly?
-    # Debug silent errors in plugin loading
-    - python -c "import simtk.openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
-    # Check that hardcoded library path was correctly replaced by conda-build
-    - python -c "import os, simtk.openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'"
-
-    # Check all platforms
-    - python -m simtk.testInstallation
-    # Linux64 / PPC see all 4 platforms, but CUDA is not usable because there's no GPU there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 4, f'n_platforms ({n}) != 4'"  # [linux64 or ppc64le]
-    # Windows will only see 2 because the driver nvcuda.dll is missing and that throws a 126 error
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 2, f'n_platforms ({n}) != 2'"  # [win]
-    # MacOS / ARM only see 3 because CUDA is not available there
-    - python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == 3, f'n_platforms ({n}) != 3'"  # [osx or aarch64]
-
-    # Run a small MD
-    - cd ${CONDA_PREFIX}/share/openmm/examples  # [unix]
-    - cd %LIBRARY_PREFIX%/share/openmm/examples  # [win]
-    - python benchmark.py --test=rf --seconds=10 --platform=Reference
-    - python benchmark.py --test=rf --seconds=10 --platform=CPU
-
-    # Check version metadata looks ok
-    - python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert '{{ version }}' in (v, v+'.0'), v + '!={{ version }}'"
-    - python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '{{ revision }}', r + '!={{ revision }}'"
 
 about:
   home: http://openmm.org

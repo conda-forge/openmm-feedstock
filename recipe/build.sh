@@ -1,6 +1,15 @@
 #!/bin/bash
 
-CMAKE_FLAGS="-DCMAKE_INSTALL_PREFIX=${PREFIX} -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release"
+set -ex
+
+
+CMAKE_FLAGS="${CMAKE_ARGS} -DCMAKE_INSTALL_PREFIX=${PREFIX} -DCMAKE_BUILD_TYPE=Release"
+if [[ "$with_test_suite" == "true" ]]; then
+    CMAKE_FLAGS+=" -DBUILD_TESTING=ON -DOPENMM_BUILD_OPENCL_TESTS=ON"
+else
+    CMAKE_FLAGS+=" -DBUILD_TESTING=OFF"
+fi
+
 
 if [[ "$target_platform" == linux* ]]; then
     # CFLAGS
@@ -8,30 +17,23 @@ if [[ "$target_platform" == linux* ]]; then
     MINIMAL_CFLAGS+=" -O3 -ldl"
     CFLAGS+=" $MINIMAL_CFLAGS"
     CXXFLAGS+=" $MINIMAL_CFLAGS"
-    LDFLAGS+=" $LDPATHFLAGS"
-
-    # Use GCC
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=$CC -DCMAKE_CXX_COMPILER=$CXX"
 
     # CUDA is enabled in these platforms
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
-        # CUDA_HOME is defined by nvcc metapackage
+        # # CUDA_HOME is defined by nvcc metapackage
         CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
-        # From: https://github.com/floydhub/dl-docker/issues/59
-        CMAKE_FLAGS+=" -DCMAKE_LIBRARY_PATH=${CUDA_HOME}/lib64/stubs"
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
+        # shadow some CMAKE_ARGS bits that interfere with CUDA detection
+        CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
     fi
 
     # OpenCL ICD
-    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include/"
+    CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
     CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
 
 elif [[ "$target_platform" == osx* ]]; then
-    CMAKE_FLAGS+=" -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT}"
-    CMAKE_FLAGS+=" -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++"
-    CMAKE_FLAGS+=" -DCMAKE_OSX_DEPLOYMENT_TARGET=${MACOSX_DEPLOYMENT_TARGET}"
     if [[ "$opencl_impl" == khronos ]]; then
         CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
         CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
@@ -48,6 +50,8 @@ fi
 CMAKE_FLAGS+=" -DFFTW_INCLUDES=${PREFIX}/include/"
 CMAKE_FLAGS+=" -DFFTW_LIBRARY=${PREFIX}/lib/libfftw3f${SHLIB_EXT}"
 CMAKE_FLAGS+=" -DFFTW_THREADS_LIBRARY=${PREFIX}/lib/libfftw3f_threads${SHLIB_EXT}"
+# Disambiguate swig location
+CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 
 # Build in subdirectory and install.
 mkdir -p build
@@ -64,3 +68,41 @@ mv ${PREFIX}/examples ${PREFIX}/share/openmm/
 for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
     ln -s $lib ${PREFIX}/lib/$(basename $lib) || true
 done
+
+if [[ "$target_platform" == osx-arm64 ]]; then
+
+msg="
+You are using an experimental build of OpenMM v${PKG_VERSION}.
+This is NOT SUITABLE for production!
+It has not been properly tested on this platform and we cannot guarantee it provides accurate results.
+"
+
+mkdir -p "${PREFIX}/etc/conda/activate.d"
+cat > "${PREFIX}/etc/conda/activate.d/${PKG_NAME}_activate.sh" <<EOF
+echo "
+! ! ! Warning ! ! !
+$msg
+"
+EOF
+
+cat >> "${SP_DIR}/simtk/__init__.py" <<EOF
+import warnings
+warnings.warn("""$msg""")
+EOF
+
+fi
+
+if [[ "$with_test_suite" == "true" ]]; then
+    mkdir -p ${PREFIX}/share/openmm/tests/
+    # BSD find vs GNU find: -executable is only available in GNU find
+    # +0111 is somehow equivalent in BSD, but that's not compatible in GNU
+    # so we use different commands for each...
+    if [[ "$target_platform" == osx* ]]; then
+        find . -name "Test*" -perm +0111 -type f \
+            -exec python $RECIPE_DIR/patch_osx_tests.py "{}" \; \
+            -exec cp "{}" $PREFIX/share/openmm/tests/ \;
+    else
+        find . -name "Test*" -executable -type f -exec cp "{}" $PREFIX/share/openmm/tests/ \;
+    fi
+    cp -r python/tests $PREFIX/share/openmm/tests/python
+fi

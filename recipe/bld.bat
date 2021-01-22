@@ -3,6 +3,12 @@ cd build
 
 set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
+if "%with_test_suite%"=="true" (
+    set "CMAKE_FLAGS=-DBUILD_TESTING=ON  -DOPENMM_BUILD_CUDA_TESTS=ON  -DOPENMM_BUILD_OPENCL_TESTS=ON"
+) else (
+    set "CMAKE_FLAGS=-DBUILD_TESTING=OFF -DOPENMM_BUILD_CUDA_TESTS=OFF -DOPENMM_BUILD_OPENCL_TESTS=OFF"
+)
+
 cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
@@ -10,21 +16,24 @@ cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCUDA_TOOLKIT_ROOT_DIR="%CUDA_TOOLKIT_ROOT_DIR%" ^
     -DOPENCL_INCLUDE_DIR="%LIBRARY_INC%" ^
     -DOPENCL_LIBRARY="%LIBRARY_LIB%\opencl.lib" ^
-    -DBUILD_TESTING=OFF ^
+    %CMAKE_FLAGS% ^
     || goto :error
 
 jom -j %NUMBER_OF_PROCESSORS% || goto :error
 jom -j %NUMBER_OF_PROCESSORS% install || goto :error
 jom -j %NUMBER_OF_PROCESSORS% PythonInstall || goto :error
 
-:: Workaround overlinking warnings
-@REM copy %SP_DIR%\simtk\openmm\_openmm* %LIBRARY_BIN% || goto :error
-@REM copy %LIBRARY_LIB%\OpenMM* %LIBRARY_BIN% || goto :error
-@REM copy %LIBRARY_LIB%\plugins\OpenMM* %LIBRARY_BIN% || goto :error
-
 :: Better location for examples
 mkdir %LIBRARY_PREFIX%\share\openmm || goto :error
 move %LIBRARY_PREFIX%\examples %LIBRARY_PREFIX%\share\openmm || goto :error
+
+if "%with_test_suite%"=="true" (
+    mkdir %LIBRARY_PREFIX%\share\openmm\tests\ || goto :error
+    find . -name "Test*" -type f -exec cp "{}" %LIBRARY_PREFIX%\share\openmm\tests\ ; || goto :error
+    robocopy /E python\tests\ %LIBRARY_PREFIX%\share\openmm\tests\python
+    if %errorlevel% GTR 1 ( exit /b %errorlevel% )
+)
+
 
 goto :EOF
 
