@@ -2,5 +2,6 @@ opencl_impl:  # [osx]
 - apple  # [osx]
 - khronos  # [osx]
 with_test_suite:
+# FIXME: we are also enabling this for pypy builds, but manually
 - true   # [arm64]
 - false  # [not arm64]
