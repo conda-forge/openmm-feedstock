@@ -3,10 +3,10 @@ set -ex
 with_cuda="no"
 
 # Existence tests
-test -f $PREFIX/lib/libOpenMM$SHLIB_EXT  # [unix]
-test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT  # [unix]
-test -f $PREFIX/lib/plugins/libOpenMMPME$SHLIB_EXT  # [unix]
-test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT  # [unix]
+test -f $PREFIX/lib/libOpenMM$SHLIB_EXT
+test -f $PREFIX/lib/plugins/libOpenMMCPU$SHLIB_EXT
+test -f $PREFIX/lib/plugins/libOpenMMPME$SHLIB_EXT
+test -f $PREFIX/lib/plugins/libOpenMMOpenCL$SHLIB_EXT
 if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
     with_cuda="yes"
     test -f $PREFIX/lib/plugins/libOpenMMCUDA$SHLIB_EXT
