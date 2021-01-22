@@ -1,8 +1,8 @@
 {% set name = "openmm" %}
 {% set version = "7.5.0" %}
 {% set build = 5 %}
-{% set with_test_suite = "true" %}}   # [arm64 or python_impl == 'pypy']
-{% set with_test_suite = "false" %}}  # [not (arm64 or python_impl == 'pypy')]
+{% set with_test_suite = "true" %}   # [arm64 or python_impl == 'pypy']
+{% set with_test_suite = "false" %}  # [not (arm64 or python_impl == 'pypy')]
 
 package:
   name: {{ name }}
