@@ -12,7 +12,7 @@ source:
   # pre-rc
   git_url: https://github.com/openmm/{{ name }}.git
   git_rev: {{ version }}
-  patches:  # [arm64]
+  patches:
     - osx_arm64.patch  # [arm64]
     - deterministic-impropers.patch
 
