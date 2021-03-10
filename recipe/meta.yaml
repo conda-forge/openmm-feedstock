@@ -84,8 +84,7 @@ test:
     - pytest-xdist
 {% endif %}
   imports:
-    - simtk
-    - simtk.openmm
+    - openmm
 
 about:
   home: http://openmm.org

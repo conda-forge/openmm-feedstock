@@ -20,7 +20,7 @@ python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, 
 python -c "import os, openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'"
 
 # Check all platforms
-python -m simtk.testInstallation
+python -m openmm.testInstallation
 if [[ $with_cuda == yes ]]; then
     # Linux64 / PPC see all 4 platforms, but CUDA is not usable because there's no GPU there
     n_platforms=4

@@ -19,7 +19,7 @@ python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, 
 python -c "import os, openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'" || goto :error
 
 :: Check all platforms
-python -m simtk.testInstallation
+python -m openmm.testInstallation
 
 :: On CI, Windows will only see 2 platforms because the driver nvcuda.dll is missing and that throws a 126 error
 :: We expect that people running this locally will have Nvidia properly installed, so they should all platforms (4)
