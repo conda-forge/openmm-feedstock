@@ -42,9 +42,9 @@ if [[ -z ${CI-} ]]; then
 fi
 
 # Check version metadata looks ok
-python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert \"$PKG_VERSION\" in (v, v+'.0'), v + \"!=$PKG_VERSION\""
-git_revision=$(git ls-remote https://github.com/openmm/openmm.git $PKG_VERSION | awk '{ print $1}')
-python -c "from openmm.version import git_revision; r = git_revision; assert r == \"$git_revision\", r + \"!=$git_revision\""
+# python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert \"$PKG_VERSION\" in (v, v+'.0'), v + \"!=$PKG_VERSION\""
+# git_revision=$(git ls-remote https://github.com/openmm/openmm.git $PKG_VERSION | awk '{ print $1}')
+# python -c "from openmm.version import git_revision; r = git_revision; assert r == \"$git_revision\", r + \"!=$git_revision\""
 
 if [[ $with_test_suite == "true" ]]; then
     cd $PREFIX/share/openmm/tests

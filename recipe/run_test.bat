@@ -40,9 +40,9 @@ if "%CI%"=="" (
 )
 
 :: Check version metadata looks ok
-python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
-for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do set "git_revision=%%a" || goto :error
-python -c "from openmm.version import git_revision; r = git_revision; assert r == '%git_revision%', r + '!=%git_revision%'" || goto :error
+@REM python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
+@REM for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do set "git_revision=%%a" || goto :error
+@REM python -c "from openmm.version import git_revision; r = git_revision; assert r == '%git_revision%', r + '!=%git_revision%'" || goto :error
 
 
 (set \n=^
