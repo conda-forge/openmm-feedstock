@@ -1,5 +1,4 @@
-About openmm
-============
+# About openmm
 
 Home: http://openmm.org
 
@@ -21,10 +20,7 @@ from your own code. It provides a combination of extreme flexibility
 codes. OpenMM is MIT licensed with some LGPL portions (CUDA and OpenCL
 platforms).
 
-
-Current build status
-====================
-
+# Current build status
 
 <table><tr>
     <td>Drone</td>
@@ -34,7 +30,7 @@ Current build status
       </a>
     </td>
   </tr>
-    
+
   <tr>
     <td>Azure</td>
     <td>
@@ -159,7 +155,63 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_cuda_compiler_version11.0numpy1.16python3.7.____cpythonpython_implcpython</td>
+              <td>linux_64_cuda_compiler_version11.1numpy1.16python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.1numpy1.16python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.1numpy1.16python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.1numpy1.16python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.1numpy1.16python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.1numpy1.16python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.2numpy1.16python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.2numpy1.16python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.2numpy1.16python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.2numpy1.16python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.2numpy1.16python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.2numpy1.16python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_cuda_compiler_version9.2numpy1.16python3.6.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=linux&configuration=linux_64_cuda_compiler_version11.0numpy1.16python3.7.____cpythonpython_implcpython" alt="variant">
@@ -466,6 +518,62 @@ Current build status
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython" alt="variant">
                 </a>
               </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.1numpy1.16python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.1numpy1.16python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.1numpy1.16python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.1numpy1.16python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.1numpy1.16python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.1numpy1.16python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.2numpy1.16python3.6.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.2numpy1.16python3.6.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.2numpy1.16python3.7.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.2numpy1.16python3.7.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.2numpy1.16python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.2numpy1.16python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=master">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=master&jobName=win&configuration=win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython" alt="variant">
+                </a>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -474,15 +582,13 @@ Current build status
   </tr>
 </table>
 
-Current release info
-====================
+# Current release info
 
-| Name | Downloads | Version | Platforms |
-| --- | --- | --- | --- |
+| Name                                                                                                             | Downloads                                                                                                             | Version                                                                                                             | Platforms                                                                                                             |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-openmm-green.svg)](https://anaconda.org/conda-forge/openmm) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/openmm.svg)](https://anaconda.org/conda-forge/openmm) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/openmm.svg)](https://anaconda.org/conda-forge/openmm) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/openmm.svg)](https://anaconda.org/conda-forge/openmm) |
 
-Installing openmm
-=================
+# Installing openmm
 
 Installing `openmm` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
@@ -502,16 +608,14 @@ It is possible to list all of the versions of `openmm` available on your platfor
 conda search openmm --channel conda-forge
 ```
 
-
-About conda-forge
-=================
+# About conda-forge
 
 [![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-NumFOCUS-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](http://numfocus.org)
 
 conda-forge is a community-led conda channel of installable packages.
 In order to provide high-quality builds, the process has been automated into the
 conda-forge GitHub organization. The conda-forge organization contains one repository
-for each of the installable packages. Such a repository is known as a *feedstock*.
+for each of the installable packages. Such a repository is known as a _feedstock_.
 
 A feedstock is made up of a conda recipe (the instructions on what and how to build
 the package) and the necessary configurations for automatic building using freely
@@ -523,26 +627,23 @@ packages to the [conda-forge](https://anaconda.org/conda-forge)
 
 To manage the continuous integration and simplify feedstock maintenance
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
-Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
-this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
+Using the `conda-forge.yml` within this repository, it is possible to re-render all of
+this feedstock's supporting files (e.g. the CI configuration files) with `conda smithy rerender`.
 
 For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
-Terminology
-===========
+# Terminology
 
 **feedstock** - the conda recipe (raw material), supporting scripts and CI configuration.
 
 **conda-smithy** - the tool which helps orchestrate the feedstock.
-                   Its primary use is in the construction of the CI ``.yml`` files
-                   and simplify the management of *many* feedstocks.
+Its primary use is in the construction of the CI `.yml` files
+and simplify the management of _many_ feedstocks.
 
 **conda-forge** - the place where the feedstock and smithy live and work to
-                  produce the finished article (built conda distributions)
+produce the finished article (built conda distributions)
 
-
-Updating openmm-feedstock
-=========================
+# Updating openmm-feedstock
 
 If you would like to improve the openmm recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
@@ -557,16 +658,15 @@ on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
- * If the version of a package **is not** being increased, please add or increase
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
- * If the version of a package **is** being increased, please remember to return
-   the [``build/number``](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
-   back to 0.
 
-Feedstock Maintainers
-=====================
+- If the version of a package **is not** being increased, please add or increase
+  the [`build/number`](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string).
+- If the version of a package **is** being increased, please remember to return
+  the [`build/number`](https://conda.io/docs/user-guide/tasks/build-packages/define-metadata.html#build-number-and-string)
+  back to 0.
 
-* [@jaimergp](https://github.com/jaimergp/)
-* [@jchodera](https://github.com/jchodera/)
-* [@peastman](https://github.com/peastman/)
+# Feedstock Maintainers
 
+- [@jaimergp](https://github.com/jaimergp/)
+- [@jchodera](https://github.com/jchodera/)
+- [@peastman](https://github.com/peastman/)
