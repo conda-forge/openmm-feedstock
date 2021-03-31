@@ -41,10 +41,15 @@ if [[ -z ${CI-} ]]; then
     fi
 fi
 
-# Check version metadata looks ok
-python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert \"$PKG_VERSION\" in (v, v+'.0'), v + \"!=$PKG_VERSION\""
-git_revision=$(git ls-remote https://github.com/openmm/openmm.git $PKG_VERSION | awk '{ print $1}')
-python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == \"$git_revision\", r + \"!=$git_revision\""
+# Check version metadata looks ok, only for final releases, RCs are not checked!
+if [[ ${PKG_VERSION} != *"rc"* ]]; then
+    python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert \"$PKG_VERSION\" in (v, v+'.0'), v + \"!=$PKG_VERSION\""
+    git_revision=$(git ls-remote https://github.com/openmm/openmm.git $PKG_VERSION | awk '{ print $1}')
+    python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == \"$git_revision\", r + \"!=$git_revision\""
+else
+    echo "!!! WARNING !!!"
+    echo "This is a release candidate build ($PKG_VERSION). Please check versions and git hashes manually!"
+fi
 
 if [[ $with_test_suite == "true" ]]; then
     cd $PREFIX/share/openmm/tests
