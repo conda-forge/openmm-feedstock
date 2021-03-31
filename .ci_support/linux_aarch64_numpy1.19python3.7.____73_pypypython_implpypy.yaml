@@ -3,7 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-- '7'
+- '9'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -11,13 +11,13 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler_version:
 - None
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '7'
+- '9'
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
 fftw:

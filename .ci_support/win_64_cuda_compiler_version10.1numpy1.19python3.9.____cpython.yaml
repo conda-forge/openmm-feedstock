@@ -3,9 +3,7 @@ c_compiler:
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge main
-cuda_compiler:
-- nvcc
+- conda-forge openmm_rc
 cuda_compiler_version:
 - '10.1'
 cxx_compiler:
@@ -27,6 +25,6 @@ python_impl:
 target_platform:
 - win-64
 zip_keys:
-- - numpy
-  - python
+- - python
+  - numpy
   - python_impl
