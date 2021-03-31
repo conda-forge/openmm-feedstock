@@ -13,6 +13,9 @@ channel_targets:
 #   cdt_name
 #   docker_image
 
+cuda_compiler:  # [linux64 or win]
+  - nvcc        # [linux64 or win]
+
 cuda_compiler_version:
   - None
 
