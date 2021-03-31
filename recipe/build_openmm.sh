@@ -69,7 +69,7 @@ for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
     ln -s $lib ${PREFIX}/lib/$(basename $lib) || true
 done
 
-if [[ "$target_platform" == osx-arm64 ]]; then
+if [[ "$target_platform" == osx-arm64 || "$python_impl" == pypy ]]; then
 
 msg="
 You are using an experimental build of OpenMM v${PKG_VERSION}.
