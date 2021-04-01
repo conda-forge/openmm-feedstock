@@ -46,8 +46,8 @@ if x%PKG_VERSION:rc=%==x%PKG_VERSION% (
     for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do set "git_revision=%%a" || goto :error
     python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '%git_revision%', r + '!=%git_revision%'" || goto :error
 ) else (
-    echo !!! WARNING !!!
-    echo This is a release candidate build (%PKG_VERSION%). Please check versions and git hashes manually!
+    echo "!!! WARNING !!!"
+    echo "This is a release candidate build (%PKG_VERSION%). Please check versions and git hashes manually!"
 )
 
 
