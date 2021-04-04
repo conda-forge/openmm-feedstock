@@ -8,29 +8,35 @@ jobs:
     vmImage: macOS-10.15
   strategy:
     matrix:
-      osx_64_numpy1.16opencl_implapplepython3.6.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implapplepython3.6.____cpython
+      osx_64_numpy1.17opencl_implapplepython3.6.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implapplepython3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.16opencl_implapplepython3.7.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implapplepython3.7.____cpython
+      osx_64_numpy1.17opencl_implapplepython3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implapplepython3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.16opencl_implapplepython3.8.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implapplepython3.8.____cpython
+      osx_64_numpy1.17opencl_implapplepython3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implapplepython3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.16opencl_implkhronospython3.6.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implkhronospython3.6.____cpython
+      osx_64_numpy1.17opencl_implkhronospython3.6.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implkhronospython3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.16opencl_implkhronospython3.7.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implkhronospython3.7.____cpython
+      osx_64_numpy1.17opencl_implkhronospython3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implkhronospython3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.16opencl_implkhronospython3.8.____cpython:
-        CONFIG: osx_64_numpy1.16opencl_implkhronospython3.8.____cpython
+      osx_64_numpy1.17opencl_implkhronospython3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.17opencl_implkhronospython3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.19opencl_implapplepython3.9.____cpython:
-        CONFIG: osx_64_numpy1.19opencl_implapplepython3.9.____cpython
+      osx_64_numpy1.19opencl_implapplepython3.7.____73_pypypython_implpypy:
+        CONFIG: osx_64_numpy1.19opencl_implapplepython3.7.____73_pypypython_implpypy
         UPLOAD_PACKAGES: 'True'
-      osx_64_numpy1.19opencl_implkhronospython3.9.____cpython:
-        CONFIG: osx_64_numpy1.19opencl_implkhronospython3.9.____cpython
+      osx_64_numpy1.19opencl_implapplepython3.9.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.19opencl_implapplepython3.9.____cpythonpython_implcpython
+        UPLOAD_PACKAGES: 'True'
+      osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypypython_implpypy:
+        CONFIG: osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypypython_implpypy
+        UPLOAD_PACKAGES: 'True'
+      osx_64_numpy1.19opencl_implkhronospython3.9.____cpythonpython_implcpython:
+        CONFIG: osx_64_numpy1.19opencl_implkhronospython3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
       osx_arm64_opencl_implapplepython3.8.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.8.____cpython

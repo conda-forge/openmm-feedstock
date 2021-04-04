@@ -7,7 +7,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge/label/rust_dev,conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler_version:
 - None
 cxx_compiler:
@@ -30,12 +30,13 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
+python_impl:
+- cpython
 target_platform:
 - osx-arm64
-with_test_suite:
-- 'true'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - python
   - numpy
+  - python_impl

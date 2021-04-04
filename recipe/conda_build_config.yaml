@@ -1,9 +1,9 @@
 opencl_impl:  # [osx]
-- apple  # [osx]
-- khronos  # [osx]
-with_test_suite:
-- true   # [arm64]
-- false  # [not arm64]
+- apple       # [osx]
+- khronos     # [osx]
+channel_targets:
+- conda-forge openmm_rc
+
 
 # When adding or removing cuda versions, make sure that the following entries are "zipped";
 # e.g. each entry in cuda_compiler_version must have a matching entry in the other keys,
@@ -12,6 +12,9 @@ with_test_suite:
 #   cudnn
 #   cdt_name
 #   docker_image
+
+cuda_compiler:  # [linux64 or win]
+  - nvcc        # [linux64 or win]
 
 cuda_compiler_version:
   - None
