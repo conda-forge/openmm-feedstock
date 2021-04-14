@@ -2,7 +2,7 @@
 {% set version = "7.5.1rc2" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
-{% set with_test_suite = "true" %}  # [arm64 or python_impl == 'pypy']
+{% set with_test_suite = "true" %}  # [(osx and arm64) or (python_impl == 'pypy' and not aarch64)]
 
 package:
   name: {{ name }}
