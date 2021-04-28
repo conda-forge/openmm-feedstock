@@ -1,13 +1,13 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '7'
 cdt_name:
 - cos6
 channel_sources:
 - conda-forge,defaults
 channel_targets:
-- conda-forge openmm_rc
+- conda-forge main
 cuda_compiler:
 - nvcc
 cuda_compiler_version:
@@ -15,7 +15,7 @@ cuda_compiler_version:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '9'
+- '7'
 docker_image:
 - quay.io/condaforge/linux-anvil-cuda:9.2
 fftw:
