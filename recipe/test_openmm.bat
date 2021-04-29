@@ -43,8 +43,9 @@ if "%CI%"=="" (
 :: See https://stackoverflow.com/a/7006016/3407590 for substring checks in CMD
 if x%PKG_VERSION:rc=%==x%PKG_VERSION% (
     python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
-    for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do set "git_revision=%%a" || goto :error
-    python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '%git_revision%', r + '!=%git_revision%'" || goto :error
+    for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do (
+        python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '%%a', r + '!=%%a'" || goto :error
+    )
 ) else (
     echo "!!! WARNING !!!"
     echo "This is a release candidate build (%PKG_VERSION%). Please check versions and git hashes manually!"
