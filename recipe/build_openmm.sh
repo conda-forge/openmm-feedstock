@@ -32,6 +32,7 @@ if [[ "$target_platform" == linux* ]]; then
     if [[ "$target_platform" == linux-ppc64le ]];
         ldconfig -v 2>/dev/null | grep -v ^$'\t' | cut -f1 -d":" >> /etc/ld.so.conf.d/cuda-10.2.conf
         echo "$CUDA_HOME/compat"                                 >> /etc/ld.so.conf.d/cuda-10.2.conf
+        ldconfig
     fi
     # OpenCL ICD
     CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
