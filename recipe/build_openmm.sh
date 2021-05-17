@@ -28,12 +28,7 @@ if [[ "$target_platform" == linux* ]]; then
         # shadow some CMAKE_ARGS bits that interfere with CUDA detection
         CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
     fi
-    # REMOVE BEFORE MERGE
-    if [[ "$target_platform" == linux-ppc64le ]]; then
-        ldconfig -v 2>/dev/null | grep -v ^$'\t' | cut -f1 -d":" >> /etc/ld.so.conf.d/cuda-10.2.conf
-        echo "$CUDA_HOME/compat"                                 >> /etc/ld.so.conf.d/cuda-10.2.conf
-        ldconfig
-    fi
+
     # OpenCL ICD
     CMAKE_FLAGS+=" -DOPENCL_INCLUDE_DIR=${PREFIX}/include"
     CMAKE_FLAGS+=" -DOPENCL_LIBRARY=${PREFIX}/lib/libOpenCL${SHLIB_EXT}"
