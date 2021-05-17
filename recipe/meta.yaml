@@ -20,6 +20,7 @@ build:
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
+    - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
