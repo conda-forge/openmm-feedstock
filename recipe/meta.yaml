@@ -81,7 +81,6 @@ test:
   requires:
     - git
     - pocl      # [linux64 or (linux and aarch64)]
-    - oclgrind  # [linux and ppc64le]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
