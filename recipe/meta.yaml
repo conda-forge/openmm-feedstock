@@ -80,7 +80,7 @@ requirements:
 test:
   requires:
     - git
-    - pocl      # [linux64 or (linux and aarch64)]
+    - pocl      # [linux]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
