@@ -85,7 +85,8 @@ $msg
 "
 EOF
 
-cat >> "${SP_DIR}/simtk/__init__.py" <<EOF
+cat >> "${SP_DIR}/openmm/__init__.py" <<EOF
+
 import warnings
 warnings.warn("""$msg""")
 EOF

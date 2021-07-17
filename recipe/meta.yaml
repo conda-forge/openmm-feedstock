@@ -89,8 +89,7 @@ test:
     - test_openmm.sh   # [unix]
     - test_openmm.bat  # [win]
   imports:
-    - simtk
-    - simtk.openmm
+    - openmm
   commands:
     - env with_test_suite={{ with_test_suite }} bash test_openmm.sh   # [unix]
     - set with_test_suite={{ with_test_suite }} && .\test_openmm.bat  # [win]

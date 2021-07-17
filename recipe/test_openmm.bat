@@ -13,13 +13,13 @@ if not exist %LIBRARY_LIB%/plugins/OpenMMCUDA.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMCudaCompiler.lib exit 1
 
 :: Debug silent errors in plugin loading
-python -c "import simtk.openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
+python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
 
 :: Check that hardcoded library path was correctly replaced by conda-build
-python -c "import os, simtk.openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'" || goto :error
+python -c "import os, openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'" || goto :error
 
 :: Check all platforms
-python -m simtk.testInstallation
+python -m openmm.testInstallation
 
 :: On CI, Windows will only see 2 platforms because the driver nvcuda.dll is missing and that throws a 126 error
 :: We expect that people running this locally will have Nvidia properly installed, so they should all platforms (4)
@@ -28,7 +28,7 @@ if "%CI%"=="" (
 ) else (
     set n_platforms=2
 )
-python -c "from simtk.openmm import Platform as P; n = P.getNumPlatforms(); assert n == %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
+python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n == %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
 
 :: Now let's run a little MD
 cd %LIBRARY_PREFIX%/share/openmm/examples
@@ -42,9 +42,9 @@ if "%CI%"=="" (
 :: Check version metadata looks ok, only for final releases, RCs are not checked!
 :: See https://stackoverflow.com/a/7006016/3407590 for substring checks in CMD
 if x%PKG_VERSION:rc=%==x%PKG_VERSION% (
-    python -c "from simtk.openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
+    python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
     for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do (
-        python -c "from simtk.openmm.version import git_revision; r = git_revision; assert r == '%%a', r + '!=%%a'" || goto :error
+        python -c "from openmm.version import git_revision; r = git_revision; assert r == '%%a', r + '!=%%a'" || goto :error
     )
 ) else (
     echo "!!! WARNING !!!"
