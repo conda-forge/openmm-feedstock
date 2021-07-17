@@ -11,45 +11,59 @@ jobs:
       osx_64_numpy1.17opencl_implapplepython3.6.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implapplepython3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implapplepyt_hdf4858f8c9
       osx_64_numpy1.17opencl_implapplepython3.7.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implapplepython3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implapplepyt_hf9eeb1bbeb
       osx_64_numpy1.17opencl_implapplepython3.8.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implapplepython3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implapplepyt_hb5014ba035
       osx_64_numpy1.17opencl_implkhronospython3.6.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implkhronospython3.6.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implkhronosp_hb7ee55c8ab
       osx_64_numpy1.17opencl_implkhronospython3.7.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implkhronospython3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implkhronosp_hd513ab3f74
       osx_64_numpy1.17opencl_implkhronospython3.8.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.17opencl_implkhronospython3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.17opencl_implkhronosp_h05337ddc02
       osx_64_numpy1.19opencl_implapplepython3.7.____73_pypypython_implpypy:
         CONFIG: osx_64_numpy1.19opencl_implapplepython3.7.____73_pypypython_implpypy
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.19opencl_implapplepyt_hc6e9692698
       osx_64_numpy1.19opencl_implapplepython3.9.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.19opencl_implapplepython3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.19opencl_implapplepyt_hfec7d524ea
       osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypypython_implpypy:
         CONFIG: osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypypython_implpypy
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.19opencl_implkhronosp_hf535bdc224
       osx_64_numpy1.19opencl_implkhronospython3.9.____cpythonpython_implcpython:
         CONFIG: osx_64_numpy1.19opencl_implkhronospython3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_64_numpy1.19opencl_implkhronosp_ha77ac2cf75
       osx_arm64_opencl_implapplepython3.8.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_arm64_opencl_implapplepython3.8.____cpython
       osx_arm64_opencl_implapplepython3.9.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_arm64_opencl_implapplepython3.9.____cpython
       osx_arm64_opencl_implkhronospython3.8.____cpython:
         CONFIG: osx_arm64_opencl_implkhronospython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_arm64_opencl_implkhronospython3_h4b612e3b76
       osx_arm64_opencl_implkhronospython3.9.____cpython:
         CONFIG: osx_arm64_opencl_implkhronospython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG_NAME: osx_arm64_opencl_implkhronospython3_h9a3867e632
   timeoutInMinutes: 360
 
   steps:
@@ -66,8 +80,7 @@ jobs:
       FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
       STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
   - script: |
-        full_artifact_name="conda_artifacts_$(build.BuildId)_$(CONFIG)"
-        artifact_name=`echo "$full_artifact_name" | head -c 80`
+        artifact_name="conda_artifacts_$(build.BuildId)_$(SHORT_CONFIG_NAME)"
         echo "##vso[task.setVariable variable=ARTIFACT_NAME]$artifact_name"
         if [ -d /Users/runner/miniforge3/conda-bld/ ]; then
           echo "##vso[task.setVariable variable=CONDA_BLD_DIR_EXISTS]true"
