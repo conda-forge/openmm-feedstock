@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
-{% set version = "7.5.1" %}
-{% set build = 1 %}
+{% set version = "7.6beta" %}
+{% set build = 0 %}
 {% set with_test_suite = "false" %}
 {% set with_test_suite = "true" %}  # [(osx and arm64) or (python_impl == 'pypy' and linux64)]
 
@@ -10,7 +10,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "7.5.1"  # current head of 7.5_branch
+  git_rev: "7.6.0beta"
 
 build:
   number: {{ build }}
