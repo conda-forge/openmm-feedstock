@@ -2,7 +2,7 @@
 {% set version = "7.6beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
-{% set with_test_suite = "true" %}  # [(osx and arm64) or (python_impl == 'pypy' and linux64)]
+{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
 package:
   name: {{ name }}
@@ -80,6 +80,7 @@ requirements:
 test:
   requires:
     - git
+    - pocl      # [linux]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
