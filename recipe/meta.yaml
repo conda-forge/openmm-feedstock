@@ -1,8 +1,8 @@
 {% set name = "openmm" %}
-{% set version = "7.5.1rc2" %}
+{% set version = "7.6beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
-{% set with_test_suite = "true" %}  # [(osx and arm64) or (python_impl == 'pypy' and not aarch64)]
+{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
 package:
   name: {{ name }}
@@ -10,7 +10,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: a9cfd7fb9343e21c3dbb76e377c721328830a3ee  # current head of 7.5_branch
+  git_rev: "7.6.0beta"
 
 build:
   number: {{ build }}
@@ -20,6 +20,7 @@ build:
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
+    - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
     - "*/libcuda.*"    # [linux64 or ppc64le]
     - "*/libOpenCL.*"  # [unix]
@@ -79,7 +80,7 @@ requirements:
 test:
   requires:
     - git
-    - pocl  # [linux]
+    - pocl      # [linux]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
@@ -88,8 +89,7 @@ test:
     - test_openmm.sh   # [unix]
     - test_openmm.bat  # [win]
   imports:
-    - simtk
-    - simtk.openmm
+    - openmm
   commands:
     - env with_test_suite={{ with_test_suite }} bash test_openmm.sh   # [unix]
     - set with_test_suite={{ with_test_suite }} && .\test_openmm.bat  # [win]
