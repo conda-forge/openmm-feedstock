@@ -8,8 +8,6 @@ channel_sources:
 - nvidia,conda-forge,defaults
 channel_targets:
 - conda-forge openmm_rc
-cuda_compiler:
-- cuda-nvcc
 cuda_compiler_version:
 - '11.3'
 cxx_compiler:
