@@ -57,6 +57,7 @@ requirements:
     - cuda-cudart
     - libcufft
     - cuda-nvrtc
+    - cuda-nvprof
     - python
     - fftw
     - swig
