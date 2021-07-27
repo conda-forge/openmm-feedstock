@@ -53,7 +53,6 @@ CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
-exit 1
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
