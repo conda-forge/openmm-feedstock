@@ -78,6 +78,9 @@ requirements:
     - ocl-icd-system  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     - ocl_icd_wrapper_apple      # [osx and opencl_impl == 'khronos']
+    # CUDA
+    - libcufft
+    - cuda-nvrtc
 
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
