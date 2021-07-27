@@ -17,7 +17,8 @@ build:
   string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
   track_features:  # make khronos low priority
     - openmm_opencl_khronos  # [osx and (opencl_impl == 'khronos')]
-  skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  # skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  skip: true  # [cuda_compiler_version != '11.3' or not linux64 or py != 36]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
@@ -38,7 +39,8 @@ requirements:
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
+    - cuda-nvcc  # [linux64 or ppc64le or win]
+    - cuda-cudart
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -52,6 +54,9 @@ requirements:
 {% endif %}
 
   host:
+    - cuda-cudart
+    - libcufft
+    - cuda-nvrtc
     - python
     - fftw
     - swig
