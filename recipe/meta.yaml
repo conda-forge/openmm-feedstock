@@ -18,7 +18,7 @@ build:
   track_features:  # make khronos low priority
     - openmm_opencl_khronos  # [osx and (opencl_impl == 'khronos')]
   # skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
-  skip: true  # [cuda_compiler_version != '11.3' or not linux64 or py != 36]
+  skip: true  # [cuda_compiler_version != '11.3' or not (linux64 or win) or py != 36]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
@@ -40,7 +40,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cuda-nvcc  # [linux64 or ppc64le or win]
-    - cuda-cudart
+    - cuda-cudart  # [linux64 or ppc64le or win]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -54,10 +54,10 @@ requirements:
 {% endif %}
 
   host:
-    - cuda-cudart
-    - libcufft
-    - cuda-nvrtc
-    - cuda-nvprof
+    - cuda-cudart  # [linux64 or ppc64le or win]
+    - libcufft  # [linux64 or ppc64le or win]
+    - cuda-nvrtc  # [linux64 or ppc64le or win]
+    - cuda-nvprof  # [linux64 or ppc64le or win]
     - python
     - fftw
     - swig
@@ -79,8 +79,8 @@ requirements:
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     - ocl_icd_wrapper_apple      # [osx and opencl_impl == 'khronos']
     # CUDA
-    - libcufft
-    - cuda-nvrtc
+    - libcufft  # [linux64 or ppc64le or win]
+    - cuda-nvrtc  # [linux64 or ppc64le or win]
 
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
