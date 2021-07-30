@@ -3,8 +3,6 @@
 mkdir build
 cd build
 
-set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
-
 if "%with_test_suite%"=="true" (
     set "CMAKE_FLAGS=-DBUILD_TESTING=ON  -DOPENMM_BUILD_CUDA_TESTS=ON  -DOPENMM_BUILD_OPENCL_TESTS=ON"
 ) else (
@@ -14,8 +12,7 @@ if "%with_test_suite%"=="true" (
 cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
-    -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
-    -DCUDA_TOOLKIT_ROOT_DIR="%CUDA_TOOLKIT_ROOT_DIR%" ^
+    -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%;%PREFIX%" ^
     -DOPENCL_INCLUDE_DIR="%LIBRARY_INC%" ^
     -DOPENCL_LIBRARY="%LIBRARY_LIB%\opencl.lib" ^
     %CMAKE_FLAGS% ^
