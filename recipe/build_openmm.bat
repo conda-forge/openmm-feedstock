@@ -13,6 +13,8 @@ cmake.exe .. -G "NMake Makefiles JOM" ^
     -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
     -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%;%PREFIX%" ^
+    -DCUDAToolkit_ROOT="%PREFIX%" ^
+    -DCMAKE_INCLUDE_PATH="%PREFIX%/include" ^
     -DOPENCL_INCLUDE_DIR="%LIBRARY_INC%" ^
     -DOPENCL_LIBRARY="%LIBRARY_LIB%\opencl.lib" ^
     %CMAKE_FLAGS% ^
