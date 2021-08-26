@@ -15,8 +15,8 @@ source:
 build:
   number: {{ build }}
   string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
-  track_features:  # make khronos low priority
-    - openmm_opencl_khronos  # [osx and (opencl_impl == 'khronos')]
+  track_features:  # make Apple OpenCL low priority
+    - openmm_opencl_apple # [osx and (opencl_impl == 'apple')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
