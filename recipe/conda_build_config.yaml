@@ -2,7 +2,7 @@ opencl_impl:  # [osx]
 - apple       # [osx]
 - khronos     # [osx]
 channel_targets:
-- conda-forge openmm_rc
+- conda-forge main
 
 
 # When adding or removing cuda versions, make sure that the following entries are "zipped";
