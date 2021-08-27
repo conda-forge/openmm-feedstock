@@ -69,29 +69,6 @@ for lib in ${PREFIX}/lib/plugins/*${SHLIB_EXT}; do
     ln -s $lib ${PREFIX}/lib/$(basename $lib) || true
 done
 
-if [[ "$target_platform" == osx-arm64 || "$python_impl" == pypy ]]; then
-
-msg="
-You are using an experimental build of OpenMM v${PKG_VERSION}.
-This is NOT SUITABLE for production!
-It has not been properly tested on this platform and we cannot guarantee it provides accurate results.
-"
-
-mkdir -p "${PREFIX}/etc/conda/activate.d"
-cat > "${PREFIX}/etc/conda/activate.d/${PKG_NAME}_activate.sh" <<EOF
-echo "
-! ! ! Warning ! ! !
-$msg
-"
-EOF
-
-cat >> "${SP_DIR}/simtk/__init__.py" <<EOF
-import warnings
-warnings.warn("""$msg""")
-EOF
-
-fi
-
 if [[ "$with_test_suite" == "true" ]]; then
     mkdir -p ${PREFIX}/share/openmm/tests/
     # BSD find vs GNU find: -executable is only available in GNU find
