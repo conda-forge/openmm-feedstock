@@ -40,6 +40,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cuda-nvcc
+    - cuda-cudart
+    - libcufft
+    - cuda-nvrtc
+    - cuda-nvprof
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -60,6 +64,11 @@ requirements:
     - lxml
     - numpy
     - cython
+    - cuda-nvcc
+    - cuda-cudart
+    - libcufft
+    - cuda-nvrtc
+    - cuda-nvprof
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
@@ -73,6 +82,9 @@ requirements:
     - ocl-icd-system  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     - ocl_icd_wrapper_apple      # [osx and opencl_impl == 'khronos']
+    # CUDA
+    - libcufft  # [linux64 or ppc64le or win]
+    - cuda-nvrtc  # [linux64 or ppc64le or win]
 
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
