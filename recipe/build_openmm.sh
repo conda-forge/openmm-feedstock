@@ -20,13 +20,13 @@ if [[ "$target_platform" == linux* ]]; then
 
     # CUDA is enabled in these platforms
     if [[ "$target_platform" == linux-64 || "$target_platform" == linux-ppc64le ]]; then
-        # # CUDA_HOME is defined by nvcc metapackage
-        CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
+        # # CUDA_HOME is defined by nvcc metapackage
+        # CMAKE_FLAGS+=" -DCUDA_TOOLKIT_ROOT_DIR=${CUDA_HOME}"
         # CUDA tests won't build, disable for now
         # See https://github.com/openmm/openmm/issues/2258#issuecomment-462223634
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
-        # shadow some CMAKE_ARGS bits that interfere with CUDA detection
-        CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
+        # # shadow some CMAKE_ARGS bits that interfere with CUDA detection
+        # CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
     fi
 
     # OpenCL ICD
