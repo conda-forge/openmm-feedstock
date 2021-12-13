@@ -5,33 +5,9 @@
 jobs:
 - job: win
   pool:
-    vmImage: vs2017-win2016
+    vmImage: windows-2019
   strategy:
     matrix:
-      win_64_cuda_compiler_version10.0numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.0numpy1.18python3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.0num_h2d2929bc98
-      win_64_cuda_compiler_version10.0numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.0numpy1.18python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.0num_h698b3452ff
-      win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.0numpy1.19python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.0num_h7c1758cd72
-      win_64_cuda_compiler_version10.1numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.1numpy1.18python3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.1num_he147d19996
-      win_64_cuda_compiler_version10.1numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.1numpy1.18python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.1num_hbad67a741d
-      win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.1numpy1.19python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.1num_hfadabf2ae9
       win_64_cuda_compiler_version10.2numpy1.18python3.7.____cpython:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.18python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -80,7 +56,6 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h9e115fdbdb
-    maxParallel: 14
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
