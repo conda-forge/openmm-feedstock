@@ -52,7 +52,7 @@ requirements:
 {% endif %}
 
   host:
-    - python
+    - python <3.9.9  # [win]
     - fftw
     - swig
     - pthread-stubs
@@ -64,7 +64,7 @@ requirements:
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
 
   run:
-    - python
+    - python <3.9.9  # [win]
     - fftw
     - numpy
     # OpenCL ICD
