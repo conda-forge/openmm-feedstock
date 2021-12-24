@@ -76,9 +76,7 @@ requirements:
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
-{% if py == 39 %}
-    - python <3.9.9  # [win]
-{% endif %}
+    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
