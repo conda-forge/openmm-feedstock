@@ -72,11 +72,11 @@ requirements:
     - ocl-icd-system  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     - ocl_icd_wrapper_apple      # [osx and opencl_impl == 'khronos']
-    - python <3.9.9  # [py == 39 and win]
 
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
+    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
