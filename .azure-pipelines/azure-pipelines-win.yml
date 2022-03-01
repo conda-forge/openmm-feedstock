@@ -20,10 +20,6 @@ jobs:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hfd851b7be2
-      win_64_cuda_compiler_version10.2numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.2numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_head2835e54
       win_64_cuda_compiler_version11.0numpy1.18python3.7.____cpython:
         CONFIG: win_64_cuda_compiler_version11.0numpy1.18python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -36,10 +32,6 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h70fffaf8a7
-      win_64_cuda_compiler_version11.0numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.0numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_ha8f0746982
       win_64_cuda_compiler_version11.1numpy1.18python3.7.____cpython:
         CONFIG: win_64_cuda_compiler_version11.1numpy1.18python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -52,10 +44,6 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.1num_hceadb1a9ac
-      win_64_cuda_compiler_version11.1numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.1numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h2752598360
       win_64_cuda_compiler_version11.2numpy1.18python3.7.____cpython:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.18python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -68,11 +56,7 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h9e115fdbdb
-      win_64_cuda_compiler_version11.2numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.2numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_had44251dbf
-    maxParallel: 14
+    maxParallel: 11
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -111,10 +95,9 @@ jobs:
 
       condition: contains(variables['CONFIG'], 'vs2008')
       displayName: Patch vs2008 (if needed)
-
     - task: CondaEnvironment@1
       inputs:
-        packageSpecs: 'python=3.9 conda-build conda "conda-forge-ci-setup=3" pip boa' # Optional
+        packageSpecs: 'python=3.9 conda-build conda pip boa conda-forge-ci-setup=3' # Optional
         installOptions: "-c conda-forge"
         updateConda: true
       displayName: Install conda-build and activate environment
