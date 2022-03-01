@@ -20,7 +20,7 @@ python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, 
 python -c "import os, openmm.version as v; print(v.openmm_library_path); assert os.path.isdir(v.openmm_library_path), 'Directory does not exist'"
 
 # Check all platforms
-if [[ "$target_platform" == linux-ppc64le ]]; then
+if [[ "$target_platform" == linux-ppc64le || "$target_platform" == linux-aarch64 ]]; then
     python -m openmm.testInstallation || true  # OpenCL will fail but that's ok
 else
     python -m openmm.testInstallation
