@@ -19,7 +19,7 @@ fftw:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
-- '1.18'
+- '1.19'
 opencl_impl:
 - khronos
 pin_run_as_build:
