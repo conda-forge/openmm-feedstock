@@ -46,7 +46,7 @@ if [[ -z ${CI-} ]]; then  # Run only outside CI, assuming there will be a GPU th
 fi
 
 # Check version metadata looks ok, only for final releases, RCs are not checked!
-if [[ ${PKG_VERSION} != *"rc"* && ${PKG_VERSION} != *"beta"* ]]; then
+if [[ ${PKG_VERSION} != *"rc"* && ${PKG_VERSION} != *"beta"* && ${PKG_VERSION} != *"dev"* ]]; then
     python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert \"$PKG_VERSION\" in (v, v+'.0'), v + \"!=$PKG_VERSION\""
     git_revision=$(git ls-remote https://github.com/openmm/openmm.git $PKG_VERSION | awk '{ print $1}')
     python -c "from openmm.version import git_revision; r = git_revision; assert r == \"$git_revision\", r + \"!=$git_revision\""
