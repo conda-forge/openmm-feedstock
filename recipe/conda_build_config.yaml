@@ -4,4 +4,4 @@ opencl_impl:  # [osx]
 channel_targets:
 - conda-forge openmm_dev
 MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - "10.10"                # [osx and x86_64]
+  - "10.11"                # [osx and x86_64]
