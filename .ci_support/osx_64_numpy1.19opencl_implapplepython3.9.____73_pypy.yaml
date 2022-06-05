@@ -21,7 +21,7 @@ macos_machine:
 numpy:
 - '1.19'
 opencl_impl:
-- khronos
+- apple
 pin_run_as_build:
   fftw:
     max_pin: x
@@ -29,7 +29,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.9.* *_73_pypy
 target_platform:
 - osx-64
 zip_keys:

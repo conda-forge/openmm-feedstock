@@ -8,99 +8,113 @@ jobs:
     vmImage: windows-2019
   strategy:
     matrix:
-      win_64_cuda_compiler_version10.2numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.2numpy1.18python3.7.____cpython
+      win_64_cuda_compiler_version10.2numpy1.19python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_he2b926deb3
-      win_64_cuda_compiler_version10.2numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.2numpy1.18python3.8.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hf580deaa48
+      win_64_cuda_compiler_version10.2numpy1.19python3.8.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.8.____73_pypy
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hf921f21a33
+        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hb25564ad5f
+      win_64_cuda_compiler_version10.2numpy1.19python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hffe94ff147
+      win_64_cuda_compiler_version10.2numpy1.19python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_h5001c44c90
       win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hfd851b7be2
-      win_64_cuda_compiler_version11.0numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.0numpy1.18python3.7.____cpython
+      win_64_cuda_compiler_version11.0numpy1.19python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_hf8be621d26
-      win_64_cuda_compiler_version11.0numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.0numpy1.18python3.8.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h7988b3b7d1
+      win_64_cuda_compiler_version11.0numpy1.19python3.8.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.8.____73_pypy
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h98fac7104a
+        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_ha39b221d19
+      win_64_cuda_compiler_version11.0numpy1.19python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h0b869159d7
+      win_64_cuda_compiler_version11.0numpy1.19python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h966204e8c8
       win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython:
         CONFIG: win_64_cuda_compiler_version11.0numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.0num_h70fffaf8a7
-      win_64_cuda_compiler_version11.1numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.1numpy1.18python3.7.____cpython
+      win_64_cuda_compiler_version11.1numpy1.19python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h9be781f57b
-      win_64_cuda_compiler_version11.1numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.1numpy1.18python3.8.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h360ae9e970
+      win_64_cuda_compiler_version11.1numpy1.19python3.8.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.8.____73_pypy
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h62882df1dc
+        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_hc66db7d79b
+      win_64_cuda_compiler_version11.1numpy1.19python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_ha556998785
+      win_64_cuda_compiler_version11.1numpy1.19python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h3f1b6d1ada
       win_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython:
         CONFIG: win_64_cuda_compiler_version11.1numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.1num_hceadb1a9ac
-      win_64_cuda_compiler_version11.2numpy1.18python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.2numpy1.18python3.7.____cpython
+      win_64_cuda_compiler_version11.2numpy1.19python3.7.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_hea75ba6b7e
-      win_64_cuda_compiler_version11.2numpy1.18python3.8.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.2numpy1.18python3.8.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h377648b46a
+      win_64_cuda_compiler_version11.2numpy1.19python3.8.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.8.____73_pypy
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_hcdbe8cdfc4
+        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h783246fb97
+      win_64_cuda_compiler_version11.2numpy1.19python3.8.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_hc277f77dfb
+      win_64_cuda_compiler_version11.2numpy1.19python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h09c3cc43d8
       win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h9e115fdbdb
-    maxParallel: 11
+    maxParallel: 15
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
 
   steps:
-    - script: |
-        choco install vcpython27 -fdv -y --debug
-      condition: contains(variables['CONFIG'], 'vs2008')
-      displayName: Install vcpython27.msi (if needed)
-
-    # Cygwin's git breaks conda-build. (See https://github.com/conda-forge/conda-smithy-feedstock/pull/2.)
-    # - script: rmdir C:\cygwin /s /q
-    #   continueOnError: true
-
-    - powershell: |
-        Set-PSDebug -Trace 1
-
-        $batchcontent = @"
-        ECHO ON
-        SET vcpython=C:\Program Files (x86)\Common Files\Microsoft\Visual C++ for Python\9.0
-
-        DIR "%vcpython%"
-
-        CALL "%vcpython%\vcvarsall.bat" %*
-        "@
-
-        $batchDir = "C:\Program Files (x86)\Common Files\Microsoft\Visual C++ for Python\9.0\VC"
-        $batchPath = "$batchDir" + "\vcvarsall.bat"
-        New-Item -Path $batchPath -ItemType "file" -Force
-
-        Set-Content -Value $batchcontent -Path $batchPath
-
-        Get-ChildItem -Path $batchDir
-
-        Get-ChildItem -Path ($batchDir + '\..')
-
-      condition: contains(variables['CONFIG'], 'vs2008')
-      displayName: Patch vs2008 (if needed)
-    - task: CondaEnvironment@1
+    - task: PythonScript@0
+      displayName: 'Download Miniforge'
       inputs:
-        packageSpecs: 'python=3.9 conda-build conda pip boa conda-forge-ci-setup=3' # Optional
-        installOptions: "-c conda-forge"
-        updateConda: true
-      displayName: Install conda-build and activate environment
+        scriptSource: inline
+        script: |
+          import urllib.request
+          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
+          path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
+          urllib.request.urlretrieve(url, path)
+
+    - script: |
+        start /wait "" %BUILD_ARTIFACTSTAGINGDIRECTORY%\Miniforge.exe /InstallationType=JustMe /RegisterPython=0 /S /D=C:\Miniforge
+      displayName: Install Miniforge
+
+    - powershell: Write-Host "##vso[task.prependpath]C:\Miniforge\Scripts"
+      displayName: Add conda to PATH
+
+    - script: |
+        call activate base
+        mamba.exe install 'python=3.9' conda-build conda pip boa 'conda-forge-ci-setup=3' -c conda-forge --strict-channel-priority --yes
+      displayName: Install conda-build
 
     - script: set PYTHONUNBUFFERED=1
       displayName: Set PYTHONUNBUFFERED
@@ -119,23 +133,12 @@ jobs:
       displayName: conda-forge build setup
     
 
-    # Special cased version setting some more things!
-    - script: |
-        call activate base
-        conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
-      displayName: Build recipe (vs2008)
-      env:
-        VS90COMNTOOLS: "C:\\Program Files (x86)\\Common Files\\Microsoft\\Visual C++ for Python\\9.0\\VC\\bin"
-        PYTHONUNBUFFERED: 1
-      condition: contains(variables['CONFIG'], 'vs2008')
-
     - script: |
         call activate base
         conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
-      condition: not(contains(variables['CONFIG'], 'vs2008'))
     - script: |
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
