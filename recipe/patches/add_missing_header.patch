@@ -4,7 +4,7 @@
  #ifdef _MSC_VER
  
  #if _MSC_VER < 1800
-+#include <minmax.h>^M
++#include <minmax.h>
  /**
   * We need to define this ourselves, since Visual Studio is missing round() from cmath.
   */
@@ -12,6 +12,6 @@
      return (int) (x+0.5);
  }
  #else
-+#include <minmax.h>^M
++#include <minmax.h>
  #include <cmath>
  #endif  // MSC_VER < 1800
