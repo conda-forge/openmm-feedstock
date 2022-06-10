@@ -7,13 +7,13 @@ channel_targets:
 cuda_compiler:
 - nvcc
 cuda_compiler_version:
-- '11.1'
+- '10.2'
 cxx_compiler:
 - vs2017
 fftw:
 - '3'
 numpy:
-- '1.18'
+- '1.19'
 pin_run_as_build:
   fftw:
     max_pin: x
