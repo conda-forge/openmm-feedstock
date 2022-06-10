@@ -11,6 +11,8 @@ package:
 source:
   git_url: https://github.com/openmm/{{ name }}.git
   git_rev: "9b5cdb464e0878789620f0742a841bd11ec268b5"
+  patches:
+    - patches/add_missing_header.patch
 
 build:
   number: {{ build }}
