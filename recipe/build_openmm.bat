@@ -5,6 +5,11 @@ cd build
 
 set "CUDA_TOOLKIT_ROOT_DIR=%CUDA_PATH:\=/%"
 
+:: define NOMINMAX since openmm headers expect min/max to be functions not macros
+set "CFLAGS=%CFLAGS% -DNOMINMAX"
+set "CXXFLAGS=%CXXFLAGS% -DNOMINMAX"
+
+
 if "%with_test_suite%"=="true" (
     set "CMAKE_FLAGS=-DBUILD_TESTING=ON  -DOPENMM_BUILD_CUDA_TESTS=ON  -DOPENMM_BUILD_OPENCL_TESTS=ON"
 ) else (
