@@ -10,7 +10,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "dd80fb3fdcba6a75803f8e68f444a657fe42d4f5"
+  git_rev: "3d62421b62494d3d3143feedf0d580c74501f92f"
 
 build:
   number: {{ build }}
