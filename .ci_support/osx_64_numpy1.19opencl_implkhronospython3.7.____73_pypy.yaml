@@ -1,21 +1,21 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
+MACOSX_SDK_VERSION:
+- '10.12'
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '13'
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler_version:
 - None
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
-fftw:
-- '3'
+- '13'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:
@@ -23,8 +23,6 @@ numpy:
 opencl_impl:
 - khronos
 pin_run_as_build:
-  fftw:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
