@@ -7,24 +7,20 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler:
 - nvcc
 cuda_compiler_version:
-- '11.2'
+- '11.1'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '10'
 docker_image:
-- quay.io/condaforge/linux-anvil-cuda:11.2
-fftw:
-- '3'
+- quay.io/condaforge/linux-anvil-cuda:11.1
 numpy:
-- '1.18'
+- '1.19'
 pin_run_as_build:
-  fftw:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
