@@ -3,7 +3,7 @@ c_compiler:
 c_compiler_version:
 - '7'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
@@ -18,13 +18,9 @@ cxx_compiler_version:
 - '7'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-cuda:10.2
-fftw:
-- '3'
 numpy:
 - '1.19'
 pin_run_as_build:
-  fftw:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x

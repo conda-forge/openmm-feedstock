@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "7.7.0rc1" %}
+{% set version = "8.0.0beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 {% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -10,14 +10,14 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "92c6dbb"
+  git_rev: "1dac981"
 
 build:
   number: {{ build }}
   string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
   track_features:  # make Apple OpenCL low priority
     - openmm_opencl_apple  # [osx and (opencl_impl == 'apple')]
-  skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
@@ -40,6 +40,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - sysroot_linux-64 2.17  # [linux64]
     - cmake
     - make  # [unix]
     - jom  # [win]
@@ -53,7 +54,6 @@ requirements:
 
   host:
     - python
-    - fftw
     - swig
     - pthread-stubs
     - lxml
@@ -65,7 +65,6 @@ requirements:
 
   run:
     - python
-    - fftw
     - numpy
     # OpenCL ICD
     - ocl-icd  # [linux]
@@ -76,6 +75,7 @@ requirements:
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
+    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
@@ -117,6 +117,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mikemhenry
     - jchodera
     - jaimergp
     - peastman
