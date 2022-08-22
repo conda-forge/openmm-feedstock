@@ -5,13 +5,9 @@
 jobs:
 - job: osx
   pool:
-    vmImage: macOS-10.15
+    vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_numpy1.19opencl_implapplepython3.7.____73_pypy:
-        CONFIG: osx_64_numpy1.19opencl_implapplepython3.7.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.19opencl_implapplepyt_h7ce1dd6275
       osx_64_numpy1.19opencl_implapplepython3.7.____cpython:
         CONFIG: osx_64_numpy1.19opencl_implapplepython3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -24,10 +20,6 @@ jobs:
         CONFIG: osx_64_numpy1.19opencl_implapplepython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.19opencl_implapplepyt_h080fe3a7ef
-      osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypy:
-        CONFIG: osx_64_numpy1.19opencl_implkhronospython3.7.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.19opencl_implkhronosp_h8f345da7e0
       osx_64_numpy1.19opencl_implkhronospython3.7.____cpython:
         CONFIG: osx_64_numpy1.19opencl_implkhronospython3.7.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -72,7 +64,6 @@ jobs:
         CONFIG: osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.21opencl_implkhron_h1b495945d9
-    maxParallel: 15
   timeoutInMinutes: 360
 
   steps:
