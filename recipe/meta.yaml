@@ -12,6 +12,7 @@ source:
   git_url: https://github.com/openmm/{{ name }}.git
   git_rev: "48664a1f1a4490a4dabc277757545ac070e7b898"
 
+
 build:
   number: {{ build }}
   string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
