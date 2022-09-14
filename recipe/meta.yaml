@@ -2,7 +2,7 @@
 {% set version = "8.0.0beta" %}
 {% set build = 1 %}
 {% set with_test_suite = "false" %}
-{% set with_test_suite = "true" %}  # [(osx and arm64)]
+#{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
 package:
   name: {{ name }}
