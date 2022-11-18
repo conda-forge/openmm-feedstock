@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '12'
+- '14'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,7 +13,7 @@ cuda_compiler_version:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '12'
+- '14'
 fftw:
 - '3'
 macos_machine:
@@ -23,8 +23,6 @@ numpy:
 opencl_impl:
 - apple
 pin_run_as_build:
-  fftw:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
