@@ -8,10 +8,6 @@ jobs:
     vmImage: windows-2019
   strategy:
     matrix:
-      win_64_cuda_compiler_version10.2numpy1.20python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version10.2numpy1.20python3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_hfc643c3897
       win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -20,10 +16,10 @@ jobs:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version10.2num_h7476aa8f61
-      win_64_cuda_compiler_version11.0numpy1.20python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.0numpy1.20python3.7.____cpython
+      win_64_cuda_compiler_version10.2numpy1.21python3.10.____cpython:
+        CONFIG: win_64_cuda_compiler_version10.2numpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_hd67af91c65
+        SHORT_CONFIG: win_64_cuda_compiler_version10.2num_head2835e54
       win_64_cuda_compiler_version11.0numpy1.20python3.8.____cpython:
         CONFIG: win_64_cuda_compiler_version11.0numpy1.20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -32,10 +28,10 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.0numpy1.20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.0num_hd1d44fb2a7
-      win_64_cuda_compiler_version11.1numpy1.20python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.1numpy1.20python3.7.____cpython
+      win_64_cuda_compiler_version11.0numpy1.21python3.10.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.0numpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h051d91db72
+        SHORT_CONFIG: win_64_cuda_compiler_version11.0num_ha8f0746982
       win_64_cuda_compiler_version11.1numpy1.20python3.8.____cpython:
         CONFIG: win_64_cuda_compiler_version11.1numpy1.20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -44,10 +40,10 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.1numpy1.20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.1num_hd7568089ff
-      win_64_cuda_compiler_version11.2numpy1.20python3.7.____cpython:
-        CONFIG: win_64_cuda_compiler_version11.2numpy1.20python3.7.____cpython
+      win_64_cuda_compiler_version11.1numpy1.21python3.10.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.1numpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h8babf5402e
+        SHORT_CONFIG: win_64_cuda_compiler_version11.1num_h2752598360
       win_64_cuda_compiler_version11.2numpy1.20python3.8.____cpython:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -56,9 +52,14 @@ jobs:
         CONFIG: win_64_cuda_compiler_version11.2numpy1.20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.2num_he8609bbd37
+      win_64_cuda_compiler_version11.2numpy1.21python3.10.____cpython:
+        CONFIG: win_64_cuda_compiler_version11.2numpy1.21python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compiler_version11.2num_had44251dbf
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
+    UPLOAD_TEMP: D:\\tmp
 
   steps:
     - task: PythonScript@0
@@ -80,7 +81,7 @@ jobs:
 
     - script: |
         call activate base
-        mamba.exe install 'python=3.9' conda-build conda pip boa 'conda-forge-ci-setup=3' -c conda-forge --strict-channel-priority --yes
+        mamba.exe install "python=3.9" conda-build conda pip boa conda-forge-ci-setup=3 "py-lief<0.12" -c conda-forge --strict-channel-priority --yes
       displayName: Install conda-build
 
     - script: set PYTHONUNBUFFERED=1
@@ -144,6 +145,9 @@ jobs:
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
         set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
+        set "TEMP=$(UPLOAD_TEMP)"
+        if not exist "%TEMP%\" md "%TEMP%"
+        set "TMP=%TEMP%"
         call activate base
         upload_package --validate --feedstock-name="%FEEDSTOCK_NAME%" .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package

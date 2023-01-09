@@ -8,10 +8,6 @@ jobs:
     vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_numpy1.20opencl_implapplepython3.7.____cpython:
-        CONFIG: osx_64_numpy1.20opencl_implapplepython3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.20opencl_implapplepyt_h54f26464a3
       osx_64_numpy1.20opencl_implapplepython3.8.____cpython:
         CONFIG: osx_64_numpy1.20opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -20,10 +16,6 @@ jobs:
         CONFIG: osx_64_numpy1.20opencl_implapplepython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.20opencl_implapplepyt_h9b669d72c4
-      osx_64_numpy1.20opencl_implkhronospython3.7.____cpython:
-        CONFIG: osx_64_numpy1.20opencl_implkhronospython3.7.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.20opencl_implkhronosp_h4af91d72fb
       osx_64_numpy1.20opencl_implkhronospython3.8.____cpython:
         CONFIG: osx_64_numpy1.20opencl_implkhronospython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
