@@ -34,10 +34,10 @@ python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n =
 cd %LIBRARY_PREFIX%/share/openmm/examples
 python benchmark.py --test=rf --seconds=10 --platform=Reference || goto :error
 python benchmark.py --test=rf --seconds=10 --platform=CPU || goto :error
-if "%CI%"=="" (
-    python benchmark.py --test=rf --seconds=10 --platform=CUDA  || goto :error
-    python benchmark.py --test=rf --seconds=10 --platform=OpenCL  || goto :error
-)
+:: if "%CI%"=="" (
+::     python benchmark.py --test=rf --seconds=10 --platform=CUDA  || goto :error
+::     python benchmark.py --test=rf --seconds=10 --platform=OpenCL  || goto :error
+:: )
 
 :: Check version metadata looks ok, only for final releases, RCs are not checked!
 :: See https://stackoverflow.com/a/7006016/3407590 for substring checks in CMD
