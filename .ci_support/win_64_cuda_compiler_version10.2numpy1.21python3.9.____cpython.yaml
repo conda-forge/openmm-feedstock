@@ -1,9 +1,5 @@
 c_compiler:
-- gcc
-c_compiler_version:
-- '7'
-cdt_name:
-- cos7
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,13 +9,9 @@ cuda_compiler:
 cuda_compiler_version:
 - '10.2'
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '7'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-cuda:10.2
+- vs2019
 numpy:
-- '1.20'
+- '1.21'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -27,12 +19,7 @@ pin_run_as_build:
 python:
 - 3.9.* *_cpython
 target_platform:
-- linux-64
+- win-64
 zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
-  - cuda_compiler_version
-  - cdt_name
-  - docker_image
 - - python
   - numpy
