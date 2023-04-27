@@ -12,10 +12,18 @@ jobs:
         CONFIG: osx_64_numpy1.21opencl_implapplepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.21opencl_implapplepyt_hec2dc01049
+      osx_64_numpy1.21opencl_implapplepython3.8.____73_pypy:
+        CONFIG: osx_64_numpy1.21opencl_implapplepython3.8.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.21opencl_implapplepyt_hc4dea6ffbc
       osx_64_numpy1.21opencl_implapplepython3.8.____cpython:
         CONFIG: osx_64_numpy1.21opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.21opencl_implapplepyt_hd833b31c24
+      osx_64_numpy1.21opencl_implapplepython3.9.____73_pypy:
+        CONFIG: osx_64_numpy1.21opencl_implapplepython3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.21opencl_implapplepyt_h20fa28fbeb
       osx_64_numpy1.21opencl_implapplepython3.9.____cpython:
         CONFIG: osx_64_numpy1.21opencl_implapplepython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -24,10 +32,18 @@ jobs:
         CONFIG: osx_64_numpy1.21opencl_implkhronospython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.21opencl_implkhronosp_h0bc6add440
+      osx_64_numpy1.21opencl_implkhronospython3.8.____73_pypy:
+        CONFIG: osx_64_numpy1.21opencl_implkhronospython3.8.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.21opencl_implkhronosp_h00dd9e3c2c
       osx_64_numpy1.21opencl_implkhronospython3.8.____cpython:
         CONFIG: osx_64_numpy1.21opencl_implkhronospython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.21opencl_implkhronosp_h7d94f8b7f1
+      osx_64_numpy1.21opencl_implkhronospython3.9.____73_pypy:
+        CONFIG: osx_64_numpy1.21opencl_implkhronospython3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.21opencl_implkhronosp_h5df1f61da2
       osx_64_numpy1.21opencl_implkhronospython3.9.____cpython:
         CONFIG: osx_64_numpy1.21opencl_implkhronospython3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -72,7 +88,7 @@ jobs:
         CONFIG: osx_arm64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.23opencl_implkhron_h95b3c2c1e1
-    maxParallel: 14
+    maxParallel: 12
   timeoutInMinutes: 360
 
   steps:
