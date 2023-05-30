@@ -1,11 +1,11 @@
-About openmm
-============
+About openmm-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openmm-feedstock/blob/main/LICENSE.txt)
 
 Home: http://openmm.org
 
 Package license: LGPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/openmm-feedstock/blob/main/LICENSE.txt)
 
 Summary: A high performance toolkit for molecular simulation.
 
@@ -40,248 +40,276 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.20python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.20python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.21python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.1cxx_compiler_version10numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.1cxx_compiler_version10python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.20python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.20python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.21python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compiler_version11.2cxx_compiler_version10numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version10cuda_compilernvcccuda_compiler_version11.2cxx_compiler_version10python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.20python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.20python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.21python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compiler_version10.2cxx_compiler_version7numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version7cuda_compilernvcccuda_compiler_version10.2cxx_compiler_version7python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.20python3.8.____cpython</td>
+              <td>linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.20python3.9.____cpython</td>
+              <td>linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.21python3.10.____cpython</td>
+              <td>linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compiler_version11.0cxx_compiler_version9numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_c_compiler_version9cuda_compilernvcccuda_compiler_version11.0cxx_compiler_version9python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_numpy1.20python3.8.____cpython</td>
+              <td>linux_aarch64_python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_numpy1.20python3.9.____cpython</td>
+              <td>linux_aarch64_python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_numpy1.21python3.10.____cpython</td>
+              <td>linux_aarch64_python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20opencl_implapplepython3.8.____cpython</td>
+              <td>osx_64_opencl_implapplepython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20opencl_implapplepython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implapplepython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20opencl_implapplepython3.9.____cpython</td>
+              <td>osx_64_opencl_implapplepython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20opencl_implapplepython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implapplepython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20opencl_implkhronospython3.8.____cpython</td>
+              <td>osx_64_opencl_implapplepython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20opencl_implkhronospython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implapplepython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20opencl_implkhronospython3.9.____cpython</td>
+              <td>osx_64_opencl_implkhronospython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20opencl_implkhronospython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implkhronospython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.21opencl_implapplepython3.10.____cpython</td>
+              <td>osx_64_opencl_implkhronospython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.21opencl_implapplepython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implkhronospython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.21opencl_implkhronospython3.10.____cpython</td>
+              <td>osx_64_opencl_implkhronospython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.21opencl_implkhronospython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implkhronospython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20opencl_implapplepython3.8.____cpython</td>
+              <td>osx_arm64_opencl_implapplepython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20opencl_implapplepython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implapplepython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20opencl_implapplepython3.9.____cpython</td>
+              <td>osx_arm64_opencl_implapplepython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20opencl_implapplepython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implapplepython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20opencl_implkhronospython3.8.____cpython</td>
+              <td>osx_arm64_opencl_implapplepython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20opencl_implkhronospython3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implapplepython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20opencl_implkhronospython3.9.____cpython</td>
+              <td>osx_arm64_opencl_implkhronospython3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20opencl_implkhronospython3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implkhronospython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.21opencl_implapplepython3.10.____cpython</td>
+              <td>osx_arm64_opencl_implkhronospython3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.21opencl_implapplepython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implkhronospython3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython</td>
+              <td>osx_arm64_opencl_implkhronospython3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_opencl_implkhronospython3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version10.2python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version10.2python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version10.2numpy1.20python3.9.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version10.2python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version10.2numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version10.2python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.0numpy1.20python3.8.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version10.2python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.0numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version10.2python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.0numpy1.20python3.9.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.0python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.0numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.1numpy1.20python3.8.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.0python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.1numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.0python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.1numpy1.20python3.9.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.0python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.1numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.2numpy1.20python3.8.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.1python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.2numpy1.20python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.1python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_cuda_compiler_version11.2numpy1.20python3.9.____cpython</td>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.1python3.8.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version11.2numpy1.20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.1python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.1python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.1python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.2python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.2python3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.2python3.8.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.2python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_cuda_compilernvcccuda_compiler_version11.2python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compilernvcccuda_compiler_version11.2python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
