@@ -72,7 +72,7 @@ jobs:
         CONFIG: osx_arm64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.23opencl_implkhron_h95b3c2c1e1
-    maxParallel: 14
+    maxParallel: 13
   timeoutInMinutes: 360
 
   steps:
