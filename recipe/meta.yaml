@@ -44,6 +44,7 @@ requirements:
     - libcufft-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
     - cuda-profiler-api  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
     - cuda-nvrtc-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
     - cmake
     - make  # [unix]
     - jom  # [win]
