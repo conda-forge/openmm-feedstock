@@ -88,6 +88,7 @@ test:
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
+    - cuda-driver-dev
 {% endif %}
   files:
     - test_openmm.sh   # [unix]
