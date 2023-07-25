@@ -8,54 +8,6 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_haf08d34a6c
-      win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.8.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hfe7a52bbf0
-      win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.9.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.21python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_haa33201757
-      win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.23python3.11.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version10.2numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h25cb928d7d
-      win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hf722fc4d4c
-      win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.8.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hc0d6eef905
-      win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.9.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.21python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hd792481253
-      win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.23python3.11.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.0numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h110e4f89c0
-      win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.10.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hec6c249969
-      win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.8.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hbb840aa2ba
-      win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.9.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.21python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hee5c33d711
-      win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.23python3.11.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.1numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h270edabcfb
       win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.21python3.10.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -72,7 +24,6 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.23python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h275b1247ec
-    maxParallel: 13
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
@@ -122,7 +73,10 @@ jobs:
         if EXIST LICENSE.txt (
           copy LICENSE.txt "recipe\\recipe-scripts-license.txt"
         )
-        conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables
+        if NOT [%HOST_PLATFORM%] == [%BUILD_PLATFORM%] (
+          set "EXTRA_CB_OPTIONS=%EXTRA_CB_OPTIONS% --no-test"
+        )
+        conda.exe mambabuild "recipe" -m .ci_support\%CONFIG%.yaml --suppress-variables %EXTRA_CB_OPTIONS%
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
