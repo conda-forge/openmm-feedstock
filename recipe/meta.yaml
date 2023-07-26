@@ -86,6 +86,7 @@ test:
     - git
     - pocl      # [linux]
     - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-compat  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
