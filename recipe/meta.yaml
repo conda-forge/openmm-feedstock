@@ -62,6 +62,10 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
+    - libcufft-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-profiler-api  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-nvrtc-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
 
   run:
     - python
@@ -81,6 +85,8 @@ test:
   requires:
     - git
     - pocl      # [linux]
+    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-compat  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
