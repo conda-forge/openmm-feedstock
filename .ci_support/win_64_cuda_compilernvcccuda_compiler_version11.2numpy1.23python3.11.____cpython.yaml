@@ -1,25 +1,17 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
 c_compiler:
-- clang
-c_compiler_version:
-- '15'
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
+cuda_compiler:
+- nvcc
 cuda_compiler_version:
-- None
+- '11.2'
 cxx_compiler:
-- clangxx
-cxx_compiler_version:
-- '15'
-macos_machine:
-- arm64-apple-darwin20.0.0
+- vs2019
 numpy:
 - '1.23'
-opencl_impl:
-- khronos
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -27,10 +19,10 @@ pin_run_as_build:
 python:
 - 3.11.* *_cpython
 target_platform:
-- osx-arm64
+- win-64
 zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
+- - cuda_compiler
+  - cuda_compiler_version
 - - python
   - numpy
   - channel_sources
