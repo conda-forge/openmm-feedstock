@@ -16,6 +16,10 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_he77ef43bcd
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7849157c63
       win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
