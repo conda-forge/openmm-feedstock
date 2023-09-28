@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "8.0.0" %}
-{% set build = 2 %}
+{% set build = 3 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
@@ -79,7 +79,6 @@ requirements:
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
-    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
