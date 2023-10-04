@@ -5,9 +5,10 @@
 jobs:
 - job: win
   pool:
-    vmImage: windows-2019
+    vmImage: windows-2022
   strategy:
     matrix:
+<<<<<<< HEAD
       win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython:
         CONFIG: win_64_cuda_compiler_version10.2numpy1.20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -73,12 +74,38 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version11.2num_h89a25a1b56
     maxParallel: 15
+=======
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.10.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hf70b5c66bb
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.8.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_he77ef43bcd
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7849157c63
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h042162825e
+      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.23python3.11.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.23python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h275b1247ec
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
     UPLOAD_TEMP: D:\\tmp
 
   steps:
+<<<<<<< HEAD
+=======
+
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
     - task: PythonScript@0
       displayName: 'Download Miniforge'
       inputs:
@@ -88,6 +115,7 @@ jobs:
           url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
           path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
           urllib.request.urlretrieve(url, path)
+<<<<<<< HEAD
 
     - script: |
         start /wait "" %BUILD_ARTIFACTSTAGINGDIRECTORY%\Miniforge.exe /InstallationType=JustMe /RegisterPython=0 /S /D=C:\Miniforge
@@ -126,6 +154,28 @@ jobs:
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
+=======
+
+    - script: |
+        start /wait "" %BUILD_ARTIFACTSTAGINGDIRECTORY%\Miniforge.exe /InstallationType=JustMe /RegisterPython=0 /S /D=C:\Miniforge
+      displayName: Install Miniforge
+
+    - powershell: Write-Host "##vso[task.prependpath]C:\Miniforge\Scripts"
+      displayName: Add conda to PATH
+
+    - script: |
+        call ".scripts\run_win_build.bat"
+      displayName: Run Windows build
+      env:
+        PYTHONUNBUFFERED: 1
+        CONFIG: $(CONFIG)
+        CI: azure
+        UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
+        UPLOAD_TEMP: $(UPLOAD_TEMP)
+        BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+        FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+        STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
     - script: |
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
@@ -152,6 +202,7 @@ jobs:
       condition: not(eq(variables.ENV_ARTIFACT_PATH, ''))
       inputs:
         targetPath: $(ENV_ARTIFACT_PATH)
+<<<<<<< HEAD
         artifactName: $(ENV_ARTIFACT_NAME)
     - script: |
         set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
@@ -173,3 +224,6 @@ jobs:
         FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
         STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')), not(eq(variables['Build.Reason'], 'PullRequest')))
+=======
+        artifactName: $(ENV_ARTIFACT_NAME)
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6

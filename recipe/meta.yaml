@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "8.0.0rc2" %}
+{% set version = "8.1.0beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -10,7 +10,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "a780005"
+  git_rev: "432b583"
 
 build:
   number: {{ build }}
@@ -62,10 +62,15 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
+    - libcufft-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-profiler-api  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-nvrtc-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
 
   run:
     - python
     - numpy
+    - scipy
     # OpenCL ICD
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
@@ -75,12 +80,13 @@ requirements:
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
-    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
     - git
     - pocl      # [linux]
+    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    - cuda-compat  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist

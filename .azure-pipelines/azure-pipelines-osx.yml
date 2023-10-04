@@ -8,6 +8,7 @@ jobs:
     vmImage: macOS-11
   strategy:
     matrix:
+<<<<<<< HEAD
       osx_64_numpy1.20opencl_implapplepython3.8.____cpython:
         CONFIG: osx_64_numpy1.20opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -26,11 +27,48 @@ jobs:
         SHORT_CONFIG: osx_64_numpy1.20opencl_implkhronosp_hdda32f648c
       osx_64_numpy1.21opencl_implapplepython3.10.____cpython:
         CONFIG: osx_64_numpy1.21opencl_implapplepython3.10.____cpython
+=======
+      osx_64_numpy1.22opencl_implapplepython3.10.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implapplepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.21opencl_implapplepyt_hec2dc01049
-      osx_64_numpy1.21opencl_implkhronospython3.10.____cpython:
-        CONFIG: osx_64_numpy1.21opencl_implkhronospython3.10.____cpython
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implapplepyt_h0f956ba837
+      osx_64_numpy1.22opencl_implapplepython3.8.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implapplepyt_h20e0aa4206
+      osx_64_numpy1.22opencl_implapplepython3.9.____73_pypy:
+        CONFIG: osx_64_numpy1.22opencl_implapplepython3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implapplepyt_ha41379a729
+      osx_64_numpy1.22opencl_implapplepython3.9.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implapplepython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implapplepyt_h5dd8afa882
+      osx_64_numpy1.22opencl_implkhronospython3.10.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implkhronospython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implkhronosp_h444b95cfd3
+      osx_64_numpy1.22opencl_implkhronospython3.8.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implkhronospython3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implkhronosp_hed4c351a82
+      osx_64_numpy1.22opencl_implkhronospython3.9.____73_pypy:
+        CONFIG: osx_64_numpy1.22opencl_implkhronospython3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implkhronosp_h979267211e
+      osx_64_numpy1.22opencl_implkhronospython3.9.____cpython:
+        CONFIG: osx_64_numpy1.22opencl_implkhronospython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.22opencl_implkhronosp_he95451b8a1
+      osx_64_numpy1.23opencl_implapplepython3.11.____cpython:
+        CONFIG: osx_64_numpy1.23opencl_implapplepython3.11.____cpython
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.23opencl_implapplepyt_hcb355df478
+      osx_64_numpy1.23opencl_implkhronospython3.11.____cpython:
+        CONFIG: osx_64_numpy1.23opencl_implkhronospython3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+<<<<<<< HEAD
         SHORT_CONFIG: osx_64_numpy1.21opencl_implkhronosp_h0bc6add440
       osx_64_numpy1.23opencl_implapplepython3.11.____cpython:
         CONFIG: osx_64_numpy1.23opencl_implapplepython3.11.____cpython
@@ -58,12 +96,37 @@ jobs:
         SHORT_CONFIG: osx_arm64_numpy1.20opencl_implkhron_hbaca95ab19
       osx_arm64_numpy1.21opencl_implapplepython3.10.____cpython:
         CONFIG: osx_arm64_numpy1.21opencl_implapplepython3.10.____cpython
+=======
+        SHORT_CONFIG: osx_64_numpy1.23opencl_implkhronosp_h1b3f6d8cac
+      osx_arm64_numpy1.22opencl_implapplepython3.10.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implapplepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_arm64_numpy1.21opencl_implapple_h0fc8446d3b
-      osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython:
-        CONFIG: osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implapple_h486dba8573
+      osx_arm64_numpy1.22opencl_implapplepython3.8.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implapplepython3.8.____cpython
         UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implapple_h5987b31d88
+      osx_arm64_numpy1.22opencl_implapplepython3.9.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implapplepython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implapple_hbb02a0fadd
+      osx_arm64_numpy1.22opencl_implkhronospython3.10.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implkhronospython3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implkhron_h9f96414b2f
+      osx_arm64_numpy1.22opencl_implkhronospython3.8.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implkhronospython3.8.____cpython
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implkhron_hdb80c5cafd
+      osx_arm64_numpy1.22opencl_implkhronospython3.9.____cpython:
+        CONFIG: osx_arm64_numpy1.22opencl_implkhronospython3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+<<<<<<< HEAD
         SHORT_CONFIG: osx_arm64_numpy1.21opencl_implkhron_h1b495945d9
+=======
+        SHORT_CONFIG: osx_arm64_numpy1.22opencl_implkhron_h4b805475b5
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
       osx_arm64_numpy1.23opencl_implapplepython3.11.____cpython:
         CONFIG: osx_arm64_numpy1.23opencl_implapplepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -72,7 +135,10 @@ jobs:
         CONFIG: osx_arm64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.23opencl_implkhron_h95b3c2c1e1
+<<<<<<< HEAD
     maxParallel: 15
+=======
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
   timeoutInMinutes: 360
 
   steps:

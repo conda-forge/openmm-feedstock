@@ -3,7 +3,11 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
+<<<<<<< HEAD:.ci_support/osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython.yaml
 - '14'
+=======
+- '15'
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6:.ci_support/osx_arm64_numpy1.22opencl_implkhronospython3.10.____cpython.yaml
 channel_sources:
 - conda-forge
 channel_targets:
@@ -13,11 +17,15 @@ cuda_compiler_version:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
+<<<<<<< HEAD:.ci_support/osx_arm64_numpy1.21opencl_implkhronospython3.10.____cpython.yaml
 - '14'
+=======
+- '15'
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6:.ci_support/osx_arm64_numpy1.22opencl_implkhronospython3.10.____cpython.yaml
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
-- '1.21'
+- '1.22'
 opencl_impl:
 - khronos
 pin_run_as_build:
