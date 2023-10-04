@@ -3,17 +3,25 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
+<<<<<<< HEAD
+- '14'
+=======
 - '15'
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler_version:
 - None
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
+<<<<<<< HEAD
+- '14'
+=======
 - '15'
+>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
