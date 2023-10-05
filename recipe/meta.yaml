@@ -59,6 +59,7 @@ requirements:
     - lxml
     - numpy
     - cython
+    - setuptools
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
