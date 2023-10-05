@@ -3,11 +3,7 @@ BUILD:
 c_compiler:
 - gcc
 c_compiler_version:
-<<<<<<<< HEAD:.ci_support/linux_aarch64_numpy1.23python3.11.____cpython.yaml
-- '11'
-========
 - '12'
->>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6:.ci_support/linux_aarch64_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12numpy1.22python3.9.____73_pypy.yaml
 cdt_arch:
 - aarch64
 cdt_name:
@@ -21,29 +17,17 @@ cuda_compiler_version:
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-<<<<<<<< HEAD:.ci_support/linux_aarch64_numpy1.23python3.11.____cpython.yaml
-- '11'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
-numpy:
-- '1.23'
-========
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 numpy:
 - '1.22'
->>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6:.ci_support/linux_aarch64_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12numpy1.22python3.9.____73_pypy.yaml
 pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
 python:
-<<<<<<<< HEAD:.ci_support/linux_aarch64_numpy1.23python3.11.____cpython.yaml
-- 3.11.* *_cpython
-========
 - 3.9.* *_73_pypy
->>>>>>>> e623f2c87f6f32a3761c60c97bc78b371fa3f9d6:.ci_support/linux_aarch64_c_compiler_version12cuda_compiler_versionNonecxx_compiler_version12numpy1.22python3.9.____73_pypy.yaml
 target_platform:
 - linux-aarch64
 zip_keys:
