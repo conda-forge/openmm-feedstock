@@ -10,7 +10,6 @@ if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMPME.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMCUDA.lib exit 1
-if not exist %LIBRARY_LIB%/plugins/OpenMMCudaCompiler.lib exit 1
 
 :: Debug silent errors in plugin loading
 python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
@@ -43,10 +42,12 @@ if "%CI%"=="" (
 :: See https://stackoverflow.com/a/7006016/3407590 for substring checks in CMD
 if x%PKG_VERSION:rc=%==x%PKG_VERSION% (
     if x%PKG_VERSION:beta=%==x%PKG_VERSION% (
-        python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
-        for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do (
+	if x%PKG_VERSION:dev=%==x%PKG_VERSION% (
+            python -c "from openmm import Platform; v = Platform.getOpenMMVersion(); assert '%PKG_VERSION%' in (v, v+'.0'), v + '!=%PKG_VERSION%'"  || goto :error
+            for /f "usebackq tokens=1" %%a in (`git ls-remote https://github.com/openmm/openmm.git %PKG_VERSION%`) do (
             python -c "from openmm.version import git_revision; r = git_revision; assert r == '%%a', r + '!=%%a'" || goto :error
-        )
+         )
+	)
     )
 ) else (
     echo "!!! WARNING !!!"
