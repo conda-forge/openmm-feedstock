@@ -80,12 +80,16 @@ jobs:
         CONFIG: osx_arm64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.23opencl_implkhron_h95b3c2c1e1
+    maxParallel: 14
   timeoutInMinutes: 360
 
   steps:
   # TODO: Fast finish on azure pipelines?
   - script: |
       export CI=azure
+      export flow_run_id=azure_$(Build.BuildNumber).$(System.JobAttempt)
+      export remote_url=$(Build.Repository.Uri)
+      export sha=$(Build.SourceVersion)
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
       export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
