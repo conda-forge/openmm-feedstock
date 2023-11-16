@@ -183,7 +183,7 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
         SHORT_CONFIG: linux_aarch64_c_compiler_version12c_hd95d8cc773
-    maxParallel: 28
+    maxParallel: 26
   timeoutInMinutes: 360
 
   steps:
