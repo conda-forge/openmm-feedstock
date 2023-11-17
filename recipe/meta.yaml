@@ -93,9 +93,9 @@ test:
     - git
     - pocl      # [linux]
     {% if cuda_major >= 12 %}
-    # No cuda-driver-dev in windows
+    # No cuda-driver-dev nor cuda-compat in windows
     - cuda-driver-dev  # [linux]
-    - cuda-compat  # [linux64 or ppc64le or win]
+    - cuda-compat  # [linux]
     {% endif %}
 {% if with_test_suite == 'true' %}
     - pytest
