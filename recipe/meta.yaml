@@ -69,9 +69,9 @@ requirements:
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     {% if cuda_major >= 12 %}
-    - libcufft-dev  # [linux64 or ppc64le or win]
-    - cuda-profiler-api  # [linux64 or ppc64le or win]
-    - cuda-nvrtc-dev  # [linux64 or ppc64le or win]
+    - libcufft-dev  # [linux or win]
+    - cuda-profiler-api  # [linux or win]
+    - cuda-nvrtc-dev  # [linux or win]
     # No cuda-driver-dev in windows
     - cuda-driver-dev  # [linux]
     {% endif %}
