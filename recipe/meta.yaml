@@ -28,7 +28,7 @@ build:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
-    - "*/libcuda.*"    # [linux64 or ppc64le]
+    - "*/libcuda.*"    # [linux]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
   script:
@@ -44,7 +44,7 @@ requirements:
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
+    - {{ compiler('cuda') }}  # [linux or win]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - sysroot_linux-64 2.17  # [linux64]
     - cmake
@@ -69,9 +69,9 @@ requirements:
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
     {% if cuda_major >= 12 %}
-    - libcufft-dev  # [linux64 or ppc64le or win]
-    - cuda-profiler-api  # [linux64 or ppc64le or win]
-    - cuda-nvrtc-dev  # [linux64 or ppc64le or win]
+    - libcufft-dev  # [linux or win]
+    - cuda-profiler-api  # [linux or win]
+    - cuda-nvrtc-dev  # [linux or win]
     # No cuda-driver-dev in windows
     - cuda-driver-dev  # [linux]
     {% endif %}
