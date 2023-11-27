@@ -48,6 +48,14 @@ jobs:
         CONFIG: osx_64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.23opencl_implkhronosp_h1b3f6d8cac
+      osx_64_numpy1.26opencl_implapplepython3.12.____cpython:
+        CONFIG: osx_64_numpy1.26opencl_implapplepython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.26opencl_implapplepyt_h6975ce72fe
+      osx_64_numpy1.26opencl_implkhronospython3.12.____cpython:
+        CONFIG: osx_64_numpy1.26opencl_implkhronospython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_numpy1.26opencl_implkhronosp_h3fdadcb1f5
       osx_arm64_numpy1.22opencl_implapplepython3.10.____cpython:
         CONFIG: osx_arm64_numpy1.22opencl_implapplepython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -80,6 +88,14 @@ jobs:
         CONFIG: osx_arm64_numpy1.23opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_numpy1.23opencl_implkhron_h95b3c2c1e1
+      osx_arm64_numpy1.26opencl_implapplepython3.12.____cpython:
+        CONFIG: osx_arm64_numpy1.26opencl_implapplepython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.26opencl_implapple_h4b198e7614
+      osx_arm64_numpy1.26opencl_implkhronospython3.12.____cpython:
+        CONFIG: osx_arm64_numpy1.26opencl_implkhronospython3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy1.26opencl_implkhron_hfa3c7f18f5
     maxParallel: 14
   timeoutInMinutes: 360
 

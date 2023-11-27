@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
-{% set version = "8.0.0" %}
-{% set build = 4 %}
+{% set version = "8.1.0" %}
+{% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
@@ -10,7 +10,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "a780005"
+  git_rev: "43f571d"
 
 build:
   number: {{ build }}
@@ -59,6 +59,7 @@ requirements:
     - lxml
     - numpy
     - cython
+    - setuptools
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
@@ -70,6 +71,7 @@ requirements:
   run:
     - python
     - numpy
+    - scipy
     # OpenCL ICD
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
