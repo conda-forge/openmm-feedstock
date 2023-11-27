@@ -32,7 +32,31 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h3d2cc50094
-    maxParallel: 5
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h82f22d9b2c
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.8.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hb807bf0559
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____73_pypy:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____73_pypy
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h05f891a9f7
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hfc9e120a9c
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.23python3.11.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.23python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h8be27f826d
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.26python3.12.____cpython:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.26python3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7c89bdb50c
+    maxParallel: 8
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
