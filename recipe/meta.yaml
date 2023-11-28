@@ -44,7 +44,7 @@ requirements:
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux or win]
+    - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler != "None"]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - sysroot_linux-64 2.17  # [linux64]
     - cmake
