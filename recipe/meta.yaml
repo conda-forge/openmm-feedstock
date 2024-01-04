@@ -1,8 +1,14 @@
 {% set name = "openmm" %}
-{% set version = "8.1.0rc2" %}
+{% set version = "8.1.1rc1" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
+
+{% if cuda_compiler_version in (None, "None", True, False) %}
+{% set cuda_major = 0 %}
+{% else %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% endif %}
 
 package:
   name: {{ name }}
@@ -10,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "43f571d"
+  git_rev: "ec797ac"
 
 build:
   number: {{ build }}
@@ -22,7 +28,7 @@ build:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
-    - "*/libcuda.*"    # [linux64 or ppc64le]
+    - "*/libcuda.*"    # [linux]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
   script:
@@ -38,7 +44,7 @@ requirements:
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
+    - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler != "None"]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - sysroot_linux-64 2.17  # [linux64]
     - cmake
@@ -63,11 +69,13 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
-    - libcufft-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
-    - cuda-profiler-api  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
-    - cuda-nvrtc-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
-    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
-
+    {% if cuda_major >= 12 %}
+    - libcufft-dev  # [linux or win]
+    - cuda-profiler-api  # [linux or win]
+    - cuda-nvrtc-dev  # [linux or win]
+    # No cuda-driver-dev in windows
+    - cuda-driver-dev  # [linux]
+    {% endif %}
   run:
     - python
     - numpy
@@ -86,8 +94,11 @@ test:
   requires:
     - git
     - pocl      # [linux]
-    - cuda-driver-dev  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
-    - cuda-compat  # [(linux64 or ppc64le or win) and (cuda_compiler_version or "").startswith("12")]
+    {% if cuda_major >= 12 %}
+    # No cuda-driver-dev nor cuda-compat in windows
+    - cuda-driver-dev  # [linux]
+    - cuda-compat  # [linux]
+    {% endif %}
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist

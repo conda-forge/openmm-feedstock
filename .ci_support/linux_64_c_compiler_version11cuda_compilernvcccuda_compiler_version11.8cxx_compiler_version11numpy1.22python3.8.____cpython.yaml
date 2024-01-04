@@ -1,25 +1,23 @@
-BUILD:
-- aarch64-conda_cos7-linux-gnu
 c_compiler:
 - gcc
 c_compiler_version:
-- '10'
-cdt_arch:
-- aarch64
+- '11'
 cdt_name:
 - cos7
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge openmm_rc
+cuda_compiler:
+- nvcc
 cuda_compiler_version:
-- '11.2'
+- '11.8'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
-- '10'
+- '11'
 docker_image:
-- quay.io/condaforge/linux-anvil-cuda:11.2
+- quay.io/condaforge/linux-anvil-cuda:11.8
 numpy:
 - '1.22'
 pin_run_as_build:
@@ -27,12 +25,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.8.* *_cpython
 target_platform:
-- linux-aarch64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - cuda_compiler
   - cuda_compiler_version
   - cdt_name
   - docker_image
