@@ -32,30 +32,6 @@ jobs:
         CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h4d326a778f
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.10.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hf70b5c66bb
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.8.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_he77ef43bcd
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7849157c63
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h042162825e
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.23python3.11.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h275b1247ec
-      win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.26python3.12.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.2numpy1.26python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h3d2cc50094
       win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -80,7 +56,7 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7c89bdb50c
-    maxParallel: 11
+    maxParallel: 9
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
