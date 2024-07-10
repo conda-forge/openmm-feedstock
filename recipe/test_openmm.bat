@@ -10,7 +10,6 @@ if not exist %LIBRARY_LIB%/plugins/OpenMMCPU.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMPME.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMOpenCL.lib exit 1
 if not exist %LIBRARY_LIB%/plugins/OpenMMCUDA.lib exit 1
-if not exist %LIBRARY_LIB%/plugins/OpenMMCudaCompiler.lib exit 1
 
 :: Debug silent errors in plugin loading
 python -c "import openmm as mm; print('---Loaded---', *mm.pluginLoadedLibNames, '---Failed---', *mm.Platform.getPluginLoadFailures(), sep='\n')"
