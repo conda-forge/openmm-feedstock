@@ -11,7 +11,7 @@ cdt_name:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge openmm_rc
 cuda_compiler:
 - None
 cuda_compiler_version:
@@ -35,9 +35,9 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+  - cdt_name
   - cuda_compiler
   - cuda_compiler_version
-  - cdt_name
   - docker_image
 - - python
   - numpy
