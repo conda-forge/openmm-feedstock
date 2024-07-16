@@ -505,14 +505,14 @@ Current release info
 Installing openmm
 =================
 
-Installing `openmm` from the `conda-forge/label/openmm_rc` channel can be achieved by adding `conda-forge/label/openmm_rc` to your channels with:
+Installing `openmm` from the `conda-forge/label/` channel can be achieved by adding `conda-forge/label/` to your channels with:
 
 ```
-conda config --add channels conda-forge/label/openmm_rc
+conda config --add channels conda-forge/label/
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge/label/openmm_rc` channel has been enabled, `openmm` can be installed with `conda`:
+Once the `conda-forge/label/` channel has been enabled, `openmm` can be installed with `conda`:
 
 ```
 conda install openmm
@@ -527,26 +527,26 @@ mamba install openmm
 It is possible to list all of the versions of `openmm` available on your platform with `conda`:
 
 ```
-conda search openmm --channel conda-forge/label/openmm_rc
+conda search openmm --channel conda-forge/label/
 ```
 
 or with `mamba`:
 
 ```
-mamba search openmm --channel conda-forge/label/openmm_rc
+mamba search openmm --channel conda-forge/label/
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search openmm --channel conda-forge/label/openmm_rc
+mamba repoquery search openmm --channel conda-forge/label/
 
 # List packages depending on `openmm`:
-mamba repoquery whoneeds openmm --channel conda-forge/label/openmm_rc
+mamba repoquery whoneeds openmm --channel conda-forge/label/
 
 # List dependencies of `openmm`:
-mamba repoquery depends openmm --channel conda-forge/label/openmm_rc
+mamba repoquery depends openmm --channel conda-forge/label/
 ```
 
 
