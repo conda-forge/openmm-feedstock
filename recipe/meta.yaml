@@ -1,8 +1,14 @@
 {% set name = "openmm" %}
-{% set version = "7.7.0" %}
-{% set build = 1 %}
+{% set version = "8.1.2" %}
+{% set build = 2 %}
 {% set with_test_suite = "false" %}
-{% set with_test_suite = "true" %}  # [(osx and arm64)]
+#{% set with_test_suite = "true" %}  # [(osx and arm64)]
+
+{% if cuda_compiler_version in (None, "None", True, False) %}
+{% set cuda_major = 0 %}
+{% else %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% endif %}
 
 package:
   name: {{ name }}
@@ -10,19 +16,19 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "7.7.0"
+  git_rev: "440a9c7"
 
 build:
   number: {{ build }}
   string: "py{{ PY_VER.replace('.', '') }}h{{ PKG_HASH }}_{{ build }}_{{ opencl_impl }}"  # [osx]
   track_features:  # make Apple OpenCL low priority
     - openmm_opencl_apple  # [osx and (opencl_impl == 'apple')]
-  skip: true  # [(win and py==310) or (cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
   missing_dso_whitelist:
-    - "*/libcuda.*"    # [linux64 or ppc64le]
+    - "*/libcuda.*"    # [linux]
     - "*/libOpenCL.*"  # [unix]
     - "*/nvcuda.dll"   # [win]
   script:
@@ -37,8 +43,10 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [linux64 or ppc64le or win]
+    - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler != "None"]
+    - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
     - cmake
     - make  # [unix]
@@ -53,20 +61,27 @@ requirements:
 
   host:
     - python
-    - fftw
     - swig
     - pthread-stubs
     - lxml
     - numpy
     - cython
+    - setuptools
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
-
+    - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
+    {% if cuda_major >= 12 %}
+    - libcufft-dev  # [linux or win]
+    - cuda-profiler-api  # [linux or win]
+    - cuda-nvrtc-dev  # [linux or win]
+    # No cuda-driver-dev in windows
+    - cuda-driver-dev  # [linux]
+    {% endif %}
   run:
     - python
-    - fftw
     - numpy
+    - scipy
     # OpenCL ICD
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
@@ -76,12 +91,16 @@ requirements:
   run_constrained:
     - khronos-opencl-icd-loader  ==9999999999  # [osx and opencl_impl == 'apple']
     - ocl_icd_wrapper_apple      ==9999999999  # [osx and opencl_impl == 'apple']
-    - python <3.9.9  # [py == 39 and win]
 
 test:
   requires:
     - git
     - pocl      # [linux]
+    {% if cuda_major >= 12 %}
+    # No cuda-driver-dev nor cuda-compat in windows
+    - cuda-driver-dev  # [linux]
+    - cuda-compat  # [linux]
+    {% endif %}
 {% if with_test_suite == 'true' %}
     - pytest
     - pytest-xdist
@@ -118,6 +137,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - mikemhenry
     - jchodera
     - jaimergp
     - peastman
