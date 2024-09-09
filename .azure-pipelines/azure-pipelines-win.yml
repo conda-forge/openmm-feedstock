@@ -12,14 +12,6 @@ jobs:
         CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h495a96f2b1
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.8.____cpython:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h633d292b1f
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.9.____73_pypy:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_haf08c2ba74
       win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.9.____cpython:
         CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -32,18 +24,14 @@ jobs:
         CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h4d326a778f
+      win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy2python3.13.____cp313:
+        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.0numpy2python3.13.____cp313
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h168edca4b5
       win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h82f22d9b2c
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.8.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.8.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_hb807bf0559
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____73_pypy:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____73_pypy
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h05f891a9f7
       win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____cpython:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -56,6 +44,10 @@ jobs:
         CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h7c89bdb50c
+      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2python3.13.____cp313:
+        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2python3.13.____cp313
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h2aca883b4a
     maxParallel: 9
   timeoutInMinutes: 360
   variables:
@@ -70,7 +62,7 @@ jobs:
         scriptSource: inline
         script: |
           import urllib.request
-          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Windows-x86_64.exe'
+          url = 'https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe'
           path = r"$(Build.ArtifactStagingDirectory)/Miniforge.exe"
           urllib.request.urlretrieve(url, path)
 
