@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "8.1.2rc1" %}
+{% set version = "8.2.0beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -16,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "440a9c7"
+  git_rev: "0f67a64"
 
 build:
   number: {{ build }}
@@ -43,10 +43,11 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - swig                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler != "None"]
+    - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - sysroot_linux-64 2.17  # [linux64]
     - cmake
     - make  # [unix]
     - jom  # [win]
@@ -69,6 +70,7 @@ requirements:
     # OpenCL ICD
     - ocl-icd  # [linux]
     - khronos-opencl-icd-loader  # [win or (osx and opencl_impl == 'khronos')]
+    - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
     {% if cuda_major >= 12 %}
     - libcufft-dev  # [linux or win]
     - cuda-profiler-api  # [linux or win]
