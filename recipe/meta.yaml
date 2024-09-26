@@ -81,7 +81,7 @@ requirements:
   run:
     - python
     - numpy
-    - scipy <1.14
+    - scipy
     # OpenCL ICD
     - ocl-icd  # [linux]
     - ocl-icd-system  # [linux]
@@ -141,4 +141,3 @@ extra:
     - jchodera
     - jaimergp
     - peastman
-
