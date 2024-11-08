@@ -5,7 +5,11 @@
 jobs:
 - job: osx
   pool:
+<<<<<<< HEAD
     vmImage: macOS-13
+=======
+    vmImage: macOS-12
+>>>>>>> main
   strategy:
     matrix:
       osx_64_numpy1.22opencl_implapplepython3.10.____cpython:
