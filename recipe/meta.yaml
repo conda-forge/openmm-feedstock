@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
-{% set version = "8.1.2" %}
-{% set build = 3 %}
+{% set version = "8.2.0" %}
+{% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
@@ -16,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "440a9c7"
+  git_rev: "5377094"
 
 build:
   number: {{ build }}
@@ -24,6 +24,8 @@ build:
   track_features:  # make Apple OpenCL low priority
     - openmm_opencl_apple  # [osx and (opencl_impl == 'apple')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
+  # see https://github.com/conda-forge/openmm-feedstock/pull/143#issuecomment-2429793569
+  skip: true  # [aarch64 and (cuda_compiler_version == '11.8')]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
