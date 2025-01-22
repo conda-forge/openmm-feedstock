@@ -14,14 +14,14 @@ channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge openmm_dev
+cuda_compiler:
+- None
 cuda_compiler_version:
 - None
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
-fftw:
-- '3'
 macos_machine:
 - arm64-apple-darwin20.0.0
 numpy:
