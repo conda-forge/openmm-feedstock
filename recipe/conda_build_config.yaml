@@ -3,5 +3,5 @@ opencl_impl:  # [osx]
 - khronos     # [osx]
 channel_targets:
 - conda-forge openmm_dev
-MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - "10.12"                # [osx and x86_64]
+c_stdlib_version:   # [linux]
+  - 2.17            # [linux]
