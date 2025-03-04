@@ -25,7 +25,8 @@ build:
     - openmm_opencl_apple  # [osx and (opencl_impl == 'apple')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   # see https://github.com/conda-forge/openmm-feedstock/pull/143#issuecomment-2429793569
-  skip: true  # [aarch64 and (cuda_compiler_version == '11.8')]
+  # see https://github.com/conda-forge/openmm-feedstock/pull/150#issuecomment-2698596241
+  skip: true  # [(aarch64 or win) and (cuda_compiler_version == '11.8')]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
