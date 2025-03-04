@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "8.2.0dev0" %}
+{% set version = "8.2.0dev1" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -16,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "c7216a9"
+  git_rev: "a6545a1b7a947547417986712801be35ff3eca47"
 
 build:
   number: {{ build }}
@@ -25,7 +25,8 @@ build:
     - openmm_opencl_apple  # [osx and (opencl_impl == 'apple')]
   skip: true  # [(cuda_compiler_version in (undefined, 'None') and (linux64 or win)) or ((cuda_compiler_version != '10.2') and (ppc64le))]
   # see https://github.com/conda-forge/openmm-feedstock/pull/143#issuecomment-2429793569
-  skip: true  # [aarch64 and (cuda_compiler_version == '11.8')]
+  # see https://github.com/conda-forge/openmm-feedstock/pull/150#issuecomment-2698596241
+  skip: true  # [(aarch64 or win) and (cuda_compiler_version == '11.8')]
   script_env:
     - CONFIG
     - CUDA_HOME  # [ppc64le]
