@@ -523,6 +523,3 @@ Feedstock Maintainers
 * [@mikemhenry](https://github.com/mikemhenry/)
 * [@peastman](https://github.com/peastman/)
 
-
-<!-- dummy commit to enable rerendering -->
-
