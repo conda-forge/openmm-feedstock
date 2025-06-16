@@ -2,6 +2,6 @@ opencl_impl:  # [osx]
 - apple       # [osx]
 - khronos     # [osx]
 channel_targets:
-- conda-forge openmm_rc
+- conda-forge main
 c_stdlib_version:   # [linux]
   - 2.17            # [linux]
