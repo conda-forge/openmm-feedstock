@@ -47,10 +47,10 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler != "None"]
+    - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler_version != "None"]
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - cmake
+    - cmake <4
     - make  # [unix]
     - jom  # [win]
     # needed for Python wrappers
