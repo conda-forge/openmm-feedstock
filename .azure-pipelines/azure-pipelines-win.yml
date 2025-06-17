@@ -8,46 +8,26 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.10.____cpython:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.10.____cpython
+      win_64_cuda_compiler_version12.6python3.10.____cpython:
+        CONFIG: win_64_cuda_compiler_version12.6python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_hb5b5d0120f
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.11.____cpython:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.11.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version12.6python3._hda50ffaa
+      win_64_cuda_compiler_version12.6python3.11.____cpython:
+        CONFIG: win_64_cuda_compiler_version12.6python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h9c4a67f58e
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.12.____cpython:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.12.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version12.6python3._h195259eb
+      win_64_cuda_compiler_version12.6python3.12.____cpython:
+        CONFIG: win_64_cuda_compiler_version12.6python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h563b953197
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.9.____cpython:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2.0python3.9.____cpython
+        SHORT_CONFIG: win_64_cuda_compiler_version12.6python3._hbee3cc1c
+      win_64_cuda_compiler_version12.6python3.13.____cp313:
+        CONFIG: win_64_cuda_compiler_version12.6python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_hd855f57d17
-      win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2python3.13.____cp313:
-        CONFIG: win_64_cuda_compilercuda-nvcccuda_compiler_version12.6numpy2python3.13.____cp313
+        SHORT_CONFIG: win_64_cuda_compiler_version12.6python3._hd2c292e5
+      win_64_cuda_compiler_version12.6python3.9.____cpython:
+        CONFIG: win_64_cuda_compiler_version12.6python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilercuda-nvcccuda_c_h24934e9ed8
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.10.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h376430964b
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.11.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h2562d47517
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.12.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_ha23eef9b09
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.9.____cpython:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2.0python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h872d475e70
-      win_64_cuda_compilernvcccuda_compiler_version11.8numpy2python3.13.____cp313:
-        CONFIG: win_64_cuda_compilernvcccuda_compiler_version11.8numpy2python3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_cuda_compilernvcccuda_compil_h2aca883b4a
+        SHORT_CONFIG: win_64_cuda_compiler_version12.6python3._hb0f57b2a
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
