@@ -19,8 +19,6 @@ rem BLD_ARTIFACT_PATH
 rem ENV_ARTIFACT_NAME
 rem ENV_ARTIFACT_PATH
 
-@echo on
-
 rem Check that the conda-build directory exists
 if not exist %CONDA_BLD_DIR% (
     echo conda-build directory does not exist
@@ -60,7 +58,7 @@ if defined BLD_ARTIFACT_PREFIX (
 
 rem Make the environments artifact zip
 if defined ENV_ARTIFACT_PREFIX (
-    set ENV_ARTIFACT_NAME=%ENV_ARTIFACT_PREFIX%_%ARTIFACT_UNIQUE_ID%
+    set ENV_ARTIFACT_NAME=!ENV_ARTIFACT_PREFIX!_%ARTIFACT_UNIQUE_ID%
     echo ENV_ARTIFACT_NAME: !ENV_ARTIFACT_NAME!
 
     set "ENV_ARTIFACT_PATH=%ARTIFACT_STAGING_DIR%\%FEEDSTOCK_NAME%_%ENV_ARTIFACT_PREFIX%_%ARCHIVE_UNIQUE_ID%.zip"
