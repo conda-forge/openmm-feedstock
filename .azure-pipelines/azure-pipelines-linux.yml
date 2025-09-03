@@ -28,11 +28,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_c_compiler_version13cuda_compil_h843a3940
-      linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython:
-        CONFIG: linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython
+      linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.14.____cp314:
+        CONFIG: linux_64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_64_c_compiler_version13cuda_compil_h12c7ecbb
+        SHORT_CONFIG: linux_64_c_compiler_version13cuda_compil_hd0948ae3
       linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.10.____cpython:
         CONFIG: linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -53,11 +53,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_aarch64_c_compiler_version13cuda_c_h7eb3ddb3
-      linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython:
-        CONFIG: linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.9.____cpython
+      linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.14.____cp314:
+        CONFIG: linux_aarch64_c_compiler_version13cuda_compiler_version12.6cxx_compiler_version13python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_aarch64_c_compiler_version13cuda_c_h0d855b99
+        SHORT_CONFIG: linux_aarch64_c_compiler_version13cuda_c_h9885fbc0
       linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.10.____cpython:
         CONFIG: linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -78,11 +78,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_aarch64_c_compiler_version14cuda_c_hfe9c8f1a
-      linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.9.____cpython:
-        CONFIG: linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.9.____cpython
+      linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.14.____cp314:
+        CONFIG: linux_aarch64_c_compiler_version14cuda_compiler_versionNonecxx_compiler_version14python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_aarch64_c_compiler_version14cuda_c_h228e538a
+        SHORT_CONFIG: linux_aarch64_c_compiler_version14cuda_c_h946e179a
   timeoutInMinutes: 360
   variables: {}
 
