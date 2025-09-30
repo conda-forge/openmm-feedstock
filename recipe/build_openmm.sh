@@ -29,6 +29,7 @@ if [[ "$target_platform" == linux* ]]; then
         CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
         # To help it find HIP
         CMAKE_FLAGS+=" -DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/hip"
+        ls ${PREFIX}/lib/cmake/hip
     fi
 
     # OpenCL ICD
@@ -59,6 +60,7 @@ CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
+cat CMakeCache.txt
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 
