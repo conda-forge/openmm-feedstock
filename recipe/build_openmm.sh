@@ -27,6 +27,8 @@ if [[ "$target_platform" == linux* ]]; then
         CMAKE_FLAGS+=" -DOPENMM_BUILD_CUDA_TESTS=OFF"
         # shadow some CMAKE_ARGS bits that interfere with CUDA detection
         CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
+        # To help it find HIP
+        CMAKE_FLAGS+=" -DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/hip"
     fi
 
     # OpenCL ICD

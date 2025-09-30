@@ -80,10 +80,10 @@ requirements:
     # No cuda-driver-dev in windows
     - cuda-driver-dev  # [linux]
     {% endif %}
-    - rocm-cmake # [linux]
-    - rocm-core  # [linux]
-    - hipcc      # [linux]
-    - hip-devel  # [linux]
+    - rocm-cmake  # [linux64]
+    - rocm-core  # [linux64]
+    - hipcc  # [linux64]
+    - hip-devel  # [linux64]
   run:
     - python
     - numpy
