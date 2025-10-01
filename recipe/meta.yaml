@@ -84,6 +84,10 @@ requirements:
     - rocm-core  # [linux64]
     - hipcc  # [linux64]
     - hip-devel  # [linux64]
+    - rocm-device-libs  # [linux64]
+    - lld  # [linux64]
+    - clang-tools  # [linux64]
+    - compiler-rt  # [linux64]
   run:
     - python
     - numpy
