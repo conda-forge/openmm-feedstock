@@ -30,7 +30,6 @@ if [[ "$target_platform" == linux* ]]; then
         # To help it find HIP
         CMAKE_FLAGS+=" -DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/hip"
         CMAKE_FLAGS+=" -DOPENMM_BUILD_HIP_LIB=ON"
-        ls ${PREFIX}/lib/cmake/hip
     fi
 
     # OpenCL ICD
@@ -61,7 +60,6 @@ CMAKE_FLAGS+=" -DSWIG_EXECUTABLE=$(which swig)"
 mkdir -p build
 cd build
 cmake ${CMAKE_FLAGS} ${SRC_DIR}
-cat CMakeCache.txt
 make -j$CPU_COUNT
 make -j$CPU_COUNT install PythonInstall
 

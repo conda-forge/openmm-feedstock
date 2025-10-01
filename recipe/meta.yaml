@@ -86,6 +86,8 @@ requirements:
     - rocm-core  # [linux64]
     - hipcc  # [linux64]
     - hip-devel  # [linux64]
+    # The following packages need to be listed here because of a bug in the current hipcc package.
+    # In the future we should be able to remove them.  See https://github.com/conda-forge/hip-feedstock/issues/21#issuecomment-3337150276.
     - rocm-device-libs  # [linux64]
     - lld  # [linux64]
     - clang-tools  # [linux64]
