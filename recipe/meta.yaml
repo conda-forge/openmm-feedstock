@@ -36,6 +36,8 @@ build:
   script:
     - env with_test_suite={{ with_test_suite }} bash {{ RECIPE_DIR }}/build_openmm.sh   # [unix]
     - set with_test_suite={{ with_test_suite }} &&   {{ RECIPE_DIR }}\build_openmm.bat  # [win]
+  ignore_run_exports:
+    - hip-runtime-amd
 
 requirements:
   build:
@@ -60,8 +62,6 @@ requirements:
     - m2-findutils  # [win]
     - m2-coreutils  # [win]
 {% endif %}
-    ignore_run_exports:
-      - hip-runtime-amd
 
   host:
     - python
