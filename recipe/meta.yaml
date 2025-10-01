@@ -60,6 +60,8 @@ requirements:
     - m2-findutils  # [win]
     - m2-coreutils  # [win]
 {% endif %}
+    ignore_run_exports:
+      - hip-runtime-amd
 
   host:
     - python
