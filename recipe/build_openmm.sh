@@ -29,6 +29,7 @@ if [[ "$target_platform" == linux* ]]; then
         CMAKE_FLAGS+=" -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=BOTH"
         # To help it find HIP
         CMAKE_FLAGS+=" -DCMAKE_MODULE_PATH=${PREFIX}/lib/cmake/hip"
+        CMAKE_FLAGS+=" -DOPENMM_BUILD_HIP_LIB=ON"
         ls ${PREFIX}/lib/cmake/hip
     fi
 
