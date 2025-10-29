@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "8.3.1" %}
+{% set version = "8.4.0" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -16,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "6e13f13"
+  git_rev: "4768436"
 
 build:
   number: {{ build }}
@@ -36,6 +36,8 @@ build:
   script:
     - env with_test_suite={{ with_test_suite }} bash {{ RECIPE_DIR }}/build_openmm.sh   # [unix]
     - set with_test_suite={{ with_test_suite }} &&   {{ RECIPE_DIR }}\build_openmm.bat  # [win]
+  ignore_run_exports:
+    - hip-runtime-amd
 
 requirements:
   build:
@@ -80,6 +82,16 @@ requirements:
     # No cuda-driver-dev in windows
     - cuda-driver-dev  # [linux]
     {% endif %}
+    - rocm-cmake  # [linux64]
+    - rocm-core  # [linux64]
+    - hipcc  # [linux64]
+    - hip-devel  # [linux64]
+    # The following packages need to be listed here because of a bug in the current hipcc package.
+    # In the future we should be able to remove them.  See https://github.com/conda-forge/hip-feedstock/issues/21#issuecomment-3337150276.
+    - rocm-device-libs  # [linux64]
+    - lld  # [linux64]
+    - clang-tools  # [linux64]
+    - compiler-rt  # [linux64]
   run:
     - python
     - numpy
