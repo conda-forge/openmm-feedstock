@@ -30,7 +30,7 @@ if "%CI%"=="" (
 python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n == %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
 
 :: Now let's run a little MD
-cd %LIBRARY_PREFIX%/share/openmm/examples
+cd %LIBRARY_PREFIX%/share/openmm/examples/benchmarks
 python benchmark.py --test=rf --seconds=10 --platform=Reference || goto :error
 python benchmark.py --test=rf --seconds=10 --platform=CPU || goto :error
 if "%CI%"=="" (

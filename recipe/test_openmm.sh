@@ -35,7 +35,7 @@ fi
 #python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n == $n_platforms, f'n_platforms ({n}) != $n_platforms'"
 
 # Run a small MD
-cd ${PREFIX}/share/openmm/examples
+cd ${PREFIX}/share/openmm/examples/benchmarks
 python benchmark.py --test=rf --seconds=10 --platform=Reference
 python benchmark.py --test=rf --seconds=10 --platform=CPU
 if [[ -z ${CI-} ]]; then  # Run only outside CI, assuming there will be a GPU there
