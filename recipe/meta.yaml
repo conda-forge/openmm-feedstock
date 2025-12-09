@@ -1,6 +1,6 @@
 {% set name = "openmm" %}
 {% set version = "8.4.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
 
@@ -51,7 +51,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler_version != "None"]
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - libgl-devel  # [linux]
     - cmake <4
     - make  # [unix]
     - jom  # [win]
