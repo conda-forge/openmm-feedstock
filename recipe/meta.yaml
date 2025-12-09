@@ -51,7 +51,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler_version != "None"]
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - libgl-devel  # [linux]
     - cmake <4
     - make  # [unix]
     - jom  # [win]
