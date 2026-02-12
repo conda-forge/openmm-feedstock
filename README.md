@@ -383,12 +383,6 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-<<<<<<< HEAD
-              <td>win_64_cuda_compiler_version12.6python3.14.____cp314</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version12.6python3.14.____cp314" alt="variant">
-=======
               <td>win_64_cuda_compiler_version12.9python3.14.____cp314</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
@@ -428,7 +422,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=win&configuration=win%20win_64_cuda_compiler_version13.0python3.14.____cp314" alt="variant">
->>>>>>> d4a2855764462b1e2268817f8b7d478fbd9e08f1
                 </a>
               </td>
             </tr>
