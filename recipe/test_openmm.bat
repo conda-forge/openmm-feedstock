@@ -20,14 +20,14 @@ python -c "import os, openmm.version as v; print(v.openmm_library_path); assert 
 :: Check all platforms
 python -m openmm.testInstallation
 
-:: On CI, Windows will only see 2 platforms because the driver nvcuda.dll is missing and that throws a 126 error
+:: On CI, Windows will only see 2 or 3 platforms because the driver nvcuda.dll is missing and that throws a 126 error
 :: We expect that people running this locally will have Nvidia properly installed, so they should all platforms (4)
 if "%CI%"=="" (
     set n_platforms=4
 ) else (
     set n_platforms=2
 )
-python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n == %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
+python -c "from openmm import Platform as P; n = P.getNumPlatforms(); assert n >= %n_platforms%, f'n_platforms ({n}) != %n_platforms%'" || goto :error
 
 :: Now let's run a little MD
 cd %LIBRARY_PREFIX%/share/openmm/examples/benchmarks
