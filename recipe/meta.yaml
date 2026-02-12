@@ -1,5 +1,5 @@
 {% set name = "openmm" %}
-{% set version = "8.4.0rc1" %}
+{% set version = "8.5.0beta" %}
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
@@ -16,7 +16,7 @@ package:
 
 source:
   git_url: https://github.com/openmm/{{ name }}.git
-  git_rev: "4768436"
+  git_rev: "10b23bf"
 
 build:
   number: {{ build }}
@@ -51,7 +51,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('cuda') }}  # [(linux or win) and cuda_compiler_version != "None"]
     - cuda-version {{ cuda_compiler_version }}  # [(cuda_compiler_version or "None") != "None"]
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
+    - libgl-devel  # [linux]
     - cmake <4
     - make  # [unix]
     - jom  # [win]
