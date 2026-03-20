@@ -108,7 +108,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.14.____cp314
         VMIMAGE: macOS-15
-    maxParallel: 18
   timeoutInMinutes: 360
   variables: {}
 
