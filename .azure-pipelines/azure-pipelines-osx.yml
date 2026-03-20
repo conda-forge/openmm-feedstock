@@ -28,6 +28,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_opencl_implapplepython3.13.____cp313
         VMIMAGE: macOS-15
+      osx_64_opencl_implapplepython3.14.____cp314:
+        CONFIG: osx_64_opencl_implapplepython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_opencl_implapplepython3.14.____cp314
+        VMIMAGE: macOS-15
       osx_64_opencl_implkhronospython3.10.____cpython:
         CONFIG: osx_64_opencl_implkhronospython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -47,6 +52,11 @@ jobs:
         CONFIG: osx_64_opencl_implkhronospython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_opencl_implkhronospython3.13.____cp313
+        VMIMAGE: macOS-15
+      osx_64_opencl_implkhronospython3.14.____cp314:
+        CONFIG: osx_64_opencl_implkhronospython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_64_opencl_implkhronospython3.14.____cp314
         VMIMAGE: macOS-15
       osx_arm64_opencl_implapplepython3.10.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.10.____cpython
@@ -68,6 +78,11 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_opencl_implapplepython3.13.____cp313
         VMIMAGE: macOS-15
+      osx_arm64_opencl_implapplepython3.14.____cp314:
+        CONFIG: osx_arm64_opencl_implapplepython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_opencl_implapplepython3.14.____cp314
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implkhronospython3.10.____cpython:
         CONFIG: osx_arm64_opencl_implkhronospython3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -87,6 +102,11 @@ jobs:
         CONFIG: osx_arm64_opencl_implkhronospython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.13.____cp313
+        VMIMAGE: macOS-15
+      osx_arm64_opencl_implkhronospython3.14.____cp314:
+        CONFIG: osx_arm64_opencl_implkhronospython3.14.____cp314
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.14.____cp314
         VMIMAGE: macOS-15
   timeoutInMinutes: 360
   variables: {}
