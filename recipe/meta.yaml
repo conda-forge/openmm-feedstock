@@ -1,9 +1,5 @@
 {% set name = "openmm" %}
-<<<<<<< HEAD
 {% set version = "8.5.1rc1" %}
-=======
-{% set version = "8.5.0rc1" %}
->>>>>>> rc
 {% set build = 0 %}
 {% set with_test_suite = "false" %}
 #{% set with_test_suite = "true" %}  # [(osx and arm64)]
