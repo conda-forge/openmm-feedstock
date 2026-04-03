@@ -48,7 +48,6 @@ jobs:
         CONFIG: win_64_cuda_compiler_version13.0python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._h6232cca2
-    maxParallel: 9
   timeoutInMinutes: 360
   variables:
     CONDA_BLD_PATH: D:\\bld\\
