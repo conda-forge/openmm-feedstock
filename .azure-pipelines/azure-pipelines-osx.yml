@@ -16,6 +16,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implapplepython3.10.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implapplepython3.11.____cpython:
         CONFIG: osx_64_opencl_implapplepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -24,6 +25,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implapplepython3.11.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implapplepython3.12.____cpython:
         CONFIG: osx_64_opencl_implapplepython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -32,6 +34,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implapplepython3.12.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implapplepython3.13.____cp313:
         CONFIG: osx_64_opencl_implapplepython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
@@ -56,6 +59,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implkhronospython3.10.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implkhronospython3.11.____cpython:
         CONFIG: osx_64_opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -64,6 +68,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implkhronospython3.11.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implkhronospython3.12.____cpython:
         CONFIG: osx_64_opencl_implkhronospython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -72,6 +77,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_64_opencl_implkhronospython3.12.____cpython
+        VMIMAGE: macOS-15
       osx_64_opencl_implkhronospython3.13.____cp313:
         CONFIG: osx_64_opencl_implkhronospython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
@@ -96,6 +102,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implapplepython3.10.____cpython
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implapplepython3.11.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -104,6 +111,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implapplepython3.11.____cpython
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implapplepython3.12.____cpython:
         CONFIG: osx_arm64_opencl_implapplepython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -112,6 +120,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implapplepython3.12.____cpython
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implapplepython3.13.____cp313:
         CONFIG: osx_arm64_opencl_implapplepython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
@@ -136,6 +145,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.10.__h3e5b79f4
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implkhronospython3.11.____cpython:
         CONFIG: osx_arm64_opencl_implkhronospython3.11.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -144,6 +154,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.11.__h55794eee
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implkhronospython3.12.____cpython:
         CONFIG: osx_arm64_opencl_implkhronospython3.12.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -152,6 +163,7 @@ jobs:
         store_build_artifacts: true
         tools_install_dir: ~/miniforge3
         SHORT_CONFIG: osx_arm64_opencl_implkhronospython3.12.__h9d15331f
+        VMIMAGE: macOS-15
       osx_arm64_opencl_implkhronospython3.13.____cp313:
         CONFIG: osx_arm64_opencl_implkhronospython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
