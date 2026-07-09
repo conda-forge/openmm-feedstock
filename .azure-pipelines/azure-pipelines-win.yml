@@ -12,104 +12,138 @@ jobs:
         CONFIG: win_64_cuda_compiler_version12.9python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._he7df00bc
+        CONFIG_SHORT: win_64_cuda_compiler_version12.9python3._he7df00bc
       win_64_cuda_compiler_version12.9python3.11.____cpython:
         CONFIG: win_64_cuda_compiler_version12.9python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._hf6a4516d
+        CONFIG_SHORT: win_64_cuda_compiler_version12.9python3._hf6a4516d
       win_64_cuda_compiler_version12.9python3.12.____cpython:
         CONFIG: win_64_cuda_compiler_version12.9python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._h1e9b8858
+        CONFIG_SHORT: win_64_cuda_compiler_version12.9python3._h1e9b8858
       win_64_cuda_compiler_version12.9python3.13.____cp313:
         CONFIG: win_64_cuda_compiler_version12.9python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._h689d003e
+        CONFIG_SHORT: win_64_cuda_compiler_version12.9python3._h689d003e
       win_64_cuda_compiler_version12.9python3.14.____cp314:
         CONFIG: win_64_cuda_compiler_version12.9python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version12.9python3._hb7937a57
+        CONFIG_SHORT: win_64_cuda_compiler_version12.9python3._hb7937a57
       win_64_cuda_compiler_version13.0python3.10.____cpython:
         CONFIG: win_64_cuda_compiler_version13.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._hcca5599a
+        CONFIG_SHORT: win_64_cuda_compiler_version13.0python3._hcca5599a
       win_64_cuda_compiler_version13.0python3.11.____cpython:
         CONFIG: win_64_cuda_compiler_version13.0python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._h52fabcb1
+        CONFIG_SHORT: win_64_cuda_compiler_version13.0python3._h52fabcb1
       win_64_cuda_compiler_version13.0python3.12.____cpython:
         CONFIG: win_64_cuda_compiler_version13.0python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._hc6e03f9d
+        CONFIG_SHORT: win_64_cuda_compiler_version13.0python3._hc6e03f9d
       win_64_cuda_compiler_version13.0python3.13.____cp313:
         CONFIG: win_64_cuda_compiler_version13.0python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._hea6c3c71
+        CONFIG_SHORT: win_64_cuda_compiler_version13.0python3._hea6c3c71
       win_64_cuda_compiler_version13.0python3.14.____cp314:
         CONFIG: win_64_cuda_compiler_version13.0python3.14.____cp314
         UPLOAD_PACKAGES: 'True'
         build_workspace_dir: D:\\bld\\
+        free_disk_space: quick
+        pagefile_size: 0
+        resize_partitions: false
         store_build_artifacts: true
         tools_install_dir: D:\Miniforge
-        SHORT_CONFIG: win_64_cuda_compiler_version13.0python3._h6232cca2
+        CONFIG_SHORT: win_64_cuda_compiler_version13.0python3._h6232cca2
   timeoutInMinutes: 360
   variables:
     UPLOAD_TEMP: D:\\tmp
 
   steps:
-
+    - bash: |
+        .scripts/free_disk_space.sh "$(free_disk_space)"
+      displayName: Manage disk space
+      env:
+        OS: windows
     - script: |
         call ".scripts\run_win_build.bat"
       displayName: Run Windows build
       env:
-        MINIFORGE_HOME: $(tools_install_dir)
-        CONDA_BLD_PATH: $(build_workspace_dir)
-        PYTHONUNBUFFERED: 1
-        CONFIG: $(CONFIG)
         CI: azure
+        CONFIG: $(CONFIG)
+        CONDA_BLD_PATH: $(build_workspace_dir)
+        MINIFORGE_HOME: $(tools_install_dir)
+        PYTHONUNBUFFERED: 1
+        UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
+        UPLOAD_TEMP: $(UPLOAD_TEMP)
         flow_run_id: azure_$(Build.BuildNumber).$(System.JobAttempt)
         remote_url: $(Build.Repository.Uri)
         sha: $(Build.SourceVersion)
-        UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
-        UPLOAD_TEMP: $(UPLOAD_TEMP)
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
         FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
         STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
 
     - script: |
-        set MINIFORGE_HOME=$(tools_install_dir)
-        set CONDA_BLD_PATH=$(build_workspace_dir)
+        set ARTIFACT_STAGING_DIR=$(Build.ArtifactStagingDirectory
+        set BLD_ARTIFACT_PREFIX=conda_artifacts
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
+        set CONDA_BLD_PATH=$(build_workspace_dir)
         set FEEDSTOCK_NAME=$(build.Repository.Name)
-        set ARTIFACT_STAGING_DIR=$(Build.ArtifactStagingDirectory)
-        set BLD_ARTIFACT_PREFIX=conda_artifacts
+        set MINIFORGE_HOME=$(tools_install_dir)
         if "%AGENT_JOBSTATUS%" == "Failed" (
             set ENV_ARTIFACT_PREFIX=conda_envs
         )
