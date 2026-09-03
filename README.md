@@ -47,13 +47,6 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>osx_64_opencl_implapplepython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implapplepython3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>osx_64_opencl_implapplepython3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
@@ -79,13 +72,6 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implapplepython3.14.____cp314" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_opencl_implkhronospython3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8065&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/openmm-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_opencl_implkhronospython3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -134,10 +120,10 @@ Current release info
 Installing openmm
 =================
 
-Installing `openmm` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `openmm` from the `conda-forge/label/openmm_rc` channel can be achieved by adding `conda-forge/label/openmm_rc` to your channels with:
 
 ```
-conda config --add channels conda-forge
+conda config --add channels conda-forge/label/openmm_rc
 conda config --set channel_priority strict
 ```
 
@@ -183,7 +169,7 @@ It is possible to list all of the versions of `openmm` available on your platfor
 <summary>With conda</summary>
 
 ```
-conda search openmm --channel conda-forge
+conda search openmm --channel conda-forge/label/openmm_rc
 ```
 
 </details>
@@ -192,7 +178,7 @@ conda search openmm --channel conda-forge
 <summary>With mamba</summary>
 
 ```
-mamba search openmm --channel conda-forge
+mamba search openmm --channel conda-forge/label/openmm_rc
 ```
 
 </details>
@@ -201,7 +187,7 @@ mamba search openmm --channel conda-forge
 <summary>With pixi</summary>
 
 ```
-pixi search openmm --channel conda-forge
+pixi search openmm --channel conda-forge/label/openmm_rc
 ```
 
 </details>
@@ -211,13 +197,13 @@ pixi search openmm --channel conda-forge
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search openmm --channel conda-forge
+mamba repoquery search openmm --channel conda-forge/label/openmm_rc
 
 # List packages depending on `openmm`:
-mamba repoquery whoneeds openmm --channel conda-forge
+mamba repoquery whoneeds openmm --channel conda-forge/label/openmm_rc
 
 # List dependencies of `openmm`:
-mamba repoquery depends openmm --channel conda-forge
+mamba repoquery depends openmm --channel conda-forge/label/openmm_rc
 ```
 
 </details>
