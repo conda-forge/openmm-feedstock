@@ -7,19 +7,19 @@ c_stdlib:
 c_stdlib_version:
 - '2.28'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cuda_compiler:
 - cuda-nvcc
 cuda_compiler_version:
-- '13.0'
+- '13.4'
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '15'
 docker_image:
-- quay.io/condaforge/linux-anvil-x86_64:alma10
+- quay.io/condaforge/linux-anvil-aarch64:alma10
 numpy:
 - '2'
 pin_run_as_build:
@@ -27,11 +27,13 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.12.* *_cpython
+- 3.15.* *_cp315
 target_platform:
-- linux-64
+- linux-aarch64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
   - c_stdlib_version
   - cuda_compiler_version
+- - python
+  - channel_sources
