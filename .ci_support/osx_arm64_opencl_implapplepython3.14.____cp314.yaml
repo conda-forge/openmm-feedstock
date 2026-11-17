@@ -1,5 +1,5 @@
 MACOSX_SDK_VERSION:
-- '11.0'
+- '11.3'
 c_compiler:
 - clang
 c_compiler_version:
