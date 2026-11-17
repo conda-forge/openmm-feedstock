@@ -1,6 +1,6 @@
 # needs https://developer.apple.com/documentation/kernel/task_id_token_t
 MACOSX_SDK_VERSION: # [osx]
-  - "11.3"          # [osx]
+  - "12.0"          # [osx]
 
 opencl_impl:  # [osx]
 - apple       # [osx]
